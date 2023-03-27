@@ -1,0 +1,38 @@
+.App {
+  background-color: #f8f8f8;
+  min-height: 100vh;
+}
+
+/* Original Source: https://github.com/Code-Institute-Solutions/moments/blob/
+0ce133afbe70840e36b10daa8e57e132a480a645/src/App.module.css */
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #000000;
+  transition: color ease-in-out 0.3s;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:hover i {
+  color: #6CABDD;
+  transition: color ease-in-out 0.5s;
+}
+
+i {
+  color: #ced3ce;
+  font-size: 1.6rem;
+  padding: 7px;
+  vertical-align: middle;
+}
+
+i:hover {
+  cursor: pointer;
+  transition: color ease-in-out 0.5s;
+  color: #6CABDD;
+}
