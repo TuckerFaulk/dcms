@@ -6,6 +6,10 @@
 /* Original Source: https://github.com/Code-Institute-Solutions/moments/blob/
 0ce133afbe70840e36b10daa8e57e132a480a645/src/App.module.css */
 
+.Main {
+  padding-top: 81px;
+}
+
 * {
   box-sizing: border-box;
 }
