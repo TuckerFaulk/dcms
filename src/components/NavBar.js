@@ -3,20 +3,26 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
 
-import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
 import axios from "axios";
+import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
 
+  const {expanded, setExpended, ref} = useClickOutsideToggle();
+
   const handleSignOut = async () => {
     try {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
-    } catch(err) {
-      console.log(err)
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -34,7 +40,7 @@ const NavBar = () => {
       <NavLink to="/actions" activeClassName={styles.Active}>
         <i className="fas fa-person-running"></i>My Actions
       </NavLink>
-      {currentUser && manageIcon} 
+      {currentUser && manageIcon}
       {/* Add is_staff to the above */}
       <NavLink to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>Sign Out
@@ -60,12 +66,21 @@ const NavBar = () => {
   );
 
   return (
-    <Navbar className={styles.NavBar} expand="md" fixed="top">
+    <Navbar
+      expanded={expanded}
+      className={styles.NavBar}
+      expand="md"
+      fixed="top"
+    >
       <Container>
         <NavLink to="/">
           <Navbar.Brand>DCMS</Navbar.Brand>
         </NavLink>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle
+          onClick={() => setExpended(!expanded)}
+          ref={ref} 
+          aria-controls="basic-navbar-nav"
+        />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
             {currentUser ? userLoggedInIcons : loggedOutIcons}
