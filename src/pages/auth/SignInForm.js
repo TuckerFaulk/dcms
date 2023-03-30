@@ -30,7 +30,7 @@ function SignInForm() {
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
-      history.push("/");
+      history.push("/"); // Change this to user-tasks page
     } catch (err) {
       setErrors(err.response?.data);
     }
