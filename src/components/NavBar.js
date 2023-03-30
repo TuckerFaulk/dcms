@@ -15,7 +15,7 @@ const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
 
-  const {expanded, setExpended, ref} = useClickOutsideToggle();
+  const { expanded, setExpended, ref } = useClickOutsideToggle();
 
   const handleSignOut = async () => {
     try {
@@ -26,9 +26,21 @@ const NavBar = () => {
     }
   };
 
-  const manageIcon = (
-    <NavLink to="/manage" activeClassName={styles.Active}>
-      <i className="fas fa-gears"></i>Manage
+  const addTaskIcon = (
+    <NavLink to="/master-tasks/create" activeClassName={styles.Active}>
+      <i className="fas fa-plus-square"></i>Add Task
+    </NavLink>
+  );
+
+  const addActionIcon = (
+    <NavLink to="/actions/create" activeClassName={styles.Active}>
+      <i className="fas fa-plus-square"></i>Add Action
+    </NavLink>
+  );
+
+  const addCategoryIcon = (
+    <NavLink to="/categories/create" activeClassName={styles.Active}>
+      <i className="fas fa-plus-square"></i>Add Category
     </NavLink>
   );
 
@@ -40,7 +52,6 @@ const NavBar = () => {
       <NavLink to="/actions" activeClassName={styles.Active}>
         <i className="fas fa-person-running"></i>My Actions
       </NavLink>
-      {currentUser && manageIcon}
       {/* Add is_staff to the above */}
       <NavLink to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>Sign Out
@@ -76,9 +87,12 @@ const NavBar = () => {
         <NavLink to="/">
           <Navbar.Brand>DCMS</Navbar.Brand>
         </NavLink>
+        {currentUser && addCategoryIcon}
+        {currentUser && addTaskIcon}
+        {currentUser && addActionIcon}
         <Navbar.Toggle
           onClick={() => setExpended(!expanded)}
-          ref={ref} 
+          ref={ref}
           aria-controls="basic-navbar-nav"
         />
         <Navbar.Collapse id="basic-navbar-nav">
