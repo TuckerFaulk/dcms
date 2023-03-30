@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
+import { CurrentUserContext } from "../App";
 
 const NavBar = () => {
+  const currentUser = useContext(CurrentUserContext);
+  const userLoggedInIcons = <>{currentUser?.username}</>;
+  // const adminLoggedInIcons = <>Admin {currentUser?.username}</>;
+  // Add the above later once I find out how to access is_staff
+  const loggedOutIcons = (
+    <>
+      <NavLink to="/signin" activeClassName={styles.Active}>
+        <i className="fas fa-sign-in-alt"></i> Sign In
+      </NavLink>
+      <NavLink to="/signup" activeClassName={styles.Active}>
+        <i className="fas fa-user-plus"></i> Sign Up
+      </NavLink>
+    </>
+  );
+
   return (
     <Navbar className={styles.NavBar} expand="md" fixed="top">
       <Container>
@@ -16,12 +32,7 @@ const NavBar = () => {
             <NavLink to="/" exact activeClassName={styles.Active}>
               <i className="fas fa-home"></i> Home
             </NavLink>
-            <NavLink to="/signin" activeClassName={styles.Active}>
-              <i className="fas fa-sign-in-alt"></i> Sign In
-            </NavLink>
-            <NavLink to="/signup" activeClassName={styles.Active}>
-              <i className="fas fa-user-plus"></i> Sign Up
-            </NavLink>
+            {currentUser ? userLoggedInIcons : loggedOutIcons}
           </Nav>
         </Navbar.Collapse>
       </Container>
