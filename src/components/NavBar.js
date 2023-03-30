@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import { CurrentUserContext } from "../App";
+
+import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 const NavBar = () => {
-  const currentUser = useContext(CurrentUserContext);
+
+  const currentUser = useCurrentUser();
   const userLoggedInIcons = <>{currentUser?.username}</>;
   // const adminLoggedInIcons = <>Admin {currentUser?.username}</>;
   // Add the above later once I find out how to access is_staff
