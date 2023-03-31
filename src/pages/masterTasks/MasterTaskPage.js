@@ -29,8 +29,8 @@ function MasterTaskPage() {
   return (
     <Row>
       <Col>
-        <h1>Master Task Page</h1>
         <MasterTask {...task.results[0]} TaskPage />
+        {/* <AssignedTo /> */}
       </Col>
     </Row>
   );
