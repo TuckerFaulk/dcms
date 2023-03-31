@@ -7,6 +7,7 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import MasterTasksCreateForm from "./pages/masterTasks/MasterTasksCreateForm";
 import CategoriesCreateForm from "./pages/categories/CategoriesCreateForm";
+import MasterTaskPage from "./pages/masterTasks/MasterTaskPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/categories/create" render={() => <CategoriesCreateForm />} />
           <Route exact path="/master-tasks/create" render={() => <MasterTasksCreateForm />} />
+          <Route exact path="/master-tasks/:id" render={() => <MasterTaskPage />} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>
