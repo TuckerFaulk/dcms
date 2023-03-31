@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import { axiosReq } from "../../api/axiosDefaults";
+import { useHistory } from "react-router-dom";
+import { Alert } from "react-bootstrap";
 
 function MasterTasksCreateForm() {
   const [errors, setErrors] = useState({});
+
+  const history = useHistory();
 
   const [masterTaskData, setMasterTaskData] = useState({
     task_name: "",
@@ -18,6 +23,11 @@ function MasterTasksCreateForm() {
 
   const { task_name, description, category, frequency } = masterTaskData;
 
+  const [categories, setCategories] = useState();
+
+  const categoryInput = useRef(null);
+  const frequencyInput = useRef(null);
+
   const handleChange = (event) => {
     setMasterTaskData({
       ...masterTaskData,
@@ -25,8 +35,41 @@ function MasterTasksCreateForm() {
     });
   };
 
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get("/categories/");
+        setCategories(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    handleMount();
+  }, []); // Dont know whether I need to add anything in here?
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+
+    formData.append("task_name", task_name);
+    formData.append("description", description);
+    formData.append("category", categoryInput.current.value);
+    formData.append("frequency", frequencyInput.current.value);
+
+    try {
+      await axiosReq.post("/master-tasks/", formData);
+      history.push("/"); // Update this to redirect to the individual tasks https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+RA101+2021_T3/courseware/70a8c55db0504bbdb5bcc3bfcf580080/060625599fc0413ab00f169869ff0526/?child=first
+    } catch (err) {
+      console.log(err);
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
+    }
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Row>
         <Col className="py-2 p-0 p-md-2">
           <Container className="d-flex flex-column justify-content-center">
@@ -41,6 +84,11 @@ function MasterTasksCreateForm() {
                     onChange={handleChange}
                   />
                 </Form.Group>
+                {errors?.task_name?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                   <Form.Label>Task Description</Form.Label>
@@ -60,8 +108,11 @@ function MasterTasksCreateForm() {
                     name="category"
                     value={category}
                     onChange={handleChange}
+                    ref={categoryInput}
                   >
-                    <option>Default select</option>
+                    {categories?.map((category) => (
+                      <option value={category.id}>{category.category_name}</option>
+                    ))}
                   </Form.Control>
                 </Form.Group>
 
@@ -72,19 +123,20 @@ function MasterTasksCreateForm() {
                     name="frequency"
                     value={frequency}
                     onChange={handleChange}
+                    ref={frequencyInput}
                   >
-                    <option>Once</option>
-                    <option>Daily</option>
-                    <option>Weekly</option>
-                    <option>Monthly</option>
-                    <option>Bi-annually</option>
-                    <option>Annually</option>
+                    <option value="once">Once</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="bi-annually">Bi-annually</option>
+                    <option value="annually">Annually</option>
                   </Form.Control>
                 </Form.Group>
               </Form>
 
               <Button type="submit">Create</Button>
-              <Button onClick={() => {}}>Cancel</Button>
+              <Button onClick={() => history.goBack()}>Cancel</Button>
             </div>
           </Container>
         </Col>
