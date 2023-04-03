@@ -3,6 +3,18 @@ import { Accordion, Button, Col, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
+/* Add if statement for defaultActiveKey="0"
+Could have it so there are two, although this will make it messy?
+{TaskPage
+  ? <Accordian default> ... <Accordion/>
+  : <Accordian> ... <Accordion/>}
+*/
+
+/*
+Need to consider the number for the event key
+Maybe ID but the defaultActiveKey does not work
+*/
+
 const MasterTask = (props) => {
   const {
     id,
@@ -21,7 +33,6 @@ const MasterTask = (props) => {
 
   return (
     <Accordion defaultActiveKey="0">
-      {/* Add if statement for defaultActiveKey="0" */}
       <Card>
         <Card.Header>
           <Row>
@@ -42,10 +53,6 @@ const MasterTask = (props) => {
           </Row>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
-            {/*
-            Need to consider the number for the event key
-            Maybe ID but the defaultActiveKey does not work
-            */}
           <Card.Body>
             <Card.Text>
               <Row>

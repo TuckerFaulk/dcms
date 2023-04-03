@@ -43,6 +43,11 @@ const NavBar = () => {
       <i className="fas fa-plus-square"></i>Add Category
     </NavLink>
   );
+  const addAssignedToIcon = (
+    <NavLink to="/assigned-to/create">
+    <i className="fas fa-plus-square"></i>Assign Task
+  </NavLink>
+  );
 
   const userLoggedInIcons = (
     <>
@@ -90,6 +95,7 @@ const NavBar = () => {
         {currentUser && addCategoryIcon}
         {currentUser && addTaskIcon}
         {currentUser && addActionIcon}
+        {currentUser && addAssignedToIcon}
         <Navbar.Toggle
           onClick={() => setExpended(!expanded)}
           ref={ref}
