@@ -26,12 +26,6 @@ const NavBar = () => {
     }
   }; 
 
-  const addAssignedToIcon = (
-    <NavLink to="/assigned-to/create">
-    <i className="fas fa-plus-square"></i>Assign Task
-  </NavLink>
-  );
-
   const addManageToIcon = (
     <NavLink to="/manage/">
     <i className="fas fa-gear"></i>Manage
@@ -81,7 +75,6 @@ const NavBar = () => {
         <NavLink to="/">
           <Navbar.Brand>DCMS</Navbar.Brand>
         </NavLink>
-        {currentUser && addAssignedToIcon}
         {currentUser && addManageToIcon}
         <Navbar.Toggle
           onClick={() => setExpended(!expanded)}
