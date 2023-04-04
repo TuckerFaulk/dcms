@@ -42,10 +42,17 @@ const NavBar = () => {
     <NavLink to="/categories/create" activeClassName={styles.Active}>
       <i className="fas fa-plus-square"></i>Add Category
     </NavLink>
-  );
+  );  
+
   const addAssignedToIcon = (
     <NavLink to="/assigned-to/create">
     <i className="fas fa-plus-square"></i>Assign Task
+  </NavLink>
+  );
+
+  const addManageToIcon = (
+    <NavLink to="/manage/">
+    <i className="fas fa-gear"></i>Manage
   </NavLink>
   );
 
@@ -96,6 +103,7 @@ const NavBar = () => {
         {currentUser && addTaskIcon}
         {currentUser && addActionIcon}
         {currentUser && addAssignedToIcon}
+        {currentUser && addManageToIcon}
         <Navbar.Toggle
           onClick={() => setExpended(!expanded)}
           ref={ref}

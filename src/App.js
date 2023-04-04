@@ -9,6 +9,7 @@ import MasterTasksCreateForm from "./pages/masterTasks/MasterTasksCreateForm";
 import CategoriesCreateForm from "./pages/categories/CategoriesCreateForm";
 import MasterTaskPage from "./pages/masterTasks/MasterTaskPage";
 import AssignedToCreateForm from "./pages/assignedTo/AssignedToCreateForm";
+import ManagePage from "./pages/manage/Manage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/" render={() => <h1>Home Page</h1>} />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
+          <Route exact path="/manage" render={() => <ManagePage />} />
           <Route exact path="/categories/create" render={() => <CategoriesCreateForm />} />
           <Route exact path="/master-tasks/create" render={() => <MasterTasksCreateForm />} />
           <Route exact path="/master-tasks/:id" render={() => <MasterTaskPage />} />
