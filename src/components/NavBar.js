@@ -24,12 +24,12 @@ const NavBar = () => {
     } catch (err) {
       console.log(err);
     }
-  }; 
+  };
 
   const addManageToIcon = (
     <NavLink to="/manage/">
-    <i className="fas fa-gear"></i>Manage
-  </NavLink>
+      <i className="fas fa-gear"></i>Manage
+    </NavLink>
   );
 
   const userLoggedInIcons = (

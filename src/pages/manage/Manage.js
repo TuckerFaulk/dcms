@@ -9,7 +9,7 @@ import styles from '../../styles/Manage.module.css'
 function ManagePage() {
   return (
     <Row>
-      <Col className="d-flex justify-content-center align-items-center ">
+      <Col className="d-flex justify-content-center align-items-center">
         <Card style={{ width: "18rem" }} className={styles.card}>
           <Card.Body>
             <NavLink to="/categories/">
