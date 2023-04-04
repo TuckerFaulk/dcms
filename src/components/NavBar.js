@@ -24,25 +24,7 @@ const NavBar = () => {
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const addTaskIcon = (
-    <NavLink to="/master-tasks/create" activeClassName={styles.Active}>
-      <i className="fas fa-plus-square"></i>Add Task
-    </NavLink>
-  );
-
-  const addActionIcon = (
-    <NavLink to="/actions/create" activeClassName={styles.Active}>
-      <i className="fas fa-plus-square"></i>Add Action
-    </NavLink>
-  );
-
-  const addCategoryIcon = (
-    <NavLink to="/categories/create" activeClassName={styles.Active}>
-      <i className="fas fa-plus-square"></i>Add Category
-    </NavLink>
-  );  
+  }; 
 
   const addAssignedToIcon = (
     <NavLink to="/assigned-to/create">
@@ -99,9 +81,6 @@ const NavBar = () => {
         <NavLink to="/">
           <Navbar.Brand>DCMS</Navbar.Brand>
         </NavLink>
-        {currentUser && addCategoryIcon}
-        {currentUser && addTaskIcon}
-        {currentUser && addActionIcon}
         {currentUser && addAssignedToIcon}
         {currentUser && addManageToIcon}
         <Navbar.Toggle

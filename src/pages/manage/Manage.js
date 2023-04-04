@@ -12,7 +12,7 @@ function ManagePage() {
       <Col className="d-flex justify-content-center align-items-center ">
         <Card style={{ width: "18rem" }} className={styles.card}>
           <Card.Body>
-            <NavLink to="/master-tasks/">
+            <NavLink to="/categories/">
               Categories<i className="fas fa-arrow-right"></i>
             </NavLink>
           </Card.Body>
@@ -26,7 +26,7 @@ function ManagePage() {
         </Card>
         <Card style={{ width: "18rem" }} className={styles.card}>
           <Card.Body>
-            <NavLink to="/master-tasks/">
+            <NavLink to="/actions/">
               Actions<i className="fas fa-arrow-right"></i>
             </NavLink>
           </Card.Body>

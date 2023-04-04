@@ -10,6 +10,9 @@ import CategoriesCreateForm from "./pages/categories/CategoriesCreateForm";
 import MasterTaskPage from "./pages/masterTasks/MasterTaskPage";
 import AssignedToCreateForm from "./pages/assignedTo/AssignedToCreateForm";
 import ManagePage from "./pages/manage/Manage";
+import MasterTasksPage from "./pages/masterTasks/MasterTasksPage";
+import ActionsPage from "./pages/actions/ActionsPage";
+import CategoriesPage from "./pages/categories/CategoriesPage";
 
 function App() {
   return (
@@ -21,10 +24,13 @@ function App() {
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/manage" render={() => <ManagePage />} />
+          <Route exact path="/categories/" render={() => <CategoriesPage />} />
           <Route exact path="/categories/create" render={() => <CategoriesCreateForm />} />
+          <Route exact path="/master-tasks/" render={() => <MasterTasksPage />} />
           <Route exact path="/master-tasks/create" render={() => <MasterTasksCreateForm />} />
           <Route exact path="/master-tasks/:id" render={() => <MasterTaskPage />} />
           <Route exact path="/assigned-to/create" render={() => <AssignedToCreateForm />} />
+          <Route exact path="/actions/" render={() => <ActionsPage /> } />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>
