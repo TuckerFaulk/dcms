@@ -11,15 +11,17 @@ import AssignedToCreateForm from "../assignedTo/AssignedToCreateForm";
 function MasterTaskPage() {
   const { id } = useParams();
   const [task, setTask] = useState({ results: [] });
+  const [assignedTo, setAssignedTo] = useState({ results: [] });
 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: task }] = await Promise.all([
+        const [{ data: task }, {data: assignedTo}] = await Promise.all([
           axiosReq.get(`/master-tasks/${id}`),
+          axiosReq.get(`/assigned-to/?task_name=${id}`),
         ]);
         setTask({ results: [task] });
-        console.log(task);
+        setAssignedTo(assignedTo)
       } catch (err) {
         console.log(err);
       }
@@ -39,6 +41,12 @@ function MasterTaskPage() {
       <Row className="mt-3">
         <Col>
           <AssignedToCreateForm />
+        </Col>
+      </Row>
+
+      <Row>
+        <Col>
+        {/* <AssignTo /> */}
         </Col>
       </Row>
     </Container>

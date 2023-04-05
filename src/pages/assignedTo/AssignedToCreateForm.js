@@ -65,6 +65,8 @@ function AssignedToCreateForm() {
                       </Form.Group>
                     </Col>
 
+                    {/* Completed By */}
+
                     <Col sm={2}>
                       <Button variant="primary" type="submit">
                         Create
