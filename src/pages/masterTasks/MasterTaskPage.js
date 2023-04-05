@@ -6,6 +6,7 @@ import { useParams, NavLink } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import MasterTask from "./MasterTask";
 import { Container } from "react-bootstrap";
+import AssignedToCreateForm from "../assignedTo/AssignedToCreateForm";
 
 function MasterTaskPage() {
   const { id } = useParams();
@@ -35,11 +36,9 @@ function MasterTaskPage() {
         </Col>
       </Row>
 
-      <Row>
-        <Col className="text-right mt-3">
-          <NavLink to="/assigned-to/create">
-            <i className="fas fa-plus-square"></i>Assign Task
-          </NavLink>
+      <Row className="mt-3">
+        <Col>
+          <AssignedToCreateForm />
         </Col>
       </Row>
     </Container>

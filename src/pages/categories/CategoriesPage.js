@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { NavLink } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
-import styles from "../../styles/Categories.module.css";
+import styles from "../../styles/CategoriesPage.module.css";
 
 function CategoriesPage() {
   const [categories, setCategories] = useState();

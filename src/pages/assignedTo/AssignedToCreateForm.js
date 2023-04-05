@@ -1,60 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import { Card } from "react-bootstrap";
 
-import appStyles from "../../App.module.css";
-
+import styles from "../../styles/AssignedToCreateForm.module.css";
 
 function AssignedToCreateForm() {
+  const [openForm, setOpenForm] = useState(false);
 
-  // const [errors, setErrors] = useState({});
-
-
-  const textFields = (
-    <div className="text-center">
-      {/* Add your form fields here */}
-
-    
-    
-      <Button
-        onClick={() => {}}
-      >
-        cancel
-      </Button>
-      <Button type="submit">
-        create
-      </Button>
-    </div>
-  );
+  const handleOpenForm = () => {
+    setOpenForm(true);
+  };
 
   return (
     <Form>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} d-flex flex-column justify-content-center`}
-          >
-            <Form.Group className="text-center">
-              
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="image-upload"
-                >
-                  ASSET
-                </Form.Label>
+      <Container>
+        {!openForm ? (
+          <Row>
+            <Col className="d-flex justify-content-end ">
+              <Button onClick={() => handleOpenForm()} className="btn btn-light">
+                <i className="fas fa-plus-square"></i>Assign Task
+              </Button>
+            </Col>
+          </Row>
+        ) : (
+          <Row>
+            <Card>
+              <Card.Body className={styles.Card}>
+                <Form>
+                  <Row>
+                    <Col sm={2}>
+                      <Form.Control
+                        plaintext
+                        readOnly
+                        defaultValue="<Task Name>"
+                      />
+                    </Col>
 
-            </Form.Group>
-            <div className="d-md-none">{textFields}</div>
-          </Container>
-        </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
-        </Col>
-      </Row>
+                    <Col sm={4}>
+                      <Form.Group as={Row} controlId="formPlaintextEmail">
+                        <Form.Label column sm="5">
+                          Assigned To
+                        </Form.Label>
+                        <Col sm="7">
+                          <Form.Control
+                            as="select"
+                          />
+                        </Col>
+                      </Form.Group>
+                    </Col>
+
+                    <Col sm={4}>
+                      <Form.Group as={Row} controlId="formPlaintextEmail">
+                        <Form.Label column sm="5">
+                          Initial Due Date
+                        </Form.Label>
+                        <Col sm="7">
+
+                        </Col>
+                      </Form.Group>
+                    </Col>
+
+                    <Col sm={2}>
+                      <Button variant="primary" type="submit">
+                        Create
+                      </Button>
+                    </Col>
+                  </Row>
+                </Form>
+              </Card.Body>
+            </Card>
+          </Row>
+        )}
+      </Container>
     </Form>
   );
 }
