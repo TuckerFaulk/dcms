@@ -44,46 +44,46 @@ const MasterTask = (props) => {
           <Card.Text>
             <Row>
               <Col>
-                <ul class="list-group list-group-horizontal">
-                  <li class="list-group-item bg-primary text-white">
+                <ul className="list-group list-group-horizontal">
+                  <li className="list-group-item bg-primary text-white">
                     Category
                   </li>
-                  <li class="list-group-item">{category}</li>
+                  <li className="list-group-item">{category}</li>
                 </ul>
               </Col>
               <Col>
-                <ul class="list-group list-group-horizontal">
-                  <li class="list-group-item bg-primary text-white">
+                <ul className="list-group list-group-horizontal">
+                  <li className="list-group-item bg-primary text-white">
                     Frequency
                   </li>
-                  <li class="list-group-item">{frequency}</li>
+                  <li className="list-group-item">{frequency}</li>
                 </ul>
               </Col>
             </Row>
             <Row>
               <Col>
-                <ul class="list-group list-group-horizontal">
-                  <li class="list-group-item bg-primary text-white">
+                <ul className="list-group list-group-horizontal">
+                  <li className="list-group-item bg-primary text-white">
                     Date Created
                   </li>
-                  <li class="list-group-item">{created_at}</li>
+                  <li className="list-group-item">{created_at}</li>
                 </ul>
               </Col>
               <Col>
-                <ul class="list-group list-group-horizontal">
-                  <li class="list-group-item bg-primary text-white">
+                <ul className="list-group list-group-horizontal">
+                  <li className="list-group-item bg-primary text-white">
                     Date Updated
                   </li>
-                  <li class="list-group-item">{updated_at}</li>
+                  <li className="list-group-item">{updated_at}</li>
                 </ul>
               </Col>
             </Row>
             {description && (
-              <ul class="list-group">
-                <li class="list-group-item bg-primary text-white">
+              <ul className="list-group">
+                <li className="list-group-item bg-primary text-white">
                   Description
                 </li>
-                <li class="list-group-item">{description}</li>
+                <li className="list-group-item">{description}</li>
               </ul>
             )}
           </Card.Text>

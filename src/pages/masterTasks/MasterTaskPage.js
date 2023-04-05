@@ -41,7 +41,7 @@ function MasterTaskPage() {
 
       <Row className="mt-3">
         <Col>
-          <AssignedToCreateForm />
+          <AssignedToCreateForm {...task.results[0]} />
         </Col>
       </Row>
 
