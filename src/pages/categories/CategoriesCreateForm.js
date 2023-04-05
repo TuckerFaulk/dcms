@@ -35,7 +35,7 @@ function CategoriesCreateForm() {
 
     try {
       await axiosReq.post("/categories/", formData);
-      history.push("/"); // Update this to redirect to the categories list page https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+RA101+2021_T3/courseware/70a8c55db0504bbdb5bcc3bfcf580080/060625599fc0413ab00f169869ff0526/?child=first
+      history.push("/categories");
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
