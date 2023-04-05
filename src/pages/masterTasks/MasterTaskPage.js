@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import MasterTask from "./MasterTask";
 import { Container } from "react-bootstrap";
 import AssignedToCreateForm from "../assignedTo/AssignedToCreateForm";
+import AssignedTo from "../assignedTo/AssignedTo";
 
 function MasterTaskPage() {
   const { id } = useParams();
@@ -46,7 +47,9 @@ function MasterTaskPage() {
 
       <Row>
         <Col>
-        {/* <AssignTo /> */}
+        {assignedTo?.results.map((user) => (
+          <AssignedTo {...user.results} />
+        ))}
         </Col>
       </Row>
     </Container>

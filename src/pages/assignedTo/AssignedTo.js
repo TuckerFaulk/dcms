@@ -1,17 +1,16 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import { NavLink } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const AssignedTo = (props) => {
   const {
-    id,
+    // id,
     owner,
-    task_name,
+    // task_name,
     assigned_to,
-    initial_due_date,
-    completed_by,
+    // initial_due_date,
+    // completed_by,
   } = props;
 
   const currentUser = useCurrentUser();
