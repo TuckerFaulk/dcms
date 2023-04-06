@@ -33,6 +33,16 @@ function UserTaskPage() {
           <UserTask {...task.results[0]} TaskPage />
         </Col>
       </Row>
+      <Row>
+        <Col>
+          {/* Add status update form */}
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          {/* Add comments section */}
+        </Col>
+      </Row>
     </Container>
   );
 }
