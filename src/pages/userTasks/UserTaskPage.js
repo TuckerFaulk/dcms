@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { Container } from "react-bootstrap";
+import UserTask from "./UserTask";
 
 function UserTaskPage() {
   const { id } = useParams();
@@ -29,7 +30,7 @@ function UserTaskPage() {
     <Container>
       <Row>
         <Col>
-          <MasterTask {...task.results[0]} TaskPage />
+          <UserTask {...task.results[0]} TaskPage />
         </Col>
       </Row>
     </Container>

@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { axiosReq } from "../../api/axiosDefaults";
 import { Container } from "react-bootstrap";
+import UserTask from "./UserTask";
 
 function UserTasksPage() {
   const [userTasks, setUserTasks] = useState({ results: [] });
@@ -26,7 +27,9 @@ function UserTasksPage() {
     <Container>
       <Row>
         <Col>
-        {/* Map */}
+        {userTasks?.results.map((task) => (
+            <UserTask {...task} />
+          ))}
         </Col>
       </Row>
     </Container>

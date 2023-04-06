@@ -14,6 +14,7 @@ import MasterTasksPage from "./pages/masterTasks/MasterTasksPage";
 import ActionsPage from "./pages/actions/ActionsPage";
 import CategoriesPage from "./pages/categories/CategoriesPage";
 import UserTasksPage from "./pages/userTasks/UserTasksPage";
+import UserTaskPage from "./pages/userTasks/UserTaskPage";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route exact path="/assigned-to/create" render={() => <AssignedToCreateForm />} />
           <Route exact path="/actions/" render={() => <ActionsPage /> } />
           <Route exact path="/my-tasks/" render={() => <UserTasksPage /> } />
+          <Route exact path="/my-tasks/:id" render={() => <UserTaskPage /> } />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>
