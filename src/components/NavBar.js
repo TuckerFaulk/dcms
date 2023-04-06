@@ -34,7 +34,7 @@ const NavBar = () => {
 
   const userLoggedInIcons = (
     <>
-      <NavLink to="/user-tasks" activeClassName={styles.Active}>
+      <NavLink to="/my-tasks" activeClassName={styles.Active}>
         <i className="fas fa-list-check"></i>My Tasks
       </NavLink>
       <NavLink to="/actions" activeClassName={styles.Active}>
