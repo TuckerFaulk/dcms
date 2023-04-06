@@ -10,7 +10,6 @@ import { Card } from "react-bootstrap";
 import styles from "../../styles/AssignedToCreateForm.module.css";
 
 import { axiosReq } from "../../api/axiosDefaults";
-// import { useHistory } from "react-router-dom";
 
 function AssignedToCreateForm(props) {
   const { id } = props;
@@ -26,18 +25,13 @@ function AssignedToCreateForm(props) {
 
   const completedByInput = useRef(null);
   const assignedToInput = useRef(null);
-  // const history = useHistory();
 
   const { assigned_to, completed_by } = assignedToData;
-
-  const handleOpenForm = () => {
-    setOpenForm(true);
-  };
 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get("/profiles/"); // Filter profiles to users only
+        const { data } = await axiosReq.get("/profiles/"); // Filter profiles to "users" only
         setProfiles(data);
       } catch (err) {
         console.log(err);
@@ -64,10 +58,11 @@ function AssignedToCreateForm(props) {
     formData.append("completed_by", completedByInput.current.value);
 
     try {
-      for (const value of formData.values()) {
-        console.log(value);
+      for (var pair of formData.entries()) {
+        console.log(pair[0] + ": " + typeof pair[1]);
       }
       await axiosReq.post("/assigned-to/", formData);
+      setOpenForm(false);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -81,7 +76,7 @@ function AssignedToCreateForm(props) {
       {!openForm ? (
         <Row>
           <Col className="d-flex justify-content-end ">
-            <Button onClick={() => handleOpenForm()} className="btn btn-light">
+            <Button onClick={() => setOpenForm(true)} className="btn btn-light">
               <i className="fas fa-plus-square"></i>Assign Task
             </Button>
           </Col>
@@ -94,10 +89,10 @@ function AssignedToCreateForm(props) {
                 <Row>
                   <Col sm={3}>
                     <Form.Group as={Row}>
-                      <Form.Label column sm="5">
+                      <Form.Label column sm="4">
                         Assign To
                       </Form.Label>
-                      <Col sm="7">
+                      <Col sm="8">
                         <Form.Control
                           as="select"
                           name="assigned_to"

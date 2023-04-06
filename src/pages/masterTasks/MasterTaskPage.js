@@ -48,7 +48,7 @@ function MasterTaskPage() {
       <Row>
         <Col>
         {assignedTo?.results.map((user) => (
-          <AssignedTo {...user.results} />
+          <AssignedTo {...user} key={user.id}/>
         ))}
         </Col>
       </Row>

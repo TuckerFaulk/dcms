@@ -5,12 +5,10 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const AssignedTo = (props) => {
   const {
-    // id,
     owner,
-    // task_name,
     assigned_to,
-    // initial_due_date,
-    // completed_by,
+    initial_due_date,
+    completed_by,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -21,7 +19,7 @@ const AssignedTo = (props) => {
       <Card.Header>
         <Row>
           <Col className="mt-3">
-            <Card.Title>{assigned_to}</Card.Title>
+            <Card.Title>{assigned_to} - {initial_due_date} - {completed_by}</Card.Title>
           </Col>
 
           <Col className="d-flex justify-content-end align-items-center">
