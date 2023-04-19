@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { axiosReq } from "../../api/axiosDefaults";
 import { NavLink } from "react-router-dom";
+import Action from "./Action";
 
 function ActionsPage() {
   const [actions, setActions] = useState({ results: [] });
@@ -35,9 +36,9 @@ function ActionsPage() {
 
       <Row>
         <Col>
-          {/* {actions?.results.map((action) => (
-            // <Action {...action} />
-          ))} */}
+          {actions?.results.map((action) => (
+            <Action {...action} />
+          ))}
         </Col>
       </Row>
     </Container>

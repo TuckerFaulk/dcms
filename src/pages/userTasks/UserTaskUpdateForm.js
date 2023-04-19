@@ -38,14 +38,14 @@ function UserTaskUpdateForm(props) {
 
     formData.append("action_required", actionRequiredInput.current.value);
     formData.append("action_description", action_description);
-    formData.append("image", null);
-    formData.append("status", "closed");
+    // formData.append("image", null);
+    formData.append("status", "Closed");
 
     try {
       for (var pair of formData.entries()) {
         console.log(pair[0]+ ', ' + pair[1]); 
     }
-      await axiosReq.post(`/user-tasks/${id}`, formData);
+      await axiosReq.put(`/user-tasks/${id}/`, formData);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -56,7 +56,7 @@ function UserTaskUpdateForm(props) {
 
   return (
     <Container>
-      {status === "open" && (
+      {status === "Open" && (
         <Card.Footer>
           <Row>
             <Col>
