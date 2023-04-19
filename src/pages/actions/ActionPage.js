@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { Container } from "react-bootstrap";
 import Action from "./Action";
+import ActionUpdateForm from "./ActionUpdateForm";
 
 function ActionPage() {
   const { id } = useParams();
@@ -35,7 +36,7 @@ function ActionPage() {
       </Row>
       <Row>
         <Col>
-          {/* <UserTaskUpdateForm {...task.results[0]} /> */}
+          <ActionUpdateForm {...action.results[0]} />
         </Col>
       </Row>
       <Row>
