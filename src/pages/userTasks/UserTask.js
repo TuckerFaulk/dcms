@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { NavLink } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -16,8 +16,8 @@ const UserTask = (props) => {
     due_date,
     // is_overdue,
     frequency,
-    action_required,
-    action_description,
+    // action_required,
+    // action_description,
     // image,
     status,
     TaskPage,
@@ -95,58 +95,7 @@ const UserTask = (props) => {
                 </ul>
               )}
             </Card.Text>
-          </Card.Body>
-
-          {/* Only show the below section if the user task is open */}
-          {status === "open" && (
-            <Card.Footer>
-              <Row>
-                <Col>
-                  <Form>
-                    <Form.Group as={Row} controlId="formBasicCheckbox">
-                      <Form.Label column sm="2">
-                        Action required
-                      </Form.Label>
-                      <Col sm={5}>
-                        <Form.Check type="checkbox" />
-                      </Col>
-                    </Form.Group>
-
-                      <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Action Description</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
-                        <Form.Text className="text-muted">
-                          Add a description of the issue raised and the action
-                          requried.
-                        </Form.Text>
-                      </Form.Group>
-
-                    <Form.Group as={Row}>
-                      <Form.Label column sm="5">
-                        Status
-                      </Form.Label>
-                      <Col sm={5}>
-                        <Form.Control
-                          as="select"
-                          name="status"
-                          // value={completed_by}
-                          // onChange={handleChange}
-                          // ref={completedByInput}
-                        >
-                          <option value="user">Open</option>
-                          <option value="closed">Close</option>
-                        </Form.Control>
-                      </Col>
-                    </Form.Group>
-
-                    <Button variant="primary" type="submit">
-                      Submit
-                    </Button>
-                  </Form>
-                </Col>
-              </Row>
-            </Card.Footer>
-          )}
+          </Card.Body>          
         </>
       )}
     </Card>

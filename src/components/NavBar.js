@@ -37,7 +37,7 @@ const NavBar = () => {
       <NavLink to="/my-tasks" activeClassName={styles.Active}>
         <i className="fas fa-list-check"></i>My Tasks
       </NavLink>
-      <NavLink to="/actions" activeClassName={styles.Active}>
+      <NavLink to="/my-actions" activeClassName={styles.Active}>
         <i className="fas fa-person-running"></i>My Actions
       </NavLink>
       {/* Add is_staff to the above */}

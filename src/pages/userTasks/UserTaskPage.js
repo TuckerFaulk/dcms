@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { Container } from "react-bootstrap";
 import UserTask from "./UserTask";
+import UserTaskUpdateForm from "./UserTaskUpdateForm";
 
 function UserTaskPage() {
   const { id } = useParams();
@@ -35,7 +36,7 @@ function UserTaskPage() {
       </Row>
       <Row>
         <Col>
-          {/* Add status update form */}
+          <UserTaskUpdateForm {...task.results[0]} />
         </Col>
       </Row>
       <Row>

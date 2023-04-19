@@ -58,9 +58,6 @@ function AssignedToCreateForm(props) {
     formData.append("completed_by", completedByInput.current.value);
 
     try {
-      for (var pair of formData.entries()) {
-        console.log(pair[0] + ": " + typeof pair[1]);
-      }
       await axiosReq.post("/assigned-to/", formData);
       setOpenForm(false);
     } catch (err) {
