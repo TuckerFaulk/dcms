@@ -20,7 +20,6 @@ function UserTaskUpdateForm(props) {
     status: "",
   });
 
-//   const statusInput = useRef(null);
   const actionRequiredInput = useRef(null);
 
   const { action_required, action_description } = userTaskData;
@@ -33,16 +32,19 @@ function UserTaskUpdateForm(props) {
   };
 
   const handleSubmit = async (event) => {
-    console.log(actionRequiredInput.current.value, action_description)
+    console.log(actionRequiredInput.current.value, action_description);
     event.preventDefault();
     const formData = new FormData();
 
     formData.append("action_required", actionRequiredInput.current.value);
     formData.append("action_description", action_description);
-    formData.append("image", "");
+    formData.append("image", null);
     formData.append("status", "closed");
 
     try {
+      for (var pair of formData.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]); 
+    }
       await axiosReq.post(`/user-tasks/${id}`, formData);
     } catch (err) {
       console.log(err);
@@ -77,37 +79,21 @@ function UserTaskUpdateForm(props) {
                   </Col>
                 </Form.Group>
 
-                {/* <Form.Group as={Row}>
-                  <Form.Label column sm="5">
-                    Status
-                  </Form.Label>
-                  <Col sm={5}>
+                {action_required && (
+                  <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Action Description</Form.Label>
                     <Form.Control
-                      as="select"
-                      name="status"
-                      value={status}
+                      type="teatarea"
+                      name="action_description"
+                      value={action_description}
                       onChange={handleChange}
-                      ref={statusInput}
-                    >
-                      <option value="open">Open</option>
-                      <option value="closed">Close</option>
-                    </Form.Control>
-                  </Col>
-                </Form.Group> */}
-
-                <Form.Group controlId="formBasicEmail">
-                  <Form.Label>Action Description</Form.Label>
-                  <Form.Control
-                    type="teatarea"
-                    name="action_description"
-                    value={action_description}
-                    onChange={handleChange}
-                  />
-                  <Form.Text className="text-muted">
-                    Add a description of the issue raised and the action
-                    requried.
-                  </Form.Text>
-                </Form.Group>
+                    />
+                    <Form.Text className="text-muted">
+                      Add a description of the issue raised and the action
+                      requried.
+                    </Form.Text>
+                  </Form.Group>
+                )}
 
                 <Button variant="primary" type="submit">
                   Close Task
