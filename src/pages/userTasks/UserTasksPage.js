@@ -5,14 +5,17 @@ import Row from "react-bootstrap/Row";
 import { axiosReq } from "../../api/axiosDefaults";
 import { Container } from "react-bootstrap";
 import UserTask from "./UserTask";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function UserTasksPage() {
   const [userTasks, setUserTasks] = useState({ results: [] });
 
+  const currentUser = useCurrentUser();
+
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get("/user-tasks/");
+        const { data } = await axiosReq.get(`/user-tasks/?assigned_to__assigned_to__profile=${currentUser?.pk}`);
         console.log(data)
         setUserTasks(data);
       } catch (err) {
@@ -21,7 +24,7 @@ function UserTasksPage() {
     };
 
     handleMount();
-  }, []); // Dont know whether I need to add anything in here?
+  }, [currentUser]); // Dont know whether I need to add anything in here?
 
   return (
     <Container>
