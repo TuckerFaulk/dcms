@@ -24,7 +24,6 @@ const UserTask = (props) => {
   } = props;
 
   const currentUser = useCurrentUser();
-  const is_assigned_to = currentUser?.username === assigned_to;
 
   return (
     <Card>
@@ -40,12 +39,10 @@ const UserTask = (props) => {
                 <i className="fas fa-circle-info"></i>
               </NavLink>
             )}
-
-            {is_assigned_to && <i className="fas fa-ellipsis-vertical"></i>}
-            {/* dont need the above as task should only be seen if assigned to them */}
           </Col>
         </Row>
       </Card.Header>
+
       {TaskPage && (
         <>
           <Card.Body>

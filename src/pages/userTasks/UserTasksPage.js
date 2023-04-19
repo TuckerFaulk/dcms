@@ -12,6 +12,9 @@ function UserTasksPage() {
 
   const currentUser = useCurrentUser();
 
+  // Add completed by filter
+  // If (is_staff) .get(...?completed_by=${admin}) else ?assigned_to__assigned_to__profile=${currentUser?.pk}
+
   useEffect(() => {
     const handleMount = async () => {
       try {

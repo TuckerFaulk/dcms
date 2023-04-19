@@ -58,6 +58,9 @@ function MasterTasksCreateForm() {
     formData.append("frequency", frequencyInput.current.value);
 
     try {
+      for (var pair of formData.entries()) {
+    console.log(pair[0]+ ', ' + pair[1]); 
+}
       await axiosReq.post("/master-tasks/", formData);
       history.push("/master-tasks");
     } catch (err) {
@@ -125,12 +128,12 @@ function MasterTasksCreateForm() {
                     onChange={handleChange}
                     ref={frequencyInput}
                   >
-                    <option value="once">Once</option>
-                    <option value="daily">Daily</option>
-                    <option value="weekly">Weekly</option>
-                    <option value="monthly">Monthly</option>
-                    <option value="bi-annually">Bi-annually</option>
-                    <option value="annually">Annually</option>
+                    <option value="Once">Once</option>
+                    <option value="Daily">Daily</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Biannually">Bi-annually</option>
+                    <option value="Annually">Annually</option>
                   </Form.Control>
                 </Form.Group>
               </Form>

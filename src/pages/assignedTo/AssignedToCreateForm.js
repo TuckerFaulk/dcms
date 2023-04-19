@@ -58,6 +58,9 @@ function AssignedToCreateForm(props) {
     formData.append("completed_by", completedByInput.current.value);
 
     try {
+      for (var pair of formData.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]); 
+    }
       await axiosReq.post("/assigned-to/", formData);
       setOpenForm(false);
     } catch (err) {
@@ -136,8 +139,8 @@ function AssignedToCreateForm(props) {
                           onChange={handleChange}
                           ref={completedByInput}
                         >
-                          <option value="user">User</option>
-                          <option value="admin">Admin</option>
+                          <option value="User">User</option>
+                          <option value="Admin">Admin</option>
                         </Form.Control>
                       </Col>
                     </Form.Group>
