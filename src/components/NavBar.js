@@ -10,10 +10,15 @@ import {
 import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
+import { useCurrentProfile } from "../contexts/CurrentProfileContext";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+
+  const currentProfile = useCurrentProfile();
+
+  console.log(currentProfile)
 
   const { expanded, setExpended, ref } = useClickOutsideToggle();
 
@@ -75,7 +80,7 @@ const NavBar = () => {
         <NavLink to="/">
           <Navbar.Brand>DCMS</Navbar.Brand>
         </NavLink>
-        {currentUser && addManageToIcon}
+        {currentProfile?.is_staff && addManageToIcon}
         <Navbar.Toggle
           onClick={() => setExpended(!expanded)}
           ref={ref}
