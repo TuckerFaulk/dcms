@@ -7,7 +7,7 @@ const Action = (props) => {
   const {
     id,
     action_title,
-    category,
+    category_name,
     description,
     // assigned_to,
     // created_at,
@@ -48,7 +48,7 @@ const Action = (props) => {
                     <li className="list-group-item bg-primary text-white">
                       Category
                     </li>
-                    <li className="list-group-item">{category}</li>
+                    <li className="list-group-item">{category_name}</li>
                   </ul>
                 </Col>
                 <Col>

@@ -10,8 +10,8 @@ import { Card } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
 
 function ActionUpdateForm(props) {
-  // const { id, status, action_title, assigned_to, category } = props;
-  const { id, status } = props;
+  const { id, status, action_title, assigned_to, category } = props;
+  // const { id, status } = props;
 
   const [errors, setErrors] = useState({});
 
@@ -36,9 +36,9 @@ function ActionUpdateForm(props) {
     event.preventDefault();
     const formData = new FormData();
 
-    // formData.append("action_title", action_title);
-    // formData.append("assigned_to", assigned_to);
-    // formData.append("category", category);
+    formData.append("action_title", action_title);
+    formData.append("assigned_to", assigned_to);
+    formData.append("category", category);
     // formData.append("image", null);
     formData.append("status", "Closed");
 
