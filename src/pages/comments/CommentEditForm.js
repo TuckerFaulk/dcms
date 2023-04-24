@@ -8,7 +8,7 @@ import styles from "../../styles/CommentCreateEditForm.module.css";
 // Source: CI Walkthrough Videos
 
 function CommentEditForm(props) {
-  const { id, content, setShowEditForm, setComments } = props;
+  const { id, content, setShowEditForm, setComments, page } = props;
 
   const [formContent, setFormContent] = useState(content);
 
@@ -18,25 +18,49 @@ function CommentEditForm(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      await axiosRes.put(`/task-comments/${id}/`, {
-        content: formContent.trim(),
-      });
-      setComments((prevComments) => ({
-        ...prevComments,
-        results: prevComments.results.map((comment) => {
-          return comment.id === id
-            ? {
-                ...comment,
-                content: formContent.trim(),
-                updated_at: "now",
-              }
-            : comment;
-        }),
-      }));
-      setShowEditForm(false);
-    } catch (err) {
-      console.log(err);
+
+    if (page === "task") {
+      try {
+        await axiosRes.put(`/task-comments/${id}/`, {
+          content: formContent.trim(),
+        });
+        setComments((prevComments) => ({
+          ...prevComments,
+          results: prevComments.results.map((comment) => {
+            return comment.id === id
+              ? {
+                  ...comment,
+                  content: formContent.trim(),
+                  updated_at: "now",
+                }
+              : comment;
+          }),
+        }));
+        setShowEditForm(false);
+      } catch (err) {
+        console.log(err);
+      }
+    } else if (page === "action") {
+      try {
+        await axiosRes.put(`/action-comments/${id}/`, {
+          content: formContent.trim(),
+        });
+        setComments((prevComments) => ({
+          ...prevComments,
+          results: prevComments.results.map((comment) => {
+            return comment.id === id
+              ? {
+                  ...comment,
+                  content: formContent.trim(),
+                  updated_at: "now",
+                }
+              : comment;
+          }),
+        }));
+        setShowEditForm(false);
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 

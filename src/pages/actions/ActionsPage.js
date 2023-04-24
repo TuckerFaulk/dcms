@@ -38,7 +38,7 @@ function ActionsPage() {
     };
 
     handleMount();
-  }, [currentProfile, actions]);
+  }, [currentProfile, actions]); // Try to stop it refreshing
 
   return (
     <Container>

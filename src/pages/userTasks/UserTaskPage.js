@@ -55,6 +55,7 @@ function UserTaskPage() {
             profileImage={profile_image}
             task_name={id}
             setComments={setComments}
+            page="task"
           />
 
           {comments.results.length ? (
@@ -63,6 +64,7 @@ function UserTaskPage() {
                 key={comment.id}
                 {...comment}
                 setComments={setComments}
+                page="task"
               />
             ))
           ) : (

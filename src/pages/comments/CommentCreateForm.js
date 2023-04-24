@@ -11,7 +11,7 @@ import { axiosRes } from "../../api/axiosDefaults";
 // Review Page as copied from CI
 
 function CommentCreateForm(props) {
-  const { task_name, setComments, profileImage, profile_id } = props;
+  const { task_name, action_title, setComments, profileImage, profile_id, page } = props;
   const [content, setContent] = useState("");
 
   const handleChange = (event) => {
@@ -22,18 +22,35 @@ function CommentCreateForm(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const { data } = await axiosRes.post("/task-comments/", {
-        content,
-        task_name,
-      });
-      setComments((prevComments) => ({
-        ...prevComments,
-        results: [data, ...prevComments.results],
-      }));
-      setContent("");
-    } catch (err) {
-      console.log(err);
+
+    if (page === "task") {
+      try {
+        const { data } = await axiosRes.post("/task-comments/", {
+          content,
+          task_name,
+        });
+        setComments((prevComments) => ({
+          ...prevComments,
+          results: [data, ...prevComments.results],
+        }));
+        setContent("");
+      } catch (err) {
+        console.log(err);
+      }
+    } else if (page === "action") {
+      try {
+        const { data } = await axiosRes.post("/action-comments/", {
+          content,
+          action_title,
+        });
+        setComments((prevComments) => ({
+          ...prevComments,
+          results: [data, ...prevComments.results],
+        }));
+        setContent("");
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 

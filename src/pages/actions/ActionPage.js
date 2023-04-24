@@ -7,18 +7,27 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { Container } from "react-bootstrap";
 import Action from "./Action";
 import ActionUpdateForm from "./ActionUpdateForm";
+import CommentCreateForm from "../comments/CommentCreateForm";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import Comment from "../comments/Comment";
 
 function ActionPage() {
   const { id } = useParams();
   const [action, setAction] = useState({ results: [] });
 
+  const currentUser = useCurrentUser();
+  const profile_image = currentUser?.profile_image;
+  const [comments, setComments] = useState({ results: [] });
+
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: action }] = await Promise.all([
+        const [{ data: action }, { data: comments }] = await Promise.all([
           axiosReq.get(`/actions/${id}`),
+          axiosReq.get(`/action-comments/?action_title=${id}`),
         ]);
         setAction({ results: [action] });
+        setComments(comments);
       } catch (err) {
         console.log(err);
       }
@@ -41,7 +50,26 @@ function ActionPage() {
       </Row>
       <Row>
         <Col>
-          {/* Add comments section */}
+        <CommentCreateForm
+            profile_id={currentUser.profile_id}
+            profileImage={profile_image}
+            action_title={id}
+            setComments={setComments}
+            page="action"
+          />
+
+          {comments.results.length ? (
+            comments.results.map((comment) => (
+              <Comment
+                key={comment.id}
+                {...comment}
+                setComments={setComments}
+                page="action"
+              />
+            ))
+          ) : (
+            <span>No comments...</span>
+          )}
         </Col>
       </Row>
     </Container>

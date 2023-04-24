@@ -17,6 +17,7 @@ const Comment = (props) => {
     content,
     id,
     setComments,
+    page,
   } = props;
 
   const [showEditForm, setShowEditForm] = useState(false);
@@ -25,14 +26,27 @@ const Comment = (props) => {
   const is_owner = currentUser?.username === owner;
 
   const handleDelete = async () => {
-    try {
-      await axiosRes.delete(`/task-comments/${id}/`);
-      setComments((prevComments) => ({
-        ...prevComments,
-        results: prevComments.results.filter((comment) => comment.id !== id),
-      }));
-    } catch (err) {
-      console.log(err);
+
+    if (page === "task") {
+      try {
+        await axiosRes.delete(`/task-comments/${id}/`);
+        setComments((prevComments) => ({
+          ...prevComments,
+          results: prevComments.results.filter((comment) => comment.id !== id),
+        }));
+      } catch (err) {
+        console.log(err);
+      } 
+    } else if (page === "action") {
+      try {
+        await axiosRes.delete(`/action-comments/${id}/`);
+        setComments((prevComments) => ({
+          ...prevComments,
+          results: prevComments.results.filter((comment) => comment.id !== id),
+        }));
+      } catch (err) {
+        console.log(err);
+      } 
     }
   };
 
@@ -54,6 +68,7 @@ const Comment = (props) => {
               profileImage={profile_image}
               setComments={setComments}
               setShowEditForm={setShowEditForm}
+              page={page}
             />
           ) : (
             <p>{content}</p>
