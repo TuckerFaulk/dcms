@@ -17,6 +17,7 @@ import UserTasksPage from "./pages/userTasks/UserTasksPage";
 import UserTaskPage from "./pages/userTasks/UserTaskPage";
 import ActionsCreateForm from "./pages/actions/ActionsCreateForm";
 import ActionPage from "./pages/actions/ActionPage";
+import ProfilePage from "./pages/profiles/ProfilePage";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route exact path="/actions/:id" render={() => <ActionPage /> } />
           <Route exact path="/my-tasks/" render={() => <UserTasksPage /> } />
           <Route exact path="/my-tasks/:id" render={() => <UserTaskPage /> } />
+          <Route exact path="/profiles/:id" render={() => <ProfilePage /> } />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>

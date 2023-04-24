@@ -12,16 +12,15 @@ export const CurrentProfileProvider = ({ children }) => {
   const currentUser = useCurrentUser();
   const [currentProfile, setCurrentProfile] = useState(null);
 
-  const handleMount = async () => {
-    try {
-      const { data } = await axiosRes.get(`/profiles/${currentUser?.pk}`);
-      setCurrentProfile(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosRes.get(`/profiles/${currentUser?.pk}`);
+        setCurrentProfile(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
     handleMount();
   }, [currentUser]);
 

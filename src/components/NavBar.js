@@ -18,8 +18,6 @@ const NavBar = () => {
 
   const currentProfile = useCurrentProfile();
 
-  console.log(currentProfile)
-
   const { expanded, setExpended, ref } = useClickOutsideToggle();
 
   const handleSignOut = async () => {
