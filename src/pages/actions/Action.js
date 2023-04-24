@@ -6,6 +6,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
+import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
 
 const Action = (props) => {
   const {
@@ -25,6 +26,7 @@ const Action = (props) => {
   } = props;
 
   const currentUser = useCurrentUser();
+  const currentProfile = useCurrentProfile();
   const is_owner = currentUser?.username === assigned_to_username;
   const history = useHistory();
 
@@ -55,8 +57,7 @@ const Action = (props) => {
                 <i className="fas fa-circle-info"></i>
               </NavLink>
             )}
-            {/* Add or is_staff */}
-            {ActionPage && is_owner && (
+            {ActionPage && (is_owner || currentProfile?.is_staff) && (
               <MoreDropdown
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
