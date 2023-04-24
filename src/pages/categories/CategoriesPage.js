@@ -4,11 +4,15 @@ import { Card, Container } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { NavLink } from "react-router-dom";
-import { axiosReq } from "../../api/axiosDefaults";
+import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 import styles from "../../styles/CategoriesPage.module.css";
+import { MoreDropdown } from "../../components/MoreDropdown";
+import { useHistory } from "react-router-dom";
 
 function CategoriesPage() {
   const [categories, setCategories] = useState();
+
+  const history = useHistory();
 
   useEffect(() => {
     const handleMount = async () => {
@@ -23,6 +27,21 @@ function CategoriesPage() {
     handleMount();
   }, []); // Dont know whether I need to add anything in here?
 
+
+  const handleEdit = (id) => {
+    history.push(`/categories/${id}/edit`);
+  }
+
+  
+  const handleDelete = async (id) => {
+    try {
+      axiosRes.delete(`/categories/${id}`);
+      history.goBack(); // Need to update this - .go() should work
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <Container>
       <Row>
@@ -34,12 +53,16 @@ function CategoriesPage() {
       </Row>
       <Row className="d-flex justify-content-center align-items-center pt-3">
         {categories?.map((category) => (
-          <Card style={{ width: "18rem" }} className={styles.Card}>
-            <Card.Body className="text-center">
-              <NavLink to="/categories/">
-                {category.category_name}
-              </NavLink>
-              <i className="fas fa-ellipsis-vertical pl-5"></i>
+          <Card key={category.id} style={{ width: "18rem" }} className={styles.Card}>
+            <Card.Body>
+              <Row>
+                <Col className="mt-2" sm={10}>
+                  <p className="mb-0">{category.category_name}</p>
+                </Col>
+                <Col sm={2}>
+                  <MoreDropdown handleEdit={() => handleEdit(category.id)} handleDelete={() => handleDelete(category.id)} />
+                </Col>
+              </Row>
             </Card.Body>
           </Card>
         ))}
