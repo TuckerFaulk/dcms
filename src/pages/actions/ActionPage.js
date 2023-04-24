@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { Container } from "react-bootstrap";
 import Action from "./Action";
+import ActionUpdateForm from "./ActionUpdateForm";
 
 function ActionPage() {
   const { id } = useParams();
@@ -31,6 +32,16 @@ function ActionPage() {
       <Row>
         <Col>
           <Action {...action.results[0]} ActionPage />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <ActionUpdateForm {...action.results[0]} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          {/* Add comments section */}
         </Col>
       </Row>
     </Container>

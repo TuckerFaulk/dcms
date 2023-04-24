@@ -6,31 +6,45 @@ import Row from "react-bootstrap/Row";
 import { axiosReq } from "../../api/axiosDefaults";
 import { NavLink } from "react-router-dom";
 import Action from "./Action";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
 
 function ActionsPage() {
   const [actions, setActions] = useState({ results: [] });
 
-// If (is_staff) display all actions else by id
+  const currentUser = useCurrentUser();
+  const currentProfile = useCurrentProfile();
 
   useEffect(() => {
     const handleMount = async () => {
-      try {
-        const { data } = await axiosReq.get(`/actions/`);
-        console.log(data);
-        setActions(data);
-      } catch (err) {
-        console.log(err);
+
+      if (currentProfile?.is_staff) {
+        try {
+          const { data } = await axiosReq.get(`/actions/`);
+          console.log(data);
+          setActions(data);
+        } catch (err) {
+          console.log(err);
+        }
+      } else {
+        try {
+          const { data } = await axiosReq.get(`/actions/?assigned_to__profile=${currentUser?.pk}`);
+          console.log(data);
+          setActions(data);
+        } catch (err) {
+          console.log(err);
+        }
       }
     };
 
     handleMount();
-  }, []); // Dont know whether I need to add anything in here?
+  }, [currentProfile]); // Dont know whether I need to add anything in here?
 
   return (
     <Container>
       <Row>
         <Col className="text-right">
-          <NavLink to="/actions/create">
+          <NavLink to="/my-actions/create">
             <i className="fas fa-plus-square"></i>Add Action
           </NavLink>
         </Col>

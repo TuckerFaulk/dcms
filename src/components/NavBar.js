@@ -31,10 +31,10 @@ const NavBar = () => {
 
   const addAdminIcons = (
     <>
-      <NavLink to="/master-tasks/">
+      <NavLink to="/master-tasks/" activeClassName={styles.Active}>
         Master Tasks<i className="fas fa-arrow-right"></i>
       </NavLink>
-      <NavLink to="/categories/">
+      <NavLink to="/categories/" activeClassName={styles.Active}>
         Categories<i className="fas fa-arrow-right"></i>
       </NavLink>
     </>
