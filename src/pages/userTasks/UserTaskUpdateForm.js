@@ -42,9 +42,6 @@ function UserTaskUpdateForm(props) {
     formData.append("status", "Closed");
 
     try {
-      for (var pair of formData.entries()) {
-        console.log(pair[0]+ ', ' + pair[1]); 
-    }
       await axiosReq.put(`/user-tasks/${id}/`, formData);
     } catch (err) {
       console.log(err);

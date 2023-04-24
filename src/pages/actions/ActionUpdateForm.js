@@ -10,8 +10,7 @@ import { Card } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
 
 function ActionUpdateForm(props) {
-  const { id, status, action_title, assigned_to, category } = props;
-  // const { id, status } = props;
+  const { id, status, action_title, assigned_to, category, setAction } = props;
 
   const [errors, setErrors] = useState({});
 
@@ -44,6 +43,20 @@ function ActionUpdateForm(props) {
 
     try {
       await axiosReq.put(`/actions/${id}/`, formData);
+      setAction((prevAction) => ({
+        ...prevAction,
+        results: prevAction.results.map((action) => {
+          return action.id === id
+            ? {
+                ...action,
+                assigned_to: assigned_to,
+                category: category,
+                // image: image,
+                status: "Closed",
+              }
+            : action;
+        }),
+      }));
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {

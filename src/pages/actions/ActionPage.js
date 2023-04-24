@@ -45,7 +45,7 @@ function ActionPage() {
       </Row>
       <Row>
         <Col>
-          <ActionUpdateForm {...action.results[0]} />
+          <ActionUpdateForm {...action.results[0]} setAction={setAction} />
         </Col>
       </Row>
       <Row>
