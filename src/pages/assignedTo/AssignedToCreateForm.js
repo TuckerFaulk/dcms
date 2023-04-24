@@ -31,7 +31,7 @@ function AssignedToCreateForm(props) {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get("/profiles/"); // Filter profiles to "users" only
+        const { data } = await axiosReq.get("/profiles/?owner__is_staff=false");
         setProfiles(data);
       } catch (err) {
         console.log(err);

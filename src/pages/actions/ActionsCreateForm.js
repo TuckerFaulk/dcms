@@ -36,7 +36,7 @@ function ActionsCreateForm(props) {
     const handleMount = async () => {
       try {
         const [{ data: profiles }, { data: categories }] = await Promise.all([
-          axiosReq.get(`/profiles/`), // Filter profiles to "users" only
+          axiosReq.get(`/profiles/?owner__is_staff=false`),
           axiosReq.get(`/categories/`),
         ]);
         console.log(profiles)

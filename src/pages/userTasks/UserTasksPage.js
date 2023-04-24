@@ -6,28 +6,39 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { Container } from "react-bootstrap";
 import UserTask from "./UserTask";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
 
 function UserTasksPage() {
   const [userTasks, setUserTasks] = useState({ results: [] });
 
   const currentUser = useCurrentUser();
 
-  // Add completed by filter
-  // If (is_staff) .get(...?completed_by=${admin}) else ?assigned_to__assigned_to__profile=${currentUser?.pk}
+  const currentProfile = useCurrentProfile();
 
   useEffect(() => {
     const handleMount = async () => {
-      try {
-        const { data } = await axiosReq.get(`/user-tasks/?assigned_to__assigned_to__profile=${currentUser?.pk}`);
-        console.log(data)
-        setUserTasks(data);
-      } catch (err) {
-        console.log(err);
+
+      if (currentProfile?.is_staff) {
+        try {
+          const { data } = await axiosReq.get('/user-tasks/?completed_by=Admin');
+          console.log(data)
+          setUserTasks(data);
+        } catch (err) {
+          console.log(err);
+        }
+      } else {
+        try {
+          const { data } = await axiosReq.get(`/user-tasks/?assigned_to__assigned_to__profile=${currentUser?.pk}&completed_by=User`);
+          console.log(data)
+          setUserTasks(data);
+        } catch (err) {
+          console.log(err);
+        }
       }
     };
 
     handleMount();
-  }, [currentUser]); // Dont know whether I need to add anything in here?
+  }, [currentUser, currentProfile]); // Dont know whether I need to add anything in here?
 
   return (
     <Container>
