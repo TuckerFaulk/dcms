@@ -8,8 +8,9 @@ import Container from "react-bootstrap/Container";
 
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-function ActionsCreateForm() {
+function ActionsEditForm() {
   const [errors, setErrors] = useState({});
   const [profiles, setProfiles] = useState();
   const [categories, setCategories] = useState();
@@ -29,19 +30,20 @@ function ActionsCreateForm() {
   const assignedToInput = useRef(null);
 
   const history = useHistory();
+  const { id } = useParams();
 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: profiles }, { data: categories }] = await Promise.all([
+        const [{ data: profiles }, { data: categories }, { data: action }] = await Promise.all([
           axiosReq.get(`/profiles/?owner__is_staff=false`),
           axiosReq.get(`/categories/`),
+          axiosReq.get(`/actions/${id}`),
         ]);
-        console.log(profiles)
-        console.log(categories)
-
         setProfiles(profiles);
         setCategories(categories);
+        setActionData(action);
+        setDueDate(action.due_date);
       } catch (err) {
         console.log(err);
       }
@@ -69,11 +71,8 @@ function ActionsCreateForm() {
     formData.append("risk_rating", riskRatingInput.current.value);
 
     try {
-      for (var pair of formData.entries()) {
-        console.log(pair[0] + ", " + pair[1]);
-      }
-      await axiosReq.post("/actions/", formData);
-      history.push("/my-actions");
+      await axiosReq.put(`/actions/${id}/`, formData);
+      history.push(`/my-actions/${id}/`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -183,7 +182,7 @@ function ActionsCreateForm() {
                 </Form.Group>
               </Form>
 
-              <Button type="submit">Create</Button>
+              <Button type="submit">Update</Button>
               <Button onClick={() => history.goBack()}>Cancel</Button>
             </div>
           </Container>
@@ -193,4 +192,4 @@ function ActionsCreateForm() {
   );
 }
 
-export default ActionsCreateForm;
+export default ActionsEditForm;

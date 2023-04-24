@@ -25,8 +25,8 @@ const MasterTask = (props) => {
   const history = useHistory();
 
   const handleEdit = () => {
-    history.push(`/master-tasks/${id}/edit`)
-  }
+    history.push(`/master-tasks/${id}/edit`);
+  };
 
   const handleDelete = async () => {
     try {
@@ -52,7 +52,12 @@ const MasterTask = (props) => {
               </NavLink>
             )}
 
-            {TaskPage && is_owner && <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />}
+            {TaskPage && is_owner && (
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            )}
           </Col>
         </Row>
       </Card.Header>

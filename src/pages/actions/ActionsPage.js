@@ -38,7 +38,7 @@ function ActionsPage() {
     };
 
     handleMount();
-  }, [currentProfile]); // Dont know whether I need to add anything in here?
+  }, [currentProfile, actions]);
 
   return (
     <Container>

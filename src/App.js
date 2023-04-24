@@ -19,6 +19,7 @@ import ActionPage from "./pages/actions/ActionPage";
 import ProfilePage from "./pages/profiles/ProfilePage";
 import MasterTasksEditForm from "./pages/masterTasks/MasterTasksEditForm";
 import CategoriesEditForm from "./pages/categories/CategoriesEditForm";
+import ActionsEditForm from "./pages/actions/ActionsEditForm";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route exact path="/my-actions/" render={() => <ActionsPage /> } />
           <Route exact path="/my-actions/create" render={() => <ActionsCreateForm /> } />
           <Route exact path="/my-actions/:id" render={() => <ActionPage /> } />
+          <Route exact path="/my-actions/:id/edit" render={() => <ActionsEditForm /> } />
           <Route exact path="/my-tasks/" render={() => <UserTasksPage /> } />
           <Route exact path="/my-tasks/:id" render={() => <UserTaskPage /> } />
           <Route exact path="/profiles/:id" render={() => <ProfilePage /> } />

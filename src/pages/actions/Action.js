@@ -2,6 +2,10 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { NavLink } from "react-router-dom";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { MoreDropdown } from "../../components/MoreDropdown";
+import { useHistory } from "react-router-dom";
+import { axiosRes } from "../../api/axiosDefaults";
 
 const Action = (props) => {
   const {
@@ -9,7 +13,7 @@ const Action = (props) => {
     action_title,
     category_name,
     description,
-    // assigned_to,
+    assigned_to_username,
     // created_at,
     // updated_at,
     due_date,
@@ -19,6 +23,23 @@ const Action = (props) => {
     status,
     ActionPage,
   } = props;
+
+  const currentUser = useCurrentUser();
+  const is_owner = currentUser?.username === assigned_to_username;
+  const history = useHistory();
+
+  const handleEdit = () => {
+    history.push(`/my-actions/${id}/edit`);
+  };
+
+  const handleDelete = async () => {
+    try {
+      axiosRes.delete(`/actions/${id}`);
+      history.goBack();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Card>
@@ -33,6 +54,13 @@ const Action = (props) => {
               <NavLink to={`/my-actions/${id}`}>
                 <i className="fas fa-circle-info"></i>
               </NavLink>
+            )}
+            {/* Add or is_staff */}
+            {ActionPage && is_owner && (
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
             )}
           </Col>
         </Row>
@@ -87,7 +115,7 @@ const Action = (props) => {
                 </ul>
               )}
             </Card.Text>
-          </Card.Body>          
+          </Card.Body>
         </>
       )}
     </Card>
