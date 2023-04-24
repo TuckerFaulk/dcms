@@ -14,7 +14,7 @@ const MasterTask = (props) => {
     owner,
     created_at,
     updated_at,
-    category,
+    category_name,
     description,
     frequency,
     TaskPage,
@@ -31,7 +31,7 @@ const MasterTask = (props) => {
   const handleDelete = async () => {
     try {
       axiosRes.delete(`/master-tasks/${id}`);
-      history.goBack(); // Need to change this to refresh the page 'history.go()' should work
+      history.goBack();
     } catch (err) {
       console.log(err);
     }
@@ -52,7 +52,7 @@ const MasterTask = (props) => {
               </NavLink>
             )}
 
-            {is_owner && <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />}
+            {TaskPage && is_owner && <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />}
           </Col>
         </Row>
       </Card.Header>
@@ -65,7 +65,7 @@ const MasterTask = (props) => {
                   <li className="list-group-item bg-primary text-white">
                     Category
                   </li>
-                  <li className="list-group-item">{category}</li>
+                  <li className="list-group-item">{category_name}</li>
                 </ul>
               </Col>
               <Col>

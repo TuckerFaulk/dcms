@@ -22,7 +22,7 @@ function MasterTasksPage() {
     };
 
     handleMount();
-  }, []); // Need to work out what to add here so when a new Mtask is added, the list auto updates
+  }, [masterTasks]); // Need to work out what to add here so when a new Mtask is added, the list auto updates
 
   return (
     <Container>

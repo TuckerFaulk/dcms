@@ -17,6 +17,7 @@ import UserTaskPage from "./pages/userTasks/UserTaskPage";
 import ActionsCreateForm from "./pages/actions/ActionsCreateForm";
 import ActionPage from "./pages/actions/ActionPage";
 import ProfilePage from "./pages/profiles/ProfilePage";
+import MasterTasksEditForm from "./pages/masterTasks/MasterTasksEditForm";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route exact path="/master-tasks/" render={() => <MasterTasksPage />} />
           <Route exact path="/master-tasks/create" render={() => <MasterTasksCreateForm />} />
           <Route exact path="/master-tasks/:id" render={() => <MasterTaskPage />} />
+          <Route exact path="/master-tasks/:id/edit" render={() => <MasterTasksEditForm />} />
           <Route exact path="/assigned-to/create" render={() => <AssignedToCreateForm />} />
           <Route exact path="/my-actions/" render={() => <ActionsPage /> } />
           <Route exact path="/my-actions/create" render={() => <ActionsCreateForm /> } />
