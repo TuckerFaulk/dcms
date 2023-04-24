@@ -8,6 +8,7 @@ import Container from "react-bootstrap/Container";
 
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
+import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
 
 function ActionsCreateForm() {
   const [errors, setErrors] = useState({});
@@ -22,13 +23,15 @@ function ActionsCreateForm() {
     risk_rating: "",
   });
 
-  const { action_title, category, description, assigned_to, risk_rating } = actionData;
+  const { action_title, category, description, assigned_to, risk_rating } =
+    actionData;
 
   const categoryInput = useRef(null);
   const riskRatingInput = useRef(null);
   const assignedToInput = useRef(null);
 
   const history = useHistory();
+  const currentProfile = useCurrentProfile();
 
   useEffect(() => {
     const handleMount = async () => {
@@ -37,8 +40,8 @@ function ActionsCreateForm() {
           axiosReq.get(`/profiles/?owner__is_staff=false`),
           axiosReq.get(`/categories/`),
         ]);
-        console.log(profiles)
-        console.log(categories)
+        console.log(profiles);
+        console.log(categories);
 
         setProfiles(profiles);
         setCategories(categories);
@@ -63,15 +66,17 @@ function ActionsCreateForm() {
 
     formData.append("action_title", action_title);
     formData.append("description", description);
-    formData.append("assigned_to", assignedToInput.current.value);
     formData.append("category", categoryInput.current.value);
     formData.append("due_date", dueDate);
     formData.append("risk_rating", riskRatingInput.current.value);
 
+    if (currentProfile?.is_staff) {
+      formData.append("assigned_to", assignedToInput.current.value);
+    } else {
+      formData.append("assigned_to", currentProfile?.id);
+    }
+
     try {
-      for (var pair of formData.entries()) {
-        console.log(pair[0] + ", " + pair[1]);
-      }
       await axiosReq.post("/actions/", formData);
       history.push("/my-actions");
     } catch (err) {
@@ -115,26 +120,26 @@ function ActionsCreateForm() {
                   />
                 </Form.Group>
 
-                <Form.Group>
-                  <Form.Label>
-                    Assign To
-                  </Form.Label>
-                  <Col>
-                    <Form.Control
-                      as="select"
-                      name="assigned_to"
-                      value={assigned_to}
-                      onChange={handleChange}
-                      ref={assignedToInput}
-                    >
-                      {profiles?.results.map((profile) => (
-                        <option value={profile.id} key={profile.id}>
-                          {profile.owner}
-                        </option>
-                      ))}
-                    </Form.Control>
-                  </Col>
-                </Form.Group>
+                {currentProfile?.is_staff && (
+                  <Form.Group>
+                    <Form.Label>Assign To</Form.Label>
+                    <Col>
+                      <Form.Control
+                        as="select"
+                        name="assigned_to"
+                        value={assigned_to}
+                        onChange={handleChange}
+                        ref={assignedToInput}
+                      >
+                        {profiles?.results.map((profile) => (
+                          <option value={profile.id} key={profile.id}>
+                            {profile.owner}
+                          </option>
+                        ))}
+                      </Form.Control>
+                    </Col>
+                  </Form.Group>
+                )}
 
                 <Form.Group>
                   <Form.Label>Category</Form.Label>
@@ -154,9 +159,7 @@ function ActionsCreateForm() {
                 </Form.Group>
 
                 <Form.Group>
-                  <Form.Label>
-                    Due Date
-                  </Form.Label>
+                  <Form.Label>Due Date</Form.Label>
                   <Col>
                     <Form.Control
                       type="date"
