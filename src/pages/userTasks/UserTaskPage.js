@@ -7,18 +7,27 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { Container } from "react-bootstrap";
 import UserTask from "./UserTask";
 import UserTaskUpdateForm from "./UserTaskUpdateForm";
+import CommentCreateForm from "../comments/CommentCreateForm";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import Comment from "../comments/Comment";
 
 function UserTaskPage() {
   const { id } = useParams();
   const [task, setTask] = useState({ results: [] });
 
+  const currentUser = useCurrentUser();
+  const profile_image = currentUser?.profile_image;
+  const [comments, setComments] = useState({ results: [] });
+
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: task }] = await Promise.all([
+        const [{ data: task }, { data: comments }] = await Promise.all([
           axiosReq.get(`/user-tasks/${id}`),
+          axiosReq.get(`/task-comments/?task_name=${id}`),
         ]);
         setTask({ results: [task] });
+        setComments(comments);
       } catch (err) {
         console.log(err);
       }
@@ -41,7 +50,23 @@ function UserTaskPage() {
       </Row>
       <Row>
         <Col>
-          {/* Add comments section */}
+          {currentUser ? (
+            <CommentCreateForm
+              profile_id={currentUser.profile_id}
+              profileImage={profile_image}
+              task_name={id}
+              setTasks={setTask}
+              setComments={setComments}
+            />
+          ) : comments.results.length ? (
+            "comments"
+          ) : null}
+
+          {comments.results.length && (
+            comments.results.map(comment => (
+              <Comment key={comment.id} {...comment} />
+              ))
+          )}
         </Col>
       </Row>
     </Container>
