@@ -6,14 +6,17 @@ import Row from "react-bootstrap/Row";
 import { axiosReq } from "../../api/axiosDefaults";
 import { NavLink } from "react-router-dom";
 import Action from "./Action";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
-function ActionsPage() {
+function MyActionsPage() {
   const [actions, setActions] = useState({ results: [] });
+
+  const currentUser = useCurrentUser();
 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(`/actions/`);
+        const { data } = await axiosReq.get(`/actions/?assigned_to__profile=${currentUser?.pk}`);
         console.log(data);
         setActions(data);
       } catch (err) {
@@ -37,7 +40,7 @@ function ActionsPage() {
       <Row>
         <Col>
           {actions?.results.map((action) => (
-            <Action {...action} ActionsPage />
+            <Action {...action} MyActionsPage />
           ))}
         </Col>
       </Row>
@@ -45,4 +48,4 @@ function ActionsPage() {
   );
 }
 
-export default ActionsPage;
+export default MyActionsPage;

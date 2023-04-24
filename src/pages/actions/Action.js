@@ -18,6 +18,8 @@ const Action = (props) => {
     // image,
     status,
     ActionPage,
+    ActionsPage,
+    MyActionsPage,
   } = props;
 
   return (
@@ -29,8 +31,13 @@ const Action = (props) => {
           </Col>
 
           <Col className="d-flex justify-content-end align-items-center">
-            {!ActionPage && (
+            {ActionsPage && (
               <NavLink to={`/actions/${id}`}>
+                <i className="fas fa-circle-info"></i>
+              </NavLink>
+            )}
+            {MyActionsPage && (
+              <NavLink to={`/my-actions/${id}`}>
                 <i className="fas fa-circle-info"></i>
               </NavLink>
             )}

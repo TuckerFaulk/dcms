@@ -18,6 +18,8 @@ import UserTaskPage from "./pages/userTasks/UserTaskPage";
 import ActionsCreateForm from "./pages/actions/ActionsCreateForm";
 import ActionPage from "./pages/actions/ActionPage";
 import ProfilePage from "./pages/profiles/ProfilePage";
+import MyActionsPage from "./pages/actions/MyActionsPage";
+import MyActionPage from "./pages/actions/MyActionPage";
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
           <Route exact path="/actions/" render={() => <ActionsPage /> } />
           <Route exact path="/actions/create" render={() => <ActionsCreateForm /> } />
           <Route exact path="/actions/:id" render={() => <ActionPage /> } />
+          <Route exact path="/my-actions/" render={() => <MyActionsPage /> } />
+          <Route exact path="/my-actions/:id" render={() => <MyActionPage /> } />
           <Route exact path="/my-tasks/" render={() => <UserTasksPage /> } />
           <Route exact path="/my-tasks/:id" render={() => <UserTaskPage /> } />
           <Route exact path="/profiles/:id" render={() => <ProfilePage /> } />
