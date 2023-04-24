@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { axiosRes } from "../../api/axiosDefaults";
 
 const Comment = (props) => {
   const {
@@ -13,10 +14,24 @@ const Comment = (props) => {
     owner,
     updated_at,
     content,
+    id,
+    setComments,
   } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/task-comments/${id}/`)
+      setComments((prevComments) => ({
+        ...prevComments,
+        results: prevComments.results.filter((comment) => comment.id !== id),
+      }));
+    } catch(err) {
+      console.log(err);
+    }
+  }
 
   return (
     <div>
@@ -32,7 +47,7 @@ const Comment = (props) => {
           <p>{content}</p>
         </Media.Body>
         {is_owner && (
-          <MoreDropdown />
+          <MoreDropdown handleDelete={handleDelete} />
         )}
       </Media>
     </div>

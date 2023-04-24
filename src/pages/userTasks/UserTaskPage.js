@@ -54,18 +54,20 @@ function UserTaskPage() {
             profile_id={currentUser.profile_id}
             profileImage={profile_image}
             task_name={id}
-            setTasks={setTask}
             setComments={setComments}
           />
 
           {comments.results.length ? (
             comments.results.map((comment) => (
-              <Comment key={comment.id} {...comment} />
+              <Comment
+                key={comment.id}
+                {...comment}
+                setComments={setComments}
+              />
             ))
           ) : (
             <span>No comments...</span>
-          )
-            }
+          )}
         </Col>
       </Row>
     </Container>

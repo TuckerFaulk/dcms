@@ -11,7 +11,7 @@ import { axiosRes } from "../../api/axiosDefaults";
 // Review Page as copied from CI
 
 function CommentCreateForm(props) {
-  const { task_name, setTask, setComments, profileImage, profile_id } = props;
+  const { task_name, setComments, profileImage, profile_id } = props;
   const [content, setContent] = useState("");
 
   const handleChange = (event) => {
@@ -30,13 +30,6 @@ function CommentCreateForm(props) {
       setComments((prevComments) => ({
         ...prevComments,
         results: [data, ...prevComments.results],
-      }));
-      setTask((prevTask) => ({
-        results: [
-          {
-            ...prevTask.results[0],
-          },
-        ],
       }));
       setContent("");
     } catch (err) {
