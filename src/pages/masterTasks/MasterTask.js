@@ -3,6 +3,9 @@ import { Col, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { NavLink } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { MoreDropdown } from "../../components/MoreDropdown";
+import { useHistory } from "react-router-dom";
+import { axiosRes } from "../../api/axiosDefaults";
 
 const MasterTask = (props) => {
   const {
@@ -19,6 +22,20 @@ const MasterTask = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  const history = useHistory();
+
+  const handleEdit = () => {
+    history.push(`/master-tasks/${id}/edit`)
+  }
+
+  const handleDelete = async () => {
+    try {
+      axiosRes.delete(`/master-tasks/${id}`);
+      history.goBack(); // Need to change this to refresh the page 'history.go()' should work
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Card>
@@ -35,7 +52,7 @@ const MasterTask = (props) => {
               </NavLink>
             )}
 
-            {is_owner && <i className="fas fa-ellipsis-vertical"></i>}
+            {is_owner && <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />}
           </Col>
         </Row>
       </Card.Header>

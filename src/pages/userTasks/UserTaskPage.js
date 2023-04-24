@@ -50,23 +50,22 @@ function UserTaskPage() {
       </Row>
       <Row>
         <Col>
-          {currentUser ? (
-            <CommentCreateForm
-              profile_id={currentUser.profile_id}
-              profileImage={profile_image}
-              task_name={id}
-              setTasks={setTask}
-              setComments={setComments}
-            />
-          ) : comments.results.length ? (
-            "comments"
-          ) : null}
+          <CommentCreateForm
+            profile_id={currentUser.profile_id}
+            profileImage={profile_image}
+            task_name={id}
+            setTasks={setTask}
+            setComments={setComments}
+          />
 
-          {comments.results.length && (
-            comments.results.map(comment => (
+          {comments.results.length ? (
+            comments.results.map((comment) => (
               <Comment key={comment.id} {...comment} />
-              ))
-          )}
+            ))
+          ) : (
+            <span>No comments...</span>
+          )
+            }
         </Col>
       </Row>
     </Container>
