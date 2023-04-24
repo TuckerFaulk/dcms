@@ -19,13 +19,14 @@ function CategoriesPage() {
       try {
         const { data } = await axiosReq.get("/categories/");
         setCategories(data);
+        console.log(data)
       } catch (err) {
         console.log(err);
       }
     };
 
     handleMount();
-  }, []); // Dont know whether I need to add anything in here?
+  }, []); // Add params so useEffects refreshes when category deleted
 
 
   const handleEdit = (id) => {
@@ -36,7 +37,6 @@ function CategoriesPage() {
   const handleDelete = async (id) => {
     try {
       axiosRes.delete(`/categories/${id}`);
-      history.goBack(); // Need to update this - .go() should work
     } catch (err) {
       console.log(err);
     }

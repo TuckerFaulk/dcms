@@ -12,7 +12,7 @@ import styles from "../../styles/AssignedToCreateForm.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 
 function AssignedToCreateForm(props) {
-  const { task_name } = props;
+  const { id, setAssignedTo } = props;
 
   const [errors, setErrors] = useState({});
   const [openForm, setOpenForm] = useState(false);
@@ -52,16 +52,17 @@ function AssignedToCreateForm(props) {
     event.preventDefault();
     const formData = new FormData();
 
-    formData.append("task_name", task_name);
+    formData.append("task_name", id);
     formData.append("assigned_to", assignedToInput.current.value);
     formData.append("initial_due_date", initialDueDate);
     formData.append("completed_by", completedByInput.current.value);
 
     try {
-      for (var pair of formData.entries()) {
-        console.log(pair[0]+ ', ' + pair[1]); 
-    }
-      await axiosReq.post("/assigned-to/", formData);
+      const { data } = await axiosReq.post("/assigned-to/", formData);
+      setAssignedTo((prevAssignedTo) => ({
+        ...prevAssignedTo,
+        results: [data, ...prevAssignedTo.results],
+      }));
       setOpenForm(false);
     } catch (err) {
       console.log(err);
