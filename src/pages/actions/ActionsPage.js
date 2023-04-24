@@ -10,6 +10,8 @@ import Action from "./Action";
 function ActionsPage() {
   const [actions, setActions] = useState({ results: [] });
 
+// If (is_staff) display all actions else by id
+
   useEffect(() => {
     const handleMount = async () => {
       try {

@@ -29,10 +29,15 @@ const NavBar = () => {
     }
   };
 
-  const addManageToIcon = (
-    <NavLink to="/manage/">
-      <i className="fas fa-gear"></i>Manage
-    </NavLink>
+  const addAdminIcons = (
+    <>
+      <NavLink to="/master-tasks/">
+        Master Tasks<i className="fas fa-arrow-right"></i>
+      </NavLink>
+      <NavLink to="/categories/">
+        Categories<i className="fas fa-arrow-right"></i>
+      </NavLink>
+    </>
   );
 
   const userLoggedInIcons = (
@@ -78,7 +83,7 @@ const NavBar = () => {
         <NavLink to="/">
           <Navbar.Brand>DCMS</Navbar.Brand>
         </NavLink>
-        {currentProfile?.is_staff && addManageToIcon}
+        {currentUser && currentProfile?.is_staff && addAdminIcons}
         <Navbar.Toggle
           onClick={() => setExpended(!expanded)}
           ref={ref}
