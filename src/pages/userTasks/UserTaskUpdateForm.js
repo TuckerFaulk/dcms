@@ -51,8 +51,11 @@ function UserTaskUpdateForm(props) {
 
     formData.append("action_required", actionRequiredInput.current.value);
     formData.append("action_description", action_description);
-    formData.append("image", imageInput.current.files[0]);
     formData.append("status", "Closed");
+
+    if (imageInput?.current?.files[0]) {
+      formData.append("image", imageInput.current.files[0]);
+    }
 
     try {
       await axiosReq.put(`/user-tasks/${id}/`, formData);
