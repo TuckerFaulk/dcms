@@ -10,7 +10,7 @@ import { Card } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
 
 function UserTaskUpdateForm(props) {
-  const { id, status } = props;
+  const { id, status, setTask } = props;
 
   const [errors, setErrors] = useState({});
 
@@ -43,6 +43,20 @@ function UserTaskUpdateForm(props) {
 
     try {
       await axiosReq.put(`/user-tasks/${id}/`, formData);
+      setTask((prevTask) => ({
+        ...prevTask,
+        results: prevTask.results.map((task) => {
+          return task.id === id
+            ? {
+                ...task,
+                action_required: actionRequiredInput.current.value,
+                action_description: action_description,
+                // image: image,
+                status: "Closed",
+              }
+            : task;
+        }),
+      }));
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
