@@ -8,9 +8,11 @@ import { NavLink } from "react-router-dom";
 import Action from "./Action";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
+import StatusFilter from "../../components/StatusFilter";
 
 function ActionsPage() {
   const [actions, setActions] = useState({ results: [] });
+  const [status, setStatus] = useState("Open");
 
   const currentUser = useCurrentUser();
   const currentProfile = useCurrentProfile();
@@ -20,7 +22,7 @@ function ActionsPage() {
 
       if (currentProfile?.is_staff) {
         try {
-          const { data } = await axiosReq.get(`/actions/`);
+          const { data } = await axiosReq.get(`/actions/?status=${status}`);
           console.log(data);
           setActions(data);
         } catch (err) {
@@ -28,7 +30,7 @@ function ActionsPage() {
         }
       } else {
         try {
-          const { data } = await axiosReq.get(`/actions/?assigned_to__profile=${currentUser?.pk}`);
+          const { data } = await axiosReq.get(`/actions/?assigned_to__profile=${currentUser?.pk}&status=${status}`);
           console.log(data);
           setActions(data);
         } catch (err) {
@@ -38,11 +40,14 @@ function ActionsPage() {
     };
 
     handleMount();
-  }, [currentProfile, actions]); // Try to stop it refreshing
+  }, [currentProfile, actions, status]); // Try to stop it refreshing
 
   return (
     <Container>
-      <Row>
+      
+      <StatusFilter status={status} setStatus={setStatus} />
+
+      <Row className="mt-3">
         <Col className="text-right">
           <NavLink to="/my-actions/create">
             <i className="fas fa-plus-square"></i>Add Action
@@ -50,7 +55,7 @@ function ActionsPage() {
         </Col>
       </Row>
 
-      <Row>
+      <Row className="mt-3">
         <Col>
           {actions?.results.map((action) => (
             <Action {...action} ActionsPage />
