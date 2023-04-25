@@ -42,7 +42,13 @@ function ActionsPage() {
       }
     };
 
-    handleMount();
+    const timer = setTimeout(() => {
+      handleMount();
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [currentProfile, actions, status, query]); // Try to stop it refreshing
 
   return (
