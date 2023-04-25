@@ -14,23 +14,6 @@ function ActionUpdateForm(props) {
 
   const [errors, setErrors] = useState({});
 
-//   const [actionData, setActionData] = useState({
-//     action_required: "",
-//     action_description: "",
-//     status: "",
-//   });
-
-//   const actionRequiredInput = useRef(null);
-
-//   const { action_required, action_description } = setActionData;
-
-//   const handleChange = (event) => {
-//     setActionData({
-//       ...actionData,
-//       [event.target.name]: event.target.value,
-//     });
-//   };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -38,7 +21,6 @@ function ActionUpdateForm(props) {
     formData.append("action_title", action_title);
     formData.append("assigned_to", assigned_to);
     formData.append("category", category);
-    // formData.append("image", null);
     formData.append("status", "Closed");
 
     try {
@@ -51,7 +33,6 @@ function ActionUpdateForm(props) {
                 ...action,
                 assigned_to: assigned_to,
                 category: category,
-                // image: image,
                 status: "Closed",
               }
             : action;
@@ -72,40 +53,6 @@ function ActionUpdateForm(props) {
           <Row>
             <Col>
               <Form onSubmit={handleSubmit}>
-                {/* <Form.Group as={Row}>
-                  <Form.Label column sm="5">
-                    Further Action requried
-                  </Form.Label>
-                  <Col sm={5}>
-                    <Form.Control
-                      as="select"
-                      name="action_required"
-                      value={action_required}
-                      onChange={handleChange}
-                      ref={actionRequiredInput}
-                    >
-                      <option value="false">No</option>
-                      <option value="true">Yes</option>
-                    </Form.Control>
-                  </Col>
-                </Form.Group>
-
-                {action_required && (
-                  <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Action Description</Form.Label>
-                    <Form.Control
-                      type="teatarea"
-                      name="action_description"
-                      value={action_description}
-                      onChange={handleChange}
-                    />
-                    <Form.Text className="text-muted">
-                      Add a description of the issue raised and the action
-                      requried.
-                    </Form.Text>
-                  </Form.Group>
-                )} */}
-
                 <Button variant="primary" type="submit">
                   Close Action
                 </Button>

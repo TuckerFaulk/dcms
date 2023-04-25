@@ -9,6 +9,7 @@ import Container from "react-bootstrap/Container";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { Image } from "react-bootstrap";
 
 function ActionsEditForm() {
   const [errors, setErrors] = useState({});
@@ -21,13 +22,22 @@ function ActionsEditForm() {
     description: "",
     assigned_to: "",
     risk_rating: "",
+    image: "",
   });
 
-  const { action_title, category, description, assigned_to, risk_rating } = actionData;
+  const {
+    action_title,
+    category,
+    description,
+    assigned_to,
+    risk_rating,
+    image,
+  } = actionData;
 
   const categoryInput = useRef(null);
   const riskRatingInput = useRef(null);
   const assignedToInput = useRef(null);
+  const imageInput = useRef(null);
 
   const history = useHistory();
   const { id } = useParams();
@@ -35,11 +45,12 @@ function ActionsEditForm() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: profiles }, { data: categories }, { data: action }] = await Promise.all([
-          axiosReq.get(`/profiles/?owner__is_staff=false`),
-          axiosReq.get(`/categories/`),
-          axiosReq.get(`/actions/${id}`),
-        ]);
+        const [{ data: profiles }, { data: categories }, { data: action }] =
+          await Promise.all([
+            axiosReq.get(`/profiles/?owner__is_staff=false`),
+            axiosReq.get(`/categories/`),
+            axiosReq.get(`/actions/${id}`),
+          ]);
         setProfiles(profiles);
         setCategories(categories);
         setActionData(action);
@@ -59,9 +70,21 @@ function ActionsEditForm() {
     });
   };
 
+  const handleChangeImage = (event) => {
+    if (event.target.files.length) {
+      URL.revokeObjectURL(image);
+      setActionData({
+        ...actionData,
+        image: URL.createObjectURL(event.target.files[0]),
+      });
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
+
+    console.log(image)
 
     formData.append("action_title", action_title);
     formData.append("description", description);
@@ -69,6 +92,10 @@ function ActionsEditForm() {
     formData.append("category", categoryInput.current.value);
     formData.append("due_date", dueDate);
     formData.append("risk_rating", riskRatingInput.current.value);
+
+    if (imageInput?.current?.files[0]) {
+      formData.append("image", imageInput.current.files[0]);
+    }
 
     try {
       await axiosReq.put(`/actions/${id}/`, formData);
@@ -115,9 +142,7 @@ function ActionsEditForm() {
                 </Form.Group>
 
                 <Form.Group>
-                  <Form.Label>
-                    Assign To
-                  </Form.Label>
+                  <Form.Label>Assign To</Form.Label>
                   <Col>
                     <Form.Control
                       as="select"
@@ -153,9 +178,7 @@ function ActionsEditForm() {
                 </Form.Group>
 
                 <Form.Group>
-                  <Form.Label>
-                    Due Date
-                  </Form.Label>
+                  <Form.Label>Due Date</Form.Label>
                   <Col>
                     <Form.Control
                       type="date"
@@ -181,6 +204,49 @@ function ActionsEditForm() {
                   </Form.Control>
                 </Form.Group>
               </Form>
+
+              <Form.Group className="text-center">
+                  {image ? (
+                    <>
+                      <figure>
+                        <Image
+                          src={image}
+                          rounded
+                        />
+                      </figure>
+                      <div>
+                        <Form.Label
+                          className="btn"
+                          htmlFor="image-upload"
+                        >
+                          Change the image
+                        </Form.Label>
+                      </div>
+                    </>
+                  ) : (
+                    <Form.Label
+                      className="d-flex justify-content-center"
+                      htmlFor="image-upload"
+                    >
+                      {/* <Asset
+                        src={Upload}
+                        message="Click or tap to upload an image"
+                      /> */}
+                    </Form.Label>
+                  )}
+
+                  <Form.File
+                    id="image-upload"
+                    accept="image/*"
+                    onChange={handleChangeImage}
+                    ref={imageInput}
+                  />
+                </Form.Group>
+                {/* {errors?.image?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))} */}
 
               <Button type="submit">Update</Button>
               <Button onClick={() => history.goBack()}>Cancel</Button>
