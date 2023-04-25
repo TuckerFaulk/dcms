@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -10,9 +10,12 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
 import StatusFilter from "../../components/StatusFilter";
 
+import styles from "../../styles/SearchBar.module.css";
+
 function ActionsPage() {
   const [actions, setActions] = useState({ results: [] });
   const [status, setStatus] = useState("Open");
+  const [query, setQuery] = useState("");
 
   const currentUser = useCurrentUser();
   const currentProfile = useCurrentProfile();
@@ -22,7 +25,7 @@ function ActionsPage() {
 
       if (currentProfile?.is_staff) {
         try {
-          const { data } = await axiosReq.get(`/actions/?status=${status}`);
+          const { data } = await axiosReq.get(`/actions/?status=${status}&search=${query}`);
           console.log(data);
           setActions(data);
         } catch (err) {
@@ -30,7 +33,7 @@ function ActionsPage() {
         }
       } else {
         try {
-          const { data } = await axiosReq.get(`/actions/?assigned_to__profile=${currentUser?.pk}&status=${status}`);
+          const { data } = await axiosReq.get(`/actions/?assigned_to__profile=${currentUser?.pk}&status=${status}&search=${query}`);
           console.log(data);
           setActions(data);
         } catch (err) {
@@ -40,10 +43,23 @@ function ActionsPage() {
     };
 
     handleMount();
-  }, [currentProfile, actions, status]); // Try to stop it refreshing
+  }, [currentProfile, actions, status, query]); // Try to stop it refreshing
 
   return (
     <Container>
+      <i className={`fas fa-search ${styles.SearchIcon}`} />
+      <Form
+        className={`${styles.SearchBar}`}
+        onSubmit={(event) => event.preventDefault()}
+      >
+        <Form.Control
+          type="text"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          className="mr-sm-2"
+          placeholder="Search..."
+        />
+      </Form>
       
       <StatusFilter status={status} setStatus={setStatus} />
 

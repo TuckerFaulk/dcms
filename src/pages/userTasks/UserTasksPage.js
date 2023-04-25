@@ -9,7 +9,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
 import StatusFilter from "../../components/StatusFilter";
 
-import styles from "../../styles/UserTasksPage.module.css";
+import styles from "../../styles/SearchBar.module.css";
 
 function UserTasksPage() {
   const [userTasks, setUserTasks] = useState({ results: [] });
