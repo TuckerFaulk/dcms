@@ -45,7 +45,7 @@ function UserTaskPage() {
       </Row>
       <Row>
         <Col>
-          <UserTaskUpdateForm {...task.results[0]} setTask={setTask} />
+          <UserTaskUpdateForm {...task.results[0]} />
         </Col>
       </Row>
       <Row>

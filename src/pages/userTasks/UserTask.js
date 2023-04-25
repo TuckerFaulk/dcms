@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Image, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { NavLink } from "react-router-dom";
 // import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -16,14 +16,11 @@ const UserTask = (props) => {
     due_date,
     // is_overdue,
     frequency,
-    // action_required,
-    // action_description,
-    // image,
+    image,
     status,
     TaskPage,
   } = props;
 
-  // const currentUser = useCurrentUser();
 
   return (
     <Card>
@@ -89,6 +86,16 @@ const UserTask = (props) => {
                     Description
                   </li>
                   <li className="list-group-item">{description}</li>
+                </ul>
+              )}
+              {image && (
+                <ul className="list-group">
+                  <li className="list-group-item bg-primary text-white">
+                    Image
+                  </li>
+                  <li className="list-group-item">
+                    <Image src={image} rounded />
+                  </li>
                 </ul>
               )}
             </Card.Text>

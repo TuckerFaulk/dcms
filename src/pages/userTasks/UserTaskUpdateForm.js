@@ -5,24 +5,28 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import { Card } from "react-bootstrap";
-
+import { Card, Image } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useHistory } from "react-router-dom";
 
 function UserTaskUpdateForm(props) {
-  const { id, status, setTask } = props;
+  const { id, status } = props;
 
   const [errors, setErrors] = useState({});
 
   const [userTaskData, setUserTaskData] = useState({
     action_required: "",
     action_description: "",
+    image: "",
     status: "",
   });
 
   const actionRequiredInput = useRef(null);
+  const imageInput = useRef(null);
 
-  const { action_required, action_description } = userTaskData;
+  const history = useHistory();
+
+  const { action_required, action_description, image } = userTaskData;
 
   const handleChange = (event) => {
     setUserTaskData({
@@ -31,32 +35,28 @@ function UserTaskUpdateForm(props) {
     });
   };
 
+  const handleChangeImage = (event) => {
+    if (event.target.files.length) {
+      URL.revokeObjectURL(image);
+      setUserTaskData({
+        ...userTaskData,
+        image: URL.createObjectURL(event.target.files[0]),
+      });
+    }
+  };
+
   const handleSubmit = async (event) => {
-    console.log(actionRequiredInput.current.value, action_description);
     event.preventDefault();
     const formData = new FormData();
 
     formData.append("action_required", actionRequiredInput.current.value);
     formData.append("action_description", action_description);
-    // formData.append("image", null);
+    formData.append("image", imageInput.current.files[0]);
     formData.append("status", "Closed");
 
     try {
       await axiosReq.put(`/user-tasks/${id}/`, formData);
-      setTask((prevTask) => ({
-        ...prevTask,
-        results: prevTask.results.map((task) => {
-          return task.id === id
-            ? {
-                ...task,
-                action_required: actionRequiredInput.current.value,
-                action_description: action_description,
-                // image: image,
-                status: "Closed",
-              }
-            : task;
-        }),
-      }));
+      history.push("/my-tasks");
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -105,6 +105,43 @@ function UserTaskUpdateForm(props) {
                     </Form.Text>
                   </Form.Group>
                 )}
+
+                <Form.Group className="text-center">
+                  {image ? (
+                    <>
+                      <figure>
+                        <Image src={image} rounded />
+                      </figure>
+                      <div>
+                        <Form.Label className="btn" htmlFor="image-upload">
+                          Change the image
+                        </Form.Label>
+                      </div>
+                    </>
+                  ) : (
+                    <Form.Label
+                      className="d-flex justify-content-center"
+                      htmlFor="image-upload"
+                    >
+                      {/* <Asset
+                        src={Upload}
+                        message="Click or tap to upload an image"
+                      /> */}
+                    </Form.Label>
+                  )}
+
+                  <Form.File
+                    id="image-upload"
+                    accept="image/*"
+                    onChange={handleChangeImage}
+                    ref={imageInput}
+                  />
+                </Form.Group>
+                {/* {errors?.image?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))} */}
 
                 <Button variant="primary" type="submit">
                   Close Task
