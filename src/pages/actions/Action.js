@@ -18,7 +18,7 @@ const Action = (props) => {
     // created_at,
     // updated_at,
     due_date,
-    // is_overdue,
+    is_overdue,
     risk_rating,
     image,
     status,
@@ -52,6 +52,9 @@ const Action = (props) => {
           </Col>
 
           <Col className="d-flex justify-content-end align-items-center">
+            {status === "Open" && is_overdue && (
+                <i class="fa-solid fa-circle-exclamation text-danger"></i>
+            )}
             {!ActionPage && (
               <NavLink to={`/my-actions/${id}`}>
                 <i className="fas fa-circle-info"></i>

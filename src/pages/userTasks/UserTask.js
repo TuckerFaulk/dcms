@@ -14,13 +14,12 @@ const UserTask = (props) => {
     // created_at,
     // updated_at,
     due_date,
-    // is_overdue,
+    is_overdue,
     frequency,
     image,
     status,
     TaskPage,
   } = props;
-
 
   return (
     <Card>
@@ -31,6 +30,11 @@ const UserTask = (props) => {
           </Col>
 
           <Col className="d-flex justify-content-end align-items-center">
+            {status === "Open" && is_overdue && (
+              <>
+                <i class="fa-solid fa-circle-exclamation text-danger"></i>
+              </>
+            )}
             {!TaskPage && (
               <NavLink to={`/my-tasks/${id}`}>
                 <i className="fas fa-circle-info"></i>
@@ -99,7 +103,7 @@ const UserTask = (props) => {
                 </ul>
               )}
             </Card.Text>
-          </Card.Body>          
+          </Card.Body>
         </>
       )}
     </Card>
