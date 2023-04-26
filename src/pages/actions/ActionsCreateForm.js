@@ -9,13 +9,14 @@ import Container from "react-bootstrap/Container";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
-import { Image } from "react-bootstrap";
+import { Alert, Image } from "react-bootstrap";
+import Asset from "../../components/Asset";
 
 function ActionsCreateForm() {
   const [errors, setErrors] = useState({});
   const [profiles, setProfiles] = useState();
   const [categories, setCategories] = useState();
-  const [dueDate, setDueDate] = useState(new Date());
+  const [dueDate, setDueDate] = useState(new Date()); // BUG: Raises an incorrect error message
   const [actionData, setActionData] = useState({
     action_title: "",
     category: "",
@@ -88,7 +89,10 @@ function ActionsCreateForm() {
     formData.append("category", categoryInput.current.value);
     formData.append("due_date", dueDate);
     formData.append("risk_rating", riskRatingInput.current.value);
-    formData.append("image", imageInput.current.files[0]);
+
+    if (imageInput?.current?.files[0]) {
+      formData.append("image", imageInput.current.files[0]);
+    }
 
     if (currentProfile?.is_staff) {
       formData.append("assigned_to", assignedToInput.current.value);
@@ -189,6 +193,11 @@ function ActionsCreateForm() {
                     />
                   </Col>
                 </Form.Group>
+                {errors?.due_date?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group>
                   <Form.Label>Risk Rating</Form.Label>
@@ -228,10 +237,10 @@ function ActionsCreateForm() {
                       className="d-flex justify-content-center"
                       htmlFor="image-upload"
                     >
-                      {/* <Asset
-                        src={Upload}
+                      <Asset
+                        // src={}
                         message="Click or tap to upload an image"
-                      /> */}
+                      />
                     </Form.Label>
                   )}
 
@@ -242,11 +251,11 @@ function ActionsCreateForm() {
                     ref={imageInput}
                   />
                 </Form.Group>
-                {/* {errors?.image?.map((message, idx) => (
+                {errors?.image?.map((message, idx) => (
                   <Alert variant="warning" key={idx}>
                     {message}
                   </Alert>
-                ))} */}
+                ))}
               </Form>
 
               <Button type="submit">Create</Button>

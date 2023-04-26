@@ -8,6 +8,9 @@ import MasterTask from "./MasterTask";
 import { Container } from "react-bootstrap";
 import AssignedToCreateForm from "../assignedTo/AssignedToCreateForm";
 import AssignedTo from "../assignedTo/AssignedTo";
+import Asset from "../../components/Asset";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 function MasterTaskPage() {
   const { id } = useParams();
@@ -17,12 +20,13 @@ function MasterTaskPage() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: task }, {data: assignedTo}] = await Promise.all([
+        const [{ data: task }, { data: assignedTo }] = await Promise.all([
           axiosReq.get(`/master-tasks/${id}`),
           axiosReq.get(`/assigned-to/?task_name=${id}`),
         ]);
         setTask({ results: [task] });
-        setAssignedTo(assignedTo)
+        setAssignedTo(assignedTo);
+        console.log(assignedTo)
       } catch (err) {
         console.log(err);
       }
@@ -41,15 +45,28 @@ function MasterTaskPage() {
 
       <Row className="mt-3">
         <Col>
-          <AssignedToCreateForm {...task.results[0]} setAssignedTo={setAssignedTo} />
+          <AssignedToCreateForm
+            {...task.results[0]}
+            setAssignedTo={setAssignedTo}
+          />
         </Col>
       </Row>
 
       <Row>
         <Col>
-        {assignedTo?.results.map((user) => (
-          <AssignedTo {...user} key={user.id} setAssignedTo={setAssignedTo}/>
-        ))}
+          <InfiniteScroll
+            children={assignedTo?.results.map((user) => (
+              <AssignedTo
+                {...user}
+                key={user.id}
+                setAssignedTo={setAssignedTo}
+              />
+            ))}
+            dataLength={assignedTo.results.length}
+            loader={<Asset spinner />}
+            hasMore={!!assignedTo.next}
+            next={() => fetchMoreData(assignedTo, setAssignedTo)}
+          />
         </Col>
       </Row>
     </Container>

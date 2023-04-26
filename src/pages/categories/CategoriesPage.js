@@ -26,7 +26,7 @@ function CategoriesPage() {
     };
 
     handleMount();
-  }, []); // Add params so useEffects refreshes when category deleted
+  }, []); // BUG: Add params so useEffects refreshes when category deleted
 
 
   const handleEdit = (id) => {

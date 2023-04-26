@@ -9,6 +9,9 @@ import Action from "./Action";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
 import StatusFilter from "../../components/StatusFilter";
+import Asset from "../../components/Asset";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 import styles from "../../styles/SearchBar.module.css";
 
@@ -49,7 +52,7 @@ function ActionsPage() {
     return () => {
       clearTimeout(timer);
     };
-  }, [currentProfile, actions, status, query]); // Try to stop it refreshing
+  }, [currentProfile, status, query]); // Try to stop it refreshing
 
   return (
     <Container>
@@ -79,9 +82,17 @@ function ActionsPage() {
 
       <Row className="mt-3">
         <Col>
-          {actions?.results.map((action) => (
-            <Action {...action} ActionsPage />
-          ))}
+        <InfiniteScroll 
+          children={
+            actions?.results.map((action) => (
+              <Action key={action.id} {...action} ActionsPage />
+            ))
+          }
+          dataLength={actions.results.length}
+          loader={<Asset spinner />}
+          hasMore={!!actions.next}
+          next={() => fetchMoreData(actions, setActions)}
+        />
         </Col>
       </Row>
     </Container>

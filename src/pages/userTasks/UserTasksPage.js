@@ -30,7 +30,6 @@ function UserTasksPage() {
           const { data } = await axiosReq.get(
             `/user-tasks/?completed_by=Admin&status=${status}&search=${query}`
           );
-          console.log(data);
           setUserTasks(data);
         } catch (err) {
           console.log(err);
@@ -80,7 +79,7 @@ function UserTasksPage() {
         <InfiniteScroll 
           children={
             userTasks?.results.map((task) => (
-              <UserTask {...task} />
+              <UserTask key={task.id} {...task} />
             ))
           }
           dataLength={userTasks.results.length}

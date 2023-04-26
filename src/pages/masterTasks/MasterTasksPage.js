@@ -6,6 +6,9 @@ import { NavLink } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { Container, Form } from "react-bootstrap";
 import MasterTask from "./MasterTask";
+import Asset from "../../components/Asset";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 import styles from "../../styles/SearchBar.module.css";
 
@@ -17,7 +20,6 @@ function MasterTasksPage() {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/master-tasks/?search=${query}`);
-        console.log(data)
         setMasterTasks(data);
       } catch (err) {
         console.log(err);
@@ -31,7 +33,7 @@ function MasterTasksPage() {
     return () => {
       clearTimeout(timer);
     };
-  }, [masterTasks, query]);
+  }, [query]);
 
   return (
     <Container>
@@ -57,9 +59,17 @@ function MasterTasksPage() {
       </Row>
       <Row className="mt-2">
         <Col>
-          {masterTasks?.results.map((task) => (
-            <MasterTask {...task} />
-          ))}
+        <InfiniteScroll 
+          children={
+            masterTasks?.results.map((task) => (
+              <MasterTask key={task.id} {...task} />
+            ))
+          }
+          dataLength={masterTasks.results.length}
+          loader={<Asset spinner />}
+          hasMore={!!masterTasks.next}
+          next={() => fetchMoreData(masterTasks, setMasterTasks)}
+        />
         </Col>
       </Row>
     </Container>

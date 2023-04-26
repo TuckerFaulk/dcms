@@ -32,7 +32,7 @@ const UserTask = (props) => {
           <Col className="d-flex justify-content-end align-items-center">
             {status === "Open" && is_overdue && (
               <>
-                <i class="fa-solid fa-circle-exclamation text-danger"></i>
+                <i className="fa-solid fa-circle-exclamation text-danger"></i>
               </>
             )}
             {!TaskPage && (
