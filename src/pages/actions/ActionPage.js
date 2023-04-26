@@ -4,16 +4,19 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import Action from "./Action";
 import ActionUpdateForm from "./ActionUpdateForm";
 import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Comment from "../comments/Comment";
+import { useHistory } from "react-router-dom";
 
 function ActionPage() {
   const { id } = useParams();
   const [action, setAction] = useState({ results: [] });
+
+  const history = useHistory();
 
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
@@ -38,6 +41,10 @@ function ActionPage() {
 
   return (
     <Container>
+      <Row className="d-flex justify-content-end pb-3">
+        <Button onClick={() => history.goBack()}>Back</Button>
+      </Row>
+      
       <Row>
         <Col>
           <Action {...action.results[0]} ActionPage />

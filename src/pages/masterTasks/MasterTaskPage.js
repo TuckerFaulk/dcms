@@ -5,17 +5,20 @@ import Row from "react-bootstrap/Row";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import MasterTask from "./MasterTask";
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import AssignedToCreateForm from "../assignedTo/AssignedToCreateForm";
 import AssignedTo from "../assignedTo/AssignedTo";
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
+import { useHistory } from "react-router-dom";
 
 function MasterTaskPage() {
   const { id } = useParams();
   const [task, setTask] = useState({ results: [] });
   const [assignedTo, setAssignedTo] = useState({ results: [] });
+
+  const history = useHistory();
 
   useEffect(() => {
     const handleMount = async () => {
@@ -26,7 +29,7 @@ function MasterTaskPage() {
         ]);
         setTask({ results: [task] });
         setAssignedTo(assignedTo);
-        console.log(assignedTo)
+        console.log(assignedTo);
       } catch (err) {
         console.log(err);
       }
@@ -37,6 +40,10 @@ function MasterTaskPage() {
 
   return (
     <Container>
+      <Row className="d-flex justify-content-end pb-3">
+        <Button onClick={() => history.goBack()}>Back</Button>
+      </Row>
+
       <Row>
         <Col>
           <MasterTask {...task.results[0]} TaskPage />

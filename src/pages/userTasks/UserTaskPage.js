@@ -4,16 +4,19 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import UserTask from "./UserTask";
 import UserTaskUpdateForm from "./UserTaskUpdateForm";
 import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Comment from "../comments/Comment";
+import { useHistory } from "react-router-dom";
 
 function UserTaskPage() {
   const { id } = useParams();
   const [task, setTask] = useState({ results: [] });
+
+  const history = useHistory();
 
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
@@ -38,6 +41,10 @@ function UserTaskPage() {
 
   return (
     <Container>
+      <Row className="d-flex justify-content-end pb-3">
+        <Button onClick={() => history.goBack()}>Back</Button>
+      </Row>
+    
       <Row>
         <Col>
           <UserTask {...task.results[0]} TaskPage />

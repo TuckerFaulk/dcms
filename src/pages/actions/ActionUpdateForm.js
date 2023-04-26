@@ -8,11 +8,14 @@ import Container from "react-bootstrap/Container";
 import { Card } from "react-bootstrap";
 
 import { axiosReq } from "../../api/axiosDefaults";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function ActionUpdateForm(props) {
   const { id, status, action_title, assigned_to, category, setAction } = props;
 
   const [errors, setErrors] = useState({});
+
+  const history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,6 +28,7 @@ function ActionUpdateForm(props) {
 
     try {
       await axiosReq.put(`/actions/${id}/`, formData);
+      history.push("/my-actions");
       setAction((prevAction) => ({
         ...prevAction,
         results: prevAction.results.map((action) => {
