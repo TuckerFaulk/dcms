@@ -51,15 +51,15 @@ function UserTaskPage() {
       <Row>
         <Col>
           <CommentCreateForm
-            profile_id={currentUser.profile_id}
+            profile_id={currentUser?.profile_id}
             profileImage={profile_image}
             task_name={id}
             setComments={setComments}
             page="task"
           />
 
-          {comments.results.length ? (
-            comments.results.map((comment) => (
+          {comments?.results.length ? (
+            comments?.results.map((comment) => (
               <Comment
                 key={comment.id}
                 {...comment}

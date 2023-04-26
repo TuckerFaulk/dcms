@@ -51,15 +51,15 @@ function ActionPage() {
       <Row>
         <Col>
         <CommentCreateForm
-            profile_id={currentUser.profile_id}
+            profile_id={currentUser?.profile_id}
             profileImage={profile_image}
             action_title={id}
             setComments={setComments}
             page="action"
           />
 
-          {comments.results.length ? (
-            comments.results.map((comment) => (
+          {comments?.results.length ? (
+            comments?.results.map((comment) => (
               <Comment
                 key={comment.id}
                 {...comment}

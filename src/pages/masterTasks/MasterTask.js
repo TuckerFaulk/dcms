@@ -42,7 +42,13 @@ const MasterTask = (props) => {
       <Card.Header>
         <Row>
           <Col className="mt-3">
-            <Card.Title>{task_name}</Card.Title>
+            {TaskPage ? (
+              <Card.Title>{task_name}</Card.Title>
+            ) : (
+              <Card.Title>
+                {category_name} - {task_name}
+              </Card.Title>
+            )}
           </Col>
 
           <Col className="d-flex justify-content-end align-items-center">
