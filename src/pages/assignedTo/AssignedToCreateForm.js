@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import { Card } from "react-bootstrap";
+import { Alert, Card } from "react-bootstrap";
 
 import styles from "../../styles/AssignedToCreateForm.module.css";
 
@@ -109,6 +109,11 @@ function AssignedToCreateForm(props) {
                         </Form.Control>
                       </Col>
                     </Form.Group>
+                    {errors?.assigned_to?.map((message, idx) => (
+                      <Alert variant="warning" key={idx}>
+                        {message}
+                      </Alert>
+                    ))}
                   </Col>
 
                   <Col sm={4}>
@@ -125,6 +130,11 @@ function AssignedToCreateForm(props) {
                         />
                       </Col>
                     </Form.Group>
+                    {errors?.initial_due_date?.map((message, idx) => (
+                      <Alert variant="warning" key={idx}>
+                        {message}
+                      </Alert>
+                    ))}
                   </Col>
 
                   <Col sm={4}>
@@ -132,7 +142,7 @@ function AssignedToCreateForm(props) {
                       <Form.Label column sm="5">
                         To Be Completed By
                       </Form.Label>
-                      <Col sm={5}>
+                      <Col sm={4}>
                         <Form.Control
                           as="select"
                           name="completed_by"
@@ -145,6 +155,11 @@ function AssignedToCreateForm(props) {
                         </Form.Control>
                       </Col>
                     </Form.Group>
+                    {errors?.completed_by?.map((message, idx) => (
+                      <Alert variant="warning" key={idx}>
+                        {message}
+                      </Alert>
+                    ))}
                   </Col>
 
                   <Col
@@ -154,7 +169,13 @@ function AssignedToCreateForm(props) {
                     <Button variant="primary" type="submit">
                       Create
                     </Button>
+                    <Button onClick={() => setOpenForm(false)} className="ml-1" variant="secondary" type="submit">
+                      Cancel
+                    </Button>
                   </Col>
+                </Row>
+                <Row className="d-flex align-items-center ml-3 pt-1">
+                  <p className="mb-0">*You cannot allocate a task to the same person more than once.</p>
                 </Row>
               </Form>
             </Card.Body>

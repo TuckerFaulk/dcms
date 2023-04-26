@@ -32,10 +32,10 @@ const NavBar = () => {
   const addAdminIcons = (
     <>
       <NavLink to="/master-tasks/" activeClassName={styles.Active}>
-        Master Tasks<i className="fas fa-arrow-right"></i>
+        <i className="fas fa-gear"></i>Master Tasks
       </NavLink>
       <NavLink to="/categories/" activeClassName={styles.Active}>
-        Categories<i className="fas fa-arrow-right"></i>
+        <i className="fas fa-gear"></i>Categories
       </NavLink>
     </>
   );
@@ -48,7 +48,6 @@ const NavBar = () => {
       <NavLink to="/my-actions" activeClassName={styles.Active}>
         <i className="fas fa-person-running"></i>My Actions
       </NavLink>
-      {/* Add is_staff to the above */}
       <NavLink to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>Sign Out
       </NavLink>
@@ -81,7 +80,7 @@ const NavBar = () => {
     >
       <Container>
         <NavLink to="/">
-          <Navbar.Brand>DCMS</Navbar.Brand>
+          <Navbar.Brand><i id={styles.LogoIcon} class="fa-regular fa-square-check"></i>DCMS</Navbar.Brand>
         </NavLink>
         {currentUser && currentProfile?.is_staff && addAdminIcons}
         <Navbar.Toggle
