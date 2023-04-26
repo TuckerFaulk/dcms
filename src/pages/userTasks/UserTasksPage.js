@@ -8,8 +8,11 @@ import UserTask from "./UserTask";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
 import StatusFilter from "../../components/StatusFilter";
+import Asset from "../../components/Asset";
 
 import styles from "../../styles/SearchBar.module.css";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 function UserTasksPage() {
   const [userTasks, setUserTasks] = useState({ results: [] });
@@ -74,9 +77,17 @@ function UserTasksPage() {
 
       <Row className="mt-3">
         <Col>
-          {userTasks?.results.map((task) => (
-            <UserTask {...task} />
-          ))}
+        <InfiniteScroll 
+          children={
+            userTasks?.results.map((task) => (
+              <UserTask {...task} />
+            ))
+          }
+          dataLength={userTasks.results.length}
+          loader={<Asset spinner />}
+          hasMore={!!userTasks.next}
+          next={() => fetchMoreData(userTasks, setUserTasks)}
+        />
         </Col>
       </Row>
     </Container>
