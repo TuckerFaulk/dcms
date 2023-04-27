@@ -147,9 +147,14 @@ function UserTaskUpdateForm(props) {
                   </Alert>
                 ))} */}
 
-                <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-                  Close Task
-                </Button>
+                <Row className="d-flex justify-content-center">
+                  <Button
+                    className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                    type="submit"
+                  >
+                    Close Task
+                  </Button>
+                </Row>
               </Form>
             </Col>
           </Row>

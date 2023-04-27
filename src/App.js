@@ -20,6 +20,7 @@ import ProfilePage from "./pages/profiles/ProfilePage";
 import MasterTasksEditForm from "./pages/masterTasks/MasterTasksEditForm";
 import CategoriesEditForm from "./pages/categories/CategoriesEditForm";
 import ActionsEditForm from "./pages/actions/ActionsEditForm";
+import Home from "./pages/home/home";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
-          <Route exact path="/" render={() => <h1>Home Page</h1>} />
+          <Route exact path="/" render={() => <Home />} />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/categories/" render={() => <CategoriesPage />} />

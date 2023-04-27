@@ -56,7 +56,7 @@ function ActionUpdateForm(props) {
       {status === "Open" && (
         <Card.Footer>
           <Row>
-            <Col>
+            <Col className="d-flex justify-content-center">
               <Form onSubmit={handleSubmit}>
                 <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
                   Close Action
