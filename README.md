@@ -255,15 +255,18 @@ Icons were added to buttons throughout the site to aid the understanding of the 
 
 - CSS: No errors were found when passing through the official W3C CSS validator.
 
-<!-- ![CSS W3C Validator](static/readme_images/css-validation.jpg) -->
+![CSS W3C Validator](src/assets/README_images/css_validation.png)
 
-- JSHint: No errors were found when passing through the JSHint validator.
+- JSHint: The following issues were raised, and have been intentionally ignored as they are in relation later version of ES:
 
-<!-- ![JSHint](static/readme_images/jshint.jpg) -->
+1. Unclosed regular expression.
+2. 'async functions' is only available in ES8 (use 'esversion: 8').
+3. 'Optional chaining' is only available in ES11 (use 'esversion: 11').
+4. 'object spread property' is only available in ES9 (use 'esversion: 9').
 
 - Lighthouse (Accessibility Audit): The page achieved a great accessibility rating.
 
-<!-- ![Lighthouse Accessibility Audit](static/readme_images/lighthouse.jpg) -->
+![Lighthouse Accessibility Audit](src/assets/README_images/lighthouse.png)
 
 ## Unfixed Bugs
 
