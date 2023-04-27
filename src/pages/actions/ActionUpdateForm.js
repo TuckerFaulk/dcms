@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -13,8 +13,6 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function ActionUpdateForm(props) {
   const { id, status, action_title, assigned_to, category, setAction } = props;
-
-  const [errors, setErrors] = useState({});
 
   const history = useHistory();
 
@@ -45,9 +43,6 @@ function ActionUpdateForm(props) {
       }));
     } catch (err) {
       console.log(err);
-      if (err.response?.status !== 401) {
-        setErrors(err.response?.data);
-      }
     }
   };
 

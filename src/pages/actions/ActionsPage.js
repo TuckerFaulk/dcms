@@ -29,7 +29,6 @@ function ActionsPage() {
       if (currentProfile?.is_staff) {
         try {
           const { data } = await axiosReq.get(`/actions/?status=${status}&search=${query}`);
-          console.log(data);
           setActions(data);
         } catch (err) {
           console.log(err);
@@ -37,7 +36,6 @@ function ActionsPage() {
       } else {
         try {
           const { data } = await axiosReq.get(`/actions/?assigned_to__profile=${currentUser?.pk}&status=${status}&search=${query}`);
-          console.log(data);
           setActions(data);
         } catch (err) {
           console.log(err);
@@ -52,7 +50,7 @@ function ActionsPage() {
     return () => {
       clearTimeout(timer);
     };
-  }, [currentProfile, status, query]); // Try to stop it refreshing
+  }, [currentUser, currentProfile, status, query]); // Try to stop it refreshing
 
   return (
     <Container>

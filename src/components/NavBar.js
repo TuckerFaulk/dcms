@@ -7,7 +7,6 @@ import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../contexts/CurrentUserContext";
-import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import { useCurrentProfile } from "../contexts/CurrentProfileContext";
@@ -77,7 +76,7 @@ const NavBar = () => {
     >
       <Container>
         <NavLink to="/">
-          <Navbar.Brand><i id={styles.LogoIcon} class="fa-regular fa-square-check"></i>DCMS</Navbar.Brand>
+          <Navbar.Brand><i id={styles.LogoIcon} className="fa-regular fa-square-check"></i>DCMS</Navbar.Brand>
         </NavLink>
         {currentUser && currentProfile?.is_staff && addAdminIcons}
         <Navbar.Toggle

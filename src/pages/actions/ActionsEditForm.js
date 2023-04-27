@@ -62,7 +62,7 @@ function ActionsEditForm() {
     };
 
     handleMount();
-  }, []);
+  }, [id]);
 
   const handleChange = (event) => {
     setActionData({
