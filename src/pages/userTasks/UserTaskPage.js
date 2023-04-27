@@ -12,8 +12,10 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Comment from "../comments/Comment";
 import { useHistory } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function UserTaskPage() {
+  useRedirect('loggedOut')
   const { id } = useParams();
   const [task, setTask] = useState({ results: [] });
 

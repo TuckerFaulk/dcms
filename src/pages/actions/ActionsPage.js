@@ -14,8 +14,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 
 import styles from "../../styles/SearchBar.module.css";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function ActionsPage() {
+  useRedirect('loggedOut')
   const [actions, setActions] = useState({ results: [] });
   const [status, setStatus] = useState("Open");
   const [query, setQuery] = useState("");

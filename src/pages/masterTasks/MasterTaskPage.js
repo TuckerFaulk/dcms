@@ -13,8 +13,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import { useHistory } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function MasterTaskPage() {
+  useRedirect('loggedOut')
   const { id } = useParams();
   const [task, setTask] = useState({ results: [] });
   const [assignedTo, setAssignedTo] = useState({ results: [] });

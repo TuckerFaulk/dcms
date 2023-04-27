@@ -10,8 +10,10 @@ import { useHistory } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function MasterTasksEditForm() {
+  useRedirect('loggedOut')
   const [errors, setErrors] = useState({});
 
   const history = useHistory();

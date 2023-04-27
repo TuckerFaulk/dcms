@@ -11,8 +11,10 @@ import styles from "../../styles/AssignedToCreateForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
 import { axiosReq } from "../../api/axiosDefaults";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function AssignedToCreateForm(props) {
+  useRedirect('loggedOut')
   const { id, setAssignedTo } = props;
 
   const [errors, setErrors] = useState({});

@@ -8,8 +8,10 @@ import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 import styles from "../../styles/CategoriesPage.module.css";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { useHistory } from "react-router-dom";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function CategoriesPage() {
+  useRedirect('loggedOut')
   const [categories, setCategories] = useState();
 
   const history = useHistory();

@@ -9,8 +9,10 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import btnStyles from "../../styles/Button.module.css";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function CategoriesCreateForm() {
+  useRedirect('loggedOut')
   const [errors, setErrors] = useState({});
 
   const history = useHistory();

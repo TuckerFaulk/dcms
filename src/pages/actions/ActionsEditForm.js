@@ -12,8 +12,10 @@ import { useParams } from "react-router-dom";
 import { Alert, Image } from "react-bootstrap";
 import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/ActionsEditForm.module.css";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function ActionsEditForm() {
+  useRedirect('loggedOut')
   const [errors, setErrors] = useState({});
   const [profiles, setProfiles] = useState();
   const [categories, setCategories] = useState();

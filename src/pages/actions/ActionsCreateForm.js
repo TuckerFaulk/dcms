@@ -12,8 +12,10 @@ import { useHistory } from "react-router-dom";
 import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
 import { Alert, Image } from "react-bootstrap";
 import styles from "../../styles/ActionsCreateForm.module.css";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function ActionsCreateForm() {
+  useRedirect('loggedOut')
   const [errors, setErrors] = useState({});
   const [profiles, setProfiles] = useState();
   const [categories, setCategories] = useState();

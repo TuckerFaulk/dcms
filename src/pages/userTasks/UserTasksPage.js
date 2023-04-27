@@ -13,8 +13,10 @@ import Asset from "../../components/Asset";
 import styles from "../../styles/SearchBar.module.css";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function UserTasksPage() {
+  useRedirect('loggedOut')
   const [userTasks, setUserTasks] = useState({ results: [] });
   const [status, setStatus] = useState("Open");
   const [query, setQuery] = useState("");

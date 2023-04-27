@@ -10,8 +10,10 @@ import { Card } from "react-bootstrap";
 
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function ActionUpdateForm(props) {
+  useRedirect('loggedOut')
   const { id, status, action_title, assigned_to, category, setAction } = props;
 
   const history = useHistory();
