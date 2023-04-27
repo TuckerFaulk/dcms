@@ -11,7 +11,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
 import { Alert, Image } from "react-bootstrap";
-import Asset from "../../components/Asset";
+import styles from "../../styles/ActionsCreateForm.module.css";
 
 function ActionsCreateForm() {
   const [errors, setErrors] = useState({});
@@ -115,167 +115,156 @@ function ActionsCreateForm() {
         <Col className="py-2 p-0 p-md-2">
           <Container className="d-flex flex-column justify-content-center">
             <div className="text-center">
-                <Form.Group controlId="formBasicTaskName">
-                  <Form.Label>Action Title</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="action_title"
-                    value={action_title}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-                {errors?.task_name?.map((message, idx) => (
-                  <Alert variant="warning" key={idx}>
-                    {message}
-                  </Alert>
-                ))}
+              <Form.Group controlId="formBasicTaskName">
+                <Form.Label>Action Title</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="action_title"
+                  value={action_title}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              {errors?.task_name?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {message}
+                </Alert>
+              ))}
 
-                <Form.Group controlId="exampleForm.ControlTextarea1">
-                  <Form.Label>Action Description</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    name="description"
-                    rows={3}
-                    value={description}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-                {errors?.description?.map((message, idx) => (
-                  <Alert variant="warning" key={idx}>
-                    {message}
-                  </Alert>
-                ))}
+              <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Label>Action Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  name="description"
+                  rows={3}
+                  value={description}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              {errors?.description?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {message}
+                </Alert>
+              ))}
 
-                {currentProfile?.is_staff && (
-                  <Form.Group>
-                    <Form.Label>Assign To</Form.Label>
-                    <Col>
-                      <Form.Control
-                        as="select"
-                        name="assigned_to"
-                        value={assigned_to}
-                        onChange={handleChange}
-                        ref={assignedToInput}
-                      >
-                        {profiles?.results.map((profile) => (
-                          <option value={profile.id} key={profile.id}>
-                            {profile.owner}
-                          </option>
-                        ))}
-                      </Form.Control>
-                    </Col>
-                  </Form.Group>
-                )}
-                {errors?.assigned_to?.map((message, idx) => (
-                    <Alert variant="warning" key={idx}>
-                      {message}
-                    </Alert>
-                  ))}
-
+              {currentProfile?.is_staff && (
                 <Form.Group>
-                  <Form.Label>Category</Form.Label>
-                  <Form.Control
-                    as="select"
-                    name="category"
-                    value={category}
-                    onChange={handleChange}
-                    ref={categoryInput}
-                  >
-                    {categories?.map((category) => (
-                      <option key={category.id} value={category.id}>
-                        {category.category_name}
-                      </option>
-                    ))}
-                  </Form.Control>
-                </Form.Group>
-                {errors?.category?.map((message, idx) => (
-                    <Alert variant="warning" key={idx}>
-                      {message}
-                    </Alert>
-                  ))}
-
-                <Form.Group>
-                  <Form.Label>Due Date</Form.Label>
+                  <Form.Label>Assign To</Form.Label>
                   <Col>
                     <Form.Control
-                      type="date"
-                      name="due_date"
-                      value={dueDate}
-                      onChange={(e) => setDueDate(e.target.value)}
-                    />
+                      as="select"
+                      name="assigned_to"
+                      value={assigned_to}
+                      onChange={handleChange}
+                      ref={assignedToInput}
+                    >
+                      {profiles?.results.map((profile) => (
+                        <option value={profile.id} key={profile.id}>
+                          {profile.owner}
+                        </option>
+                      ))}
+                    </Form.Control>
                   </Col>
                 </Form.Group>
-                {errors?.due_date?.map((message, idx) => (
-                  <Alert variant="warning" key={idx}>
-                    {message}
-                  </Alert>
-                ))}
+              )}
+              {errors?.assigned_to?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {message}
+                </Alert>
+              ))}
 
-                <Form.Group>
-                  <Form.Label>Risk Rating</Form.Label>
-                  <Form.Control
-                    as="select"
-                    name="risk_rating"
-                    value={risk_rating}
-                    onChange={handleChange}
-                    ref={riskRatingInput}
-                  >
-                    <option value="Low">Low</option>
-                    <option value="Medium">Medium</option>
-                    <option value="High">High</option>
-                  </Form.Control>
-                </Form.Group>
-                {errors?.risk_rating?.map((message, idx) => (
-                    <Alert variant="warning" key={idx}>
-                      {message}
-                    </Alert>
+              <Form.Group>
+                <Form.Label>Category</Form.Label>
+                <Form.Control
+                  as="select"
+                  name="category"
+                  value={category}
+                  onChange={handleChange}
+                  ref={categoryInput}
+                >
+                  {categories?.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.category_name}
+                    </option>
                   ))}
+                </Form.Control>
+              </Form.Group>
+              {errors?.category?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {message}
+                </Alert>
+              ))}
 
-                <Form.Group className="text-center">
-                  {image ? (
-                    <>
-                      <figure>
-                        <Image
-                          src={image}
-                          rounded
-                        />
-                      </figure>
-                      <div>
-                        <Form.Label
-                          className="btn"
-                          htmlFor="image-upload"
-                        >
-                          Change the image
-                        </Form.Label>
-                      </div>
-                    </>
-                  ) : (
-                    <Form.Label
-                      className="d-flex justify-content-center"
-                      htmlFor="image-upload"
-                    >
-                      <Asset
-                        // src={}
-                        message="Click or tap to upload an image"
-                      />
-                    </Form.Label>
-                  )}
-
-                  <Form.File
-                    id="image-upload"
-                    accept="image/*"
-                    onChange={handleChangeImage}
-                    ref={imageInput}
+              <Form.Group>
+                <Form.Label>Due Date</Form.Label>
+                <Col>
+                  <Form.Control
+                    type="date"
+                    name="due_date"
+                    value={dueDate}
+                    onChange={(e) => setDueDate(e.target.value)}
                   />
-                </Form.Group>
-                {errors?.image?.map((message, idx) => (
-                  <Alert variant="warning" key={idx}>
-                    {message}
-                  </Alert>
-                ))}
+                </Col>
+              </Form.Group>
+              {errors?.due_date?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {message}
+                </Alert>
+              ))}
 
-              <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">Create</Button>
-              <Button className={`${btnStyles.Button}`} onClick={() => history.goBack()}>Cancel</Button>
+              <Form.Group>
+                <Form.Label>Risk Rating</Form.Label>
+                <Form.Control
+                  as="select"
+                  name="risk_rating"
+                  value={risk_rating}
+                  onChange={handleChange}
+                  ref={riskRatingInput}
+                >
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </Form.Control>
+              </Form.Group>
+              {errors?.risk_rating?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {message}
+                </Alert>
+              ))}
+
+              <Form.Group className="text-center">
+                {image && (
+                  <>
+                    <figure>
+                      <Image className={`${styles.ImageUpload}`} src={image} rounded />
+                    </figure>
+                  </>
+                )}
+
+                <Form.File
+                  id="image-upload"
+                  accept="image/*"
+                  onChange={handleChangeImage}
+                  ref={imageInput}
+                />
+              </Form.Group>
+              {errors?.image?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {message}
+                </Alert>
+              ))}
+
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                type="submit"
+              >
+                Create
+              </Button>
+              <Button
+                className={`${btnStyles.Button}`}
+                onClick={() => history.goBack()}
+              >
+                Cancel
+              </Button>
             </div>
           </Container>
         </Col>

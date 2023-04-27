@@ -9,6 +9,7 @@ import { Alert, Card, Image } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
+import styles from "../../styles/UserTaskUpdateForm.module.css";
 
 function UserTaskUpdateForm(props) {
   const { id, status } = props;
@@ -121,27 +122,12 @@ function UserTaskUpdateForm(props) {
                 ))}
 
                 <Form.Group className="text-center">
-                  {image ? (
+                  {image && (
                     <>
                       <figure>
-                        <Image src={image} rounded />
+                        <Image className={`${styles.ImageUpload}`} src={image} rounded />
                       </figure>
-                      <div>
-                        <Form.Label className="btn" htmlFor="image-upload">
-                          Change the image
-                        </Form.Label>
-                      </div>
                     </>
-                  ) : (
-                    <Form.Label
-                      className="d-flex justify-content-center"
-                      htmlFor="image-upload"
-                    >
-                      {/* <Asset
-                        src={Upload}
-                        message="Click or tap to upload an image"
-                      /> */}
-                    </Form.Label>
                   )}
 
                   <Form.File

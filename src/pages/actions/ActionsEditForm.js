@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Alert, Image } from "react-bootstrap";
 import btnStyles from "../../styles/Button.module.css";
+import styles from "../../styles/ActionsEditForm.module.css";
 
 function ActionsEditForm() {
   const [errors, setErrors] = useState({});
@@ -231,27 +232,12 @@ function ActionsEditForm() {
                 ))}
 
                 <Form.Group className="text-center">
-                  {image ? (
+                  {image && (
                     <>
                       <figure>
-                        <Image src={image} rounded />
+                        <Image className={`${styles.ImageUpload}`} src={image} rounded />
                       </figure>
-                      <div>
-                        <Form.Label className="btn" htmlFor="image-upload">
-                          Change the image
-                        </Form.Label>
-                      </div>
                     </>
-                  ) : (
-                    <Form.Label
-                      className="d-flex justify-content-center"
-                      htmlFor="image-upload"
-                    >
-                      {/* <Asset
-                        src={Upload}
-                        message="Click or tap to upload an image"
-                      /> */}
-                    </Form.Label>
                   )}
 
                   <Form.File
