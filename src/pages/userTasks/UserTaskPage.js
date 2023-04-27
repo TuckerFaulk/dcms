@@ -64,7 +64,7 @@ function UserTaskPage() {
           <UserTaskUpdateForm {...task.results[0]} />
         </Col>
       </Row>
-      <Row>
+      <Row className="mb-3">
         <Col>
           <CommentCreateForm
             profile_id={currentUser?.profile_id}

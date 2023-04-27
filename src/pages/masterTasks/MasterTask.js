@@ -33,7 +33,7 @@ const MasterTask = (props) => {
   const handleDelete = async () => {
     try {
       axiosRes.delete(`/master-tasks/${id}`);
-      history.goBack();
+      history.push("/master-tasks");
     } catch (err) {
       // console.log(err);
     }

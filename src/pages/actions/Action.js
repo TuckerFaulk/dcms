@@ -38,7 +38,7 @@ const Action = (props) => {
   const handleDelete = async () => {
     try {
       axiosRes.delete(`/actions/${id}`);
-      history.goBack();
+      history.push("/my-actions");
     } catch (err) {
       // console.log(err);
     }
