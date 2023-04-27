@@ -17,7 +17,7 @@ import { fetchMoreData } from "../../utils/utils";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function UserTasksPage() {
-  useRedirect('loggedOut')
+  useRedirect('loggedOut');
   const [userTasks, setUserTasks] = useState({ results: [] });
   const [status, setStatus] = useState("Open");
   const [query, setQuery] = useState("");

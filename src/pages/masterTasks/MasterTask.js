@@ -45,7 +45,7 @@ const MasterTask = (props) => {
         <Row>
           <Col className="mt-3">
             {TaskPage ? (
-              <Card.Title >{task_name}</Card.Title>
+              <Card.Title>{task_name}</Card.Title>
             ) : (
               <Card.Title>
                 {category_name} - {task_name}

@@ -12,7 +12,7 @@ import btnStyles from "../../styles/Button.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function MasterTasksCreateForm() {
-  useRedirect('loggedOut')
+  useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
 
   const history = useHistory();
@@ -77,82 +77,94 @@ function MasterTasksCreateForm() {
         <Col className="py-2 p-0 p-md-2">
           <Container className="d-flex flex-column justify-content-center">
             <div className="text-center">
-                <Form.Group controlId="formBasicTaskName">
-                  <Form.Label>Task Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="task_name"
-                    value={task_name}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-                {errors?.task_name?.map((message, idx) => (
-                  <Alert variant="warning" key={idx}>
-                    {message}
-                  </Alert>
-                ))}
+              <Form.Group controlId="formBasicTaskName">
+                <Form.Label>Task Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="task_name"
+                  value={task_name}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              {errors?.task_name?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {message}
+                </Alert>
+              ))}
 
-                <Form.Group controlId="exampleForm.ControlTextarea1">
-                  <Form.Label>Task Description</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    name="description"
-                    rows={3}
-                    value={description}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-                {errors?.description?.map((message, idx) => (
-                  <Alert variant="warning" key={idx}>
-                    {message}
-                  </Alert>
-                ))}
+              <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Label>Task Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  name="description"
+                  rows={3}
+                  value={description}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              {errors?.description?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {message}
+                </Alert>
+              ))}
 
-                <Form.Group>
-                  <Form.Label>Category</Form.Label>
-                  <Form.Control
-                    as="select"
-                    name="category"
-                    value={category}
-                    onChange={handleChange}
-                    ref={categoryInput}
-                  >
-                    {categories?.map((category) => (
-                      <option key={category.id} value={category.id}>{category.category_name}</option>
-                    ))}
-                  </Form.Control>
-                </Form.Group>
-                {errors?.category?.map((message, idx) => (
-                  <Alert variant="warning" key={idx}>
-                    {message}
-                  </Alert>
-                ))}
+              <Form.Group>
+                <Form.Label>Category</Form.Label>
+                <Form.Control
+                  as="select"
+                  name="category"
+                  value={category}
+                  onChange={handleChange}
+                  ref={categoryInput}
+                >
+                  {categories?.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.category_name}
+                    </option>
+                  ))}
+                </Form.Control>
+              </Form.Group>
+              {errors?.category?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {message}
+                </Alert>
+              ))}
 
-                <Form.Group>
-                  <Form.Label>Frequency</Form.Label>
-                  <Form.Control
-                    as="select"
-                    name="frequency"
-                    value={frequency}
-                    onChange={handleChange}
-                    ref={frequencyInput}
-                  >
-                    <option value="Once">Once</option>
-                    <option value="Daily">Daily</option>
-                    <option value="Weekly">Weekly</option>
-                    <option value="Monthly">Monthly</option>
-                    <option value="Biannually">Bi-annually</option>
-                    <option value="Annually">Annually</option>
-                  </Form.Control>
-                </Form.Group>
-                {errors?.frequency?.map((message, idx) => (
-                  <Alert variant="warning" key={idx}>
-                    {message}
-                  </Alert>
-                ))}
+              <Form.Group>
+                <Form.Label>Frequency</Form.Label>
+                <Form.Control
+                  as="select"
+                  name="frequency"
+                  value={frequency}
+                  onChange={handleChange}
+                  ref={frequencyInput}
+                >
+                  <option value="Once">Once</option>
+                  <option value="Daily">Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                  <option value="Biannually">Bi-annually</option>
+                  <option value="Annually">Annually</option>
+                </Form.Control>
+              </Form.Group>
+              {errors?.frequency?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {message}
+                </Alert>
+              ))}
 
-              <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">Create</Button>
-              <Button className={`${btnStyles.Button}`} onClick={() => history.goBack()}>Cancel</Button>
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                type="submit"
+              >
+                Create
+              </Button>
+              <Button
+                className={`${btnStyles.Button}`}
+                onClick={() => history.goBack()}
+              >
+                Cancel
+              </Button>
             </div>
           </Container>
         </Col>

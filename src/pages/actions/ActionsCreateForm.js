@@ -16,7 +16,7 @@ import styles from "../../styles/ActionsCreateForm.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function ActionsCreateForm() {
-  useRedirect('loggedOut')
+  useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
   const [profiles, setProfiles] = useState();
   const [categories, setCategories] = useState();
@@ -238,7 +238,11 @@ function ActionsCreateForm() {
                 {image && (
                   <>
                     <figure>
-                      <Image className={`${styles.ImageUpload}`} src={image} rounded />
+                      <Image
+                        className={`${styles.ImageUpload}`}
+                        src={image}
+                        rounded
+                      />
                     </figure>
                   </>
                 )}

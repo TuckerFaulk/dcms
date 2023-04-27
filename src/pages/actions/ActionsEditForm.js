@@ -16,7 +16,7 @@ import styles from "../../styles/ActionsEditForm.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function ActionsEditForm() {
-  useRedirect('loggedOut')
+  useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
   const [profiles, setProfiles] = useState();
   const [categories, setCategories] = useState();
@@ -236,7 +236,11 @@ function ActionsEditForm() {
                   {image && (
                     <>
                       <figure>
-                        <Image className={`${styles.ImageUpload}`} src={image} rounded />
+                        <Image
+                          className={`${styles.ImageUpload}`}
+                          src={image}
+                          rounded
+                        />
                       </figure>
                     </>
                   )}

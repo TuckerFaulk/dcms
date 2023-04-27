@@ -15,7 +15,7 @@ import styles from "../../styles/SearchBar.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function MasterTasksPage() {
-  useRedirect('loggedOut')
+  useRedirect("loggedOut");
   const [masterTasks, setMasterTasks] = useState({ results: [] });
   const [query, setQuery] = useState("");
 
@@ -62,17 +62,15 @@ function MasterTasksPage() {
       </Row>
       <Row className="mt-2 mb-3">
         <Col>
-        <InfiniteScroll 
-          children={
-            masterTasks?.results.map((task) => (
+          <InfiniteScroll
+            children={masterTasks?.results.map((task) => (
               <MasterTask key={task.id} {...task} />
-            ))
-          }
-          dataLength={masterTasks.results.length}
-          loader={<Asset spinner />}
-          hasMore={!!masterTasks.next}
-          next={() => fetchMoreData(masterTasks, setMasterTasks)}
-        />
+            ))}
+            dataLength={masterTasks.results.length}
+            loader={<Asset spinner />}
+            hasMore={!!masterTasks.next}
+            next={() => fetchMoreData(masterTasks, setMasterTasks)}
+          />
         </Col>
       </Row>
     </Container>

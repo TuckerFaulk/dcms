@@ -11,7 +11,7 @@ import { useHistory } from "react-router-dom";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function CategoriesPage() {
-  useRedirect('loggedOut')
+  useRedirect("loggedOut");
   const [categories, setCategories] = useState();
 
   const history = useHistory();
@@ -29,12 +29,10 @@ function CategoriesPage() {
     handleMount();
   }, []); // BUG: Add params so useEffects refreshes when category deleted
 
-
   const handleEdit = (id) => {
     history.push(`/categories/${id}/edit`);
-  }
+  };
 
-  
   const handleDelete = async (id) => {
     try {
       axiosRes.delete(`/categories/${id}`);
@@ -54,14 +52,21 @@ function CategoriesPage() {
       </Row>
       <Row className="d-flex justify-content-center align-items-center pt-3">
         {categories?.map((category) => (
-          <Card key={category.id} style={{ width: "18rem" }} className={styles.Card}>
+          <Card
+            key={category.id}
+            style={{ width: "18rem" }}
+            className={styles.Card}
+          >
             <Card.Body>
               <Row>
                 <Col className="mt-2" sm={10}>
                   <p className="mb-0">{category.category_name}</p>
                 </Col>
                 <Col sm={2}>
-                  <MoreDropdown handleEdit={() => handleEdit(category.id)} handleDelete={() => handleDelete(category.id)} />
+                  <MoreDropdown
+                    handleEdit={() => handleEdit(category.id)}
+                    handleDelete={() => handleDelete(category.id)}
+                  />
                 </Col>
               </Row>
             </Card.Body>

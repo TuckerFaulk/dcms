@@ -12,7 +12,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function ActionUpdateForm(props) {
-  useRedirect('loggedOut')
+  useRedirect("loggedOut");
   const { id, status, action_title, assigned_to, category, setAction } = props;
 
   const history = useHistory();
@@ -32,8 +32,7 @@ function ActionUpdateForm(props) {
       setAction((prevAction) => ({
         ...prevAction,
         results: prevAction.results.map((action) => {
-          return action.id === id
-            ? {
+          return action.id === id ? {
                 ...action,
                 assigned_to: assigned_to,
                 category: category,
@@ -54,7 +53,10 @@ function ActionUpdateForm(props) {
           <Row>
             <Col className="d-flex justify-content-center">
               <Form onSubmit={handleSubmit}>
-                <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+                <Button
+                  className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                  type="submit"
+                >
                   Close Action
                 </Button>
               </Form>

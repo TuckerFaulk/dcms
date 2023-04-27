@@ -12,7 +12,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function AssignedToCreateForm(props) {
-  useRedirect('loggedOut')
+  useRedirect("loggedOut");
   const { id, setAssignedTo } = props;
 
   const [errors, setErrors] = useState({});
@@ -167,16 +167,26 @@ function AssignedToCreateForm(props) {
                     className="d-flex align-items-center justify-content-end"
                     sm={1}
                   >
-                    <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+                    <Button
+                      className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                      type="submit"
+                    >
                       Create
                     </Button>
-                    <Button onClick={() => setOpenForm(false)} className={`${btnStyles.Button} ml-1`} type="submit">
+                    <Button
+                      onClick={() => setOpenForm(false)}
+                      className={`${btnStyles.Button} ml-1`}
+                      type="submit"
+                    >
                       Cancel
                     </Button>
                   </Col>
                 </Row>
                 <Row className="d-flex align-items-center ml-3 pt-1">
-                  <p className="mb-0">*You cannot allocate a task to the same person more than once.</p>
+                  <p className="mb-0">
+                    *You cannot allocate a task to the same person more than
+                    once.
+                  </p>
                 </Row>
               </Form>
             </Card.Body>

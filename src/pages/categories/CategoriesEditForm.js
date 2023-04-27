@@ -13,7 +13,7 @@ import btnStyles from "../../styles/Button.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function CategoriesEditForm() {
-  useRedirect('loggedOut')
+  useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
 
   const history = useHistory();
@@ -85,8 +85,18 @@ function CategoriesEditForm() {
                 ))}
               </Form>
 
-              <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">Update</Button>
-              <Button className={`${btnStyles.Button}`} onClick={() => history.goBack()}>Cancel</Button>
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                type="submit"
+              >
+                Update
+              </Button>
+              <Button
+                className={`${btnStyles.Button}`}
+                onClick={() => history.goBack()}
+              >
+                Cancel
+              </Button>
             </div>
           </Container>
         </Col>

@@ -13,7 +13,7 @@ import btnStyles from "../../styles/Button.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function MasterTasksEditForm() {
-  useRedirect('loggedOut')
+  useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
 
   const history = useHistory();
@@ -44,9 +44,9 @@ function MasterTasksEditForm() {
     const handleMount = async () => {
       try {
         const [{ data: categories }, { data: task }] = await Promise.all([
-            axiosReq.get("/categories/"),
-            axiosReq.get(`/master-tasks/${id}`),
-          ]);
+          axiosReq.get("/categories/"),
+          axiosReq.get(`/master-tasks/${id}`),
+        ]);
         setCategories(categories);
         setMasterTaskData(task);
       } catch (err) {
@@ -125,7 +125,9 @@ function MasterTasksEditForm() {
                     ref={categoryInput}
                   >
                     {categories?.map((category) => (
-                      <option value={category.id} key={category.id}>{category.category_name}</option>
+                      <option value={category.id} key={category.id}>
+                        {category.category_name}
+                      </option>
                     ))}
                   </Form.Control>
                 </Form.Group>
@@ -159,8 +161,18 @@ function MasterTasksEditForm() {
                 ))}
               </Form>
 
-              <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">Update</Button>
-              <Button className={`${btnStyles.Button}`} onClick={() => history.goBack()}>Cancel</Button>
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                type="submit"
+              >
+                Update
+              </Button>
+              <Button
+                className={`${btnStyles.Button}`}
+                onClick={() => history.goBack()}
+              >
+                Cancel
+              </Button>
             </div>
           </Container>
         </Col>

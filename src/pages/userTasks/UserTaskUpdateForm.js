@@ -15,7 +15,7 @@ import styles from "../../styles/UserTaskUpdateForm.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function UserTaskUpdateForm(props) {
-  useRedirect('loggedOut')
+  useRedirect('loggedOut');
   const { id, status } = props;
 
   const [errors, setErrors] = useState({});

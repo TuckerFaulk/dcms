@@ -17,7 +17,7 @@ import btnStyles from "../../styles/Button.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function MasterTaskPage() {
-  useRedirect('loggedOut')
+  useRedirect("loggedOut");
   const { id } = useParams();
   const [task, setTask] = useState({ results: [] });
   const [assignedTo, setAssignedTo] = useState({ results: [] });
@@ -44,7 +44,12 @@ function MasterTaskPage() {
   return (
     <Container>
       <Row className="d-flex justify-content-end pb-3">
-        <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} onClick={() => history.goBack()}>Back</Button>
+        <Button
+          className={`${btnStyles.Button} ${btnStyles.Blue}`}
+          onClick={() => history.goBack()}
+        >
+          Back
+        </Button>
       </Row>
 
       <Row>

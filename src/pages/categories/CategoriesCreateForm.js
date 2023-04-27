@@ -12,7 +12,7 @@ import btnStyles from "../../styles/Button.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function CategoriesCreateForm() {
-  useRedirect('loggedOut')
+  useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
 
   const history = useHistory();
@@ -53,23 +53,33 @@ function CategoriesCreateForm() {
         <Col className="py-2 p-0 p-md-2">
           <Container className="d-flex flex-column justify-content-center">
             <div className="text-center">
-                <Form.Group controlId="formBasicTaskName">
-                  <Form.Label>Category Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="category_name"
-                    value={category_name}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-                {errors?.category_name?.map((message, idx) => (
-                  <Alert variant="warning" key={idx}>
-                    {message}
-                  </Alert>
-                ))}
+              <Form.Group controlId="formBasicTaskName">
+                <Form.Label>Category Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="category_name"
+                  value={category_name}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              {errors?.category_name?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {message}
+                </Alert>
+              ))}
 
-              <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">Create</Button>
-              <Button className={`${btnStyles.Button}`} onClick={() => history.goBack()}>Cancel</Button>
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                type="submit"
+              >
+                Create
+              </Button>
+              <Button
+                className={`${btnStyles.Button}`}
+                onClick={() => history.goBack()}
+              >
+                Cancel
+              </Button>
             </div>
           </Container>
         </Col>

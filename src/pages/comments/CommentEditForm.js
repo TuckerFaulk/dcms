@@ -27,8 +27,7 @@ function CommentEditForm(props) {
         setComments((prevComments) => ({
           ...prevComments,
           results: prevComments.results.map((comment) => {
-            return comment.id === id
-              ? {
+            return comment.id === id ? {
                   ...comment,
                   content: formContent.trim(),
                   updated_at: "now",
@@ -48,8 +47,7 @@ function CommentEditForm(props) {
         setComments((prevComments) => ({
           ...prevComments,
           results: prevComments.results.map((comment) => {
-            return comment.id === id
-              ? {
+            return comment.id === id ? {
                   ...comment,
                   content: formContent.trim(),
                   updated_at: "now",

@@ -17,7 +17,7 @@ import styles from "../../styles/SearchBar.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function ActionsPage() {
-  useRedirect('loggedOut')
+  useRedirect("loggedOut");
   const [actions, setActions] = useState({ results: [] });
   const [status, setStatus] = useState("Open");
   const [query, setQuery] = useState("");
@@ -27,17 +27,20 @@ function ActionsPage() {
 
   useEffect(() => {
     const handleMount = async () => {
-
       if (currentProfile?.is_staff) {
         try {
-          const { data } = await axiosReq.get(`/actions/?status=${status}&search=${query}`);
+          const { data } = await axiosReq.get(
+            `/actions/?status=${status}&search=${query}`
+          );
           setActions(data);
         } catch (err) {
           // console.log(err);
         }
       } else {
         try {
-          const { data } = await axiosReq.get(`/actions/?assigned_to__profile=${currentUser?.pk}&status=${status}&search=${query}`);
+          const { data } = await axiosReq.get(
+            `/actions/?assigned_to__profile=${currentUser?.pk}&status=${status}&search=${query}`
+          );
           setActions(data);
         } catch (err) {
           // console.log(err);
@@ -69,7 +72,7 @@ function ActionsPage() {
           placeholder="Search..."
         />
       </Form>
-      
+
       <StatusFilter status={status} setStatus={setStatus} />
 
       <Row className="mt-3">
@@ -82,17 +85,15 @@ function ActionsPage() {
 
       <Row className="mt-3">
         <Col>
-        <InfiniteScroll 
-          children={
-            actions?.results.map((action) => (
+          <InfiniteScroll
+            children={actions?.results.map((action) => (
               <Action key={action.id} {...action} ActionsPage />
-            ))
-          }
-          dataLength={actions.results.length}
-          loader={<Asset spinner />}
-          hasMore={!!actions.next}
-          next={() => fetchMoreData(actions, setActions)}
-        />
+            ))}
+            dataLength={actions.results.length}
+            loader={<Asset spinner />}
+            hasMore={!!actions.next}
+            next={() => fetchMoreData(actions, setActions)}
+          />
         </Col>
       </Row>
     </Container>

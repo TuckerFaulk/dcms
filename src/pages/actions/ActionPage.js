@@ -16,7 +16,7 @@ import btnStyles from "../../styles/Button.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function ActionPage() {
-  useRedirect('loggedOut')
+  useRedirect("loggedOut");
   const { id } = useParams();
   const [action, setAction] = useState({ results: [] });
 
@@ -46,9 +46,14 @@ function ActionPage() {
   return (
     <Container>
       <Row className="d-flex justify-content-end pb-3">
-        <Button onClick={() => history.goBack()} className={`${btnStyles.Button} ${btnStyles.Blue}`}>Back</Button>
+        <Button
+          onClick={() => history.goBack()}
+          className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        >
+          Back
+        </Button>
       </Row>
-      
+
       <Row>
         <Col>
           <Action {...action.results[0]} ActionPage />
@@ -61,7 +66,7 @@ function ActionPage() {
       </Row>
       <Row>
         <Col className="mb-3">
-        <CommentCreateForm
+          <CommentCreateForm
             profile_id={currentUser?.profile_id}
             profileImage={profile_image}
             action_title={id}
