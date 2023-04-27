@@ -78,7 +78,6 @@ const NavBar = () => {
         <NavLink to="/">
           <Navbar.Brand><i id={styles.LogoIcon} className="fa-regular fa-square-check"></i>DCMS</Navbar.Brand>
         </NavLink>
-        {currentUser && currentProfile?.is_staff && addAdminIcons}
         <Navbar.Toggle
           onClick={() => setExpended(!expanded)}
           ref={ref}
@@ -86,6 +85,7 @@ const NavBar = () => {
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
+            {currentUser && currentProfile?.is_staff && addAdminIcons}
             {currentUser ? userLoggedInIcons : loggedOutIcons}
           </Nav>
         </Navbar.Collapse>

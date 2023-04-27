@@ -50,6 +50,14 @@ A typical Site User would be a line manager responsible for the health and safet
 
 A typical Site Admin may be a Health and Safety Manager or a Director within a medium to large organisation whose employees are exposed to vibration as part of their duties. This company may have 100s of employees required to complete a vibration risk assessment on their behalf and/or have 100s of type of vibration equipment which their employees may use as part of their daily tasks. -->
 
+<!-- The objectives of this site are to:
+
+- Make it quicker and easier for the user to assess a vibration task as all of the information is in a central accessible place
+- Improve the users selection of equipment as they are able to decide to use a tool with a lower magnitude now that this information is available to them
+- Reduce mistakes from potentially transferring incorrect information from testing reports or manufacturer's instructions
+- Improve the uptake of employees assessing their vibration tasks given all of the information will be available to them and it easy to use
+- Create a place for the management of company equipment. The database provides a central database of tools so the company is aware of what is being used within the business.  -->
+
 **User Stories** 
 
 As seen above, there will only be two different types of user of this site (Site User and Site Admin). I have broken down my user stories into these two categories:
@@ -81,14 +89,6 @@ As seen above, there will only be two different types of user of this site (Site
 ||4E|**Edit Categories**: I can Edit a Category so that The correct category can be allocated to equipment.|1|
 ||4F|**Delete Categories**: I can Delete a Category so that It is no longer available to be allocated to equipment.|1| -->
 
-<!-- The objectives of this site are to:
-
-- Make it quicker and easier for the user to assess a vibration task as all of the information is in a central accessible place
-- Improve the users selection of equipment as they are able to decide to use a tool with a lower magnitude now that this information is available to them
-- Reduce mistakes from potentially transferring incorrect information from testing reports or manufacturer's instructions
-- Improve the uptake of employees assessing their vibration tasks given all of the information will be available to them and it easy to use
-- Create a place for the management of company equipment. The database provides a central database of tools so the company is aware of what is being used within the business.  -->
-
 ## Scope
 
 <!-- An MVP (Minimum Viable Product) approach was taken to the development of this site. The main features deemed as basic requirements for this site where:
@@ -115,21 +115,15 @@ For detailed explanation of all existing features see [Existing Features](#exist
 
 **Database Schema**
 
-<!-- After initially setting out all of the information required for the site, I used data normalisation to structure each relational model to help reduce data redundancy and improve data integrity.
+<!-- After initially setting out all of the information required for the site, I used data normalisation to structure each relational model to help reduce data redundancy and improve data integrity. -->
 
-![Database Schema](static/readme_images/data_schema.jpg)
-
-*Class Functions and JavaScript Functions*
-
-To further improve data integrity, I decided to create class functions which calculated data values rather than storing this information in each model. As the user was able to update instances within the models which the outcome of the class function calculations were dependant on, keeping these separate from the model meant that only one instance within the model required updating.
-
-This is also inclusive of the JavaScript Functions which update the users calculator page. These functions have been written in JavaScript rather than in the Django Calculator Model as the information required for these calculations can be multiple instances of equipment in users calculator. -->
+![Database Schema](src/assets/README_images/data_model.png)
 
 ## Surface
 
 **Visual Design**
 
-<!-- I selected 'Raleway' as the main font style to keep the website simple. The logo font of 'Permanent Marker' was used to add some style to the site. This font has also been used for the text links in the nav and for headings to maintain design continuity.
+<!-- I selected 'Raleway' as the font style used throughout the site to keep it simple.
 
 The heading background colour of light blue (rgb(108, 171, 221)) was also selected to keep with the minimalist style. I wanted to keep the main background white but then use the colours of the heading background for table headings to ensure that they were the main central focus of the page. Different colours have been used for the buttons on the site to make these easily distinguishable.
 
@@ -145,14 +139,11 @@ An Agile approach was taken for the management of this project.
 
 # Languages Used
 
-<!-- - HTML
+- HTML
 - CSS
 - JavaScript
-- JQuery
 - Python
-- Django
-- Unittest (Django’s unit tests Python standard library module)
-- SQL (PostgreSQL) -->
+- SQL (Postgres)
 
 # Features
 
@@ -295,7 +286,9 @@ CRUD (Create, Read, Update, and Delete) functionality has been at the centre of 
 
 ## Unfixed Bugs
 
-
+- CurrentProfileContext
+- Warning: validateDOMNesting(...): <ul> cannot appear as a descendant of <p>.
+- Warning: validateDOMNesting(...): <div> cannot appear as a descendant of <p>.
 
 ## Libraries and Programs Used
 
@@ -314,7 +307,22 @@ CRUD (Create, Read, Update, and Delete) functionality has been at the centre of 
 - Bootstrap: CSS Styling
 - Google Fonts: for the font families
 - Font Awesome: to add icons to the site
-- Real Favicon Generator: Creating Favicon -->
+- Real Favicon Generator: Creating Favicon
+- ReactJS : To build the components that would collectively form the front-end application.
+- React-Bootstrap : The styling library that has aided to the layout of the site, and which was introduced to us during the course of the program.
+- Django : Used to build the backend database that serves as an API for the front-end project. -->
+
+
+## Components
+
+<!-- axiosDefault.js : for ease of communication with the backend API.
+Asset.js : to supply the loading spinner & user avatar throughout the site.
+DropdownMenu.js : to allow users to edit/delete their Articles, Events & Posts.
+CurrentUserContext.js : confirm users logged-in status to determine what functionality is available to that user.
+ProfileDataContext.js : provide un/follow ability to other users across PopProf & ProfPage components.
+ToggleCollapse.js : whilst this component has only been applied to the NavBarMini, it could in theory be applied to additional dropdown menus installed into the site in the future to allow for the automatic collapse of an element upon mouse click.
+useRedirect.js : redirects a user to another page if they are not authorised to be on the page they are trying to access.
+utils.js : supplies functionality to all of the components that utilise the Infinite Scroll. -->
 
 **Installed Packages**
 
@@ -331,6 +339,8 @@ CRUD (Create, Read, Update, and Delete) functionality has been at the centre of 
 
 This project was deployed on Heroku using Code Institute's Videos. After creating a GitHub repository, the steps taken to create the Heroku App were:
 
+<!-- TBC -->
+
 # Credits
 
 I have again enjoyed learning with the Code Institute and completing my fifth assignment. I would like to thank my mentor Martina for her support, the CI Student Support Team and the CI Slack Community. Finally a big thank you to my girlfriend and little sister for their help with testing and the review of this site.
@@ -342,8 +352,6 @@ I have again enjoyed learning with the Code Institute and completing my fifth as
 - Code Institutes Videos
 
 **Images:**
-
-*Jumbotron Image*
 
 <!-- - [Jackhammer](https://www.istockphoto.com/photo/working-on-a-road-construction-gm164526286-23495173) -->
 

@@ -48,7 +48,7 @@ function UserTaskPage() {
     
       <Row>
         <Col>
-          <UserTask {...task.results[0]} TaskPage />
+          <UserTask {...task.results[0]} TaskPage={true} />
         </Col>
       </Row>
       <Row>
