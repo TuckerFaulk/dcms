@@ -1,6 +1,6 @@
 # DCMS - Digital Compliance Management System
 
-<!-- ![Am I Responsive Image](static/readme_images/am_i_responsive.jpg) -->
+![Am I Responsive Image](src/assets/README_images/am_i_responsive.png)
 
 The live link for the site can be found here - https://project5-dcms-react.herokuapp.com/
 
@@ -64,7 +64,7 @@ As seen above, there will only be two different types of user of this site (Site
 
 - Navigation: As a **site user** I can **view a navbar from every page** so that **I can navigate easily between pages**.
 - Routing: As a **site user** I can **navigate through pages quickly** so that **I can view content seamlessly without page refresh**.
-- Authentication - Sign up: As a **site user** I can ** create a new account** so that **I can access all the features for signed up users**.
+- Authentication - Sign up: As a **site user** I can **create a new account** so that **I can access all the features for signed up users**.
 - Authentication - Sign in: As a **site user** I can **sign in to the app** so that **I can access functionality for logged in users**.
 - Authentication - Logged in Status: As a **site user** I can **tell if I am logged in or not** so that **I can log in if I need to**.
 - Authentication - Refreshing access tokens: As a **site user** I can **maintain my logged-in status until I choose to log out** so that **my user experience is not compromised**.
