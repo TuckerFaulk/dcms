@@ -103,7 +103,7 @@ For detailed explanation of all existing features see [Existing Features](#exist
 
 **Site Navigation Flowchart**
 
-<!-- ![Flowchart](static/readme_images/flowchart.jpg) -->
+![Flowchart](src/assets/README_images/flowchart.png)
 
 ## Skeleton
 
