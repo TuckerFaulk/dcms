@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Image, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { NavLink } from "react-router-dom";
+import styles from "../../styles/Task.module.css";
 
 const UserTask = (props) => {
   const {
@@ -60,16 +61,16 @@ const UserTask = (props) => {
             <Card.Text>
               <Row>
                 <Col>
-                  <ul className="list-group list-group-horizontal">
-                    <li className="list-group-item bg-primary text-white">
+                  <ul className="list-group list-group-horizontal mt-1">
+                    <li className={`${styles.ListGroup} list-group-item`}>
                       Category
                     </li>
                     <li className="list-group-item">{category}</li>
                   </ul>
                 </Col>
                 <Col>
-                  <ul className="list-group list-group-horizontal">
-                    <li className="list-group-item bg-primary text-white">
+                  <ul className="list-group list-group-horizontal mt-1">
+                    <li className={`${styles.ListGroup} list-group-item`}>
                       Frequency
                     </li>
                     <li className="list-group-item">{frequency}</li>
@@ -78,16 +79,16 @@ const UserTask = (props) => {
               </Row>
               <Row>
                 <Col>
-                  <ul className="list-group list-group-horizontal">
-                    <li className="list-group-item bg-primary text-white">
+                  <ul className="list-group list-group-horizontal mt-1">
+                    <li className={`${styles.ListGroup} list-group-item`}>
                       Due Date
                     </li>
                     <li className="list-group-item">{due_date}</li>
                   </ul>
                 </Col>
                 <Col>
-                  <ul className="list-group list-group-horizontal">
-                    <li className="list-group-item bg-primary text-white">
+                  <ul className="list-group list-group-horizontal mt-1">
+                    <li className={`${styles.ListGroup} list-group-item`}>
                       Status
                     </li>
                     <li className="list-group-item">{status}</li>
@@ -95,16 +96,16 @@ const UserTask = (props) => {
                 </Col>
               </Row>
               {description && (
-                <ul className="list-group">
-                  <li className="list-group-item bg-primary text-white">
+                <ul className="list-group mt-1">
+                  <li className={`${styles.ListGroup} list-group-item`}>
                     Description
                   </li>
                   <li className="list-group-item">{description}</li>
                 </ul>
               )}
               {image && (
-                <ul className="list-group">
-                  <li className="list-group-item bg-primary text-white">
+                <ul className="list-group mt-1">
+                  <li className={`${styles.ListGroup} list-group-item`}>
                     Image
                   </li>
                   <li className="list-group-item">

@@ -7,6 +7,7 @@ import { MoreDropdown } from "../../components/MoreDropdown";
 import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
+import styles from "../../styles/Task.module.css";
 
 const Action = (props) => {
   const {
@@ -76,16 +77,16 @@ const Action = (props) => {
             <Card.Text>
               <Row>
                 <Col>
-                  <ul className="list-group list-group-horizontal">
-                    <li className="list-group-item bg-primary text-white">
+                  <ul className="list-group list-group-horizontal mt-1">
+                    <li className={`${styles.ListGroup} list-group-item`}>
                       Category
                     </li>
                     <li className="list-group-item">{category_name}</li>
                   </ul>
                 </Col>
                 <Col>
-                  <ul className="list-group list-group-horizontal">
-                    <li className="list-group-item bg-primary text-white">
+                  <ul className="list-group list-group-horizontal mt-1">
+                    <li className={`${styles.ListGroup} list-group-item`}>
                       Risk Rating
                     </li>
                     <li className="list-group-item">{risk_rating}</li>
@@ -94,16 +95,16 @@ const Action = (props) => {
               </Row>
               <Row>
                 <Col>
-                  <ul className="list-group list-group-horizontal">
-                    <li className="list-group-item bg-primary text-white">
+                  <ul className="list-group list-group-horizontal mt-1">
+                    <li className={`${styles.ListGroup} list-group-item`}>
                       Due Date
                     </li>
                     <li className="list-group-item">{due_date}</li>
                   </ul>
                 </Col>
                 <Col>
-                  <ul className="list-group list-group-horizontal">
-                    <li className="list-group-item bg-primary text-white">
+                  <ul className="list-group list-group-horizontal mt-1">
+                    <li className={`${styles.ListGroup} list-group-item`}>
                       Status
                     </li>
                     <li className="list-group-item">{status}</li>
@@ -111,16 +112,16 @@ const Action = (props) => {
                 </Col>
               </Row>
               {description && (
-                <ul className="list-group">
-                  <li className="list-group-item bg-primary text-white">
+                <ul className="list-group mt-1">
+                  <li className={`${styles.ListGroup} list-group-item`}>
                     Description
                   </li>
                   <li className="list-group-item">{description}</li>
                 </ul>
               )}
               {image && (
-                <ul className="list-group">
-                  <li className="list-group-item bg-primary text-white">
+                <ul className="list-group mt-1">
+                  <li className={`${styles.ListGroup} list-group-item`}>
                     Image
                   </li>
                   <li className="list-group-item">

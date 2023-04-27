@@ -6,6 +6,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
+import styles from "../../styles/Task.module.css";
 
 const MasterTask = (props) => {
   const {
@@ -43,7 +44,7 @@ const MasterTask = (props) => {
         <Row>
           <Col className="mt-3">
             {TaskPage ? (
-              <Card.Title>{task_name}</Card.Title>
+              <Card.Title >{task_name}</Card.Title>
             ) : (
               <Card.Title>
                 {category_name} - {task_name}
@@ -72,16 +73,16 @@ const MasterTask = (props) => {
           <Card.Text>
             <Row>
               <Col>
-                <ul className="list-group list-group-horizontal">
-                  <li className="list-group-item bg-primary text-white">
+                <ul className="list-group list-group-horizontal mt-1">
+                  <li c>
                     Category
                   </li>
                   <li className="list-group-item">{category_name}</li>
                 </ul>
               </Col>
               <Col>
-                <ul className="list-group list-group-horizontal">
-                  <li className="list-group-item bg-primary text-white">
+                <ul className="list-group list-group-horizontal mt-1">
+                  <li className={`${styles.ListGroup} list-group-item`}>
                     Frequency
                   </li>
                   <li className="list-group-item">{frequency}</li>
@@ -90,16 +91,16 @@ const MasterTask = (props) => {
             </Row>
             <Row>
               <Col>
-                <ul className="list-group list-group-horizontal">
-                  <li className="list-group-item bg-primary text-white">
+                <ul className="list-group list-group-horizontal mt-1">
+                  <li className={`${styles.ListGroup} list-group-item`}>
                     Date Created
                   </li>
                   <li className="list-group-item">{created_at}</li>
                 </ul>
               </Col>
               <Col>
-                <ul className="list-group list-group-horizontal">
-                  <li className="list-group-item bg-primary text-white">
+                <ul className="list-group list-group-horizontal mt-1">
+                  <li className={`${styles.ListGroup} list-group-item`}>
                     Date Updated
                   </li>
                   <li className="list-group-item">{updated_at}</li>
@@ -107,8 +108,8 @@ const MasterTask = (props) => {
               </Col>
             </Row>
             {description && (
-              <ul className="list-group">
-                <li className="list-group-item bg-primary text-white">
+              <ul className="list-group mt-1">
+                <li className={`${styles.ListGroup} list-group-item`}>
                   Description
                 </li>
                 <li className="list-group-item">{description}</li>
