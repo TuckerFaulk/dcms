@@ -300,16 +300,7 @@ This project was deployed on Heroku using Code Institute's Videos. After creatin
 npx create-react-app . --use-npm
 npm start
 ```
-2. Install the following packages using the command `npm install`:
-```
-react-bootstrap@1.6.3 bootstrap@4.6.0
-react-router-dom@5.3.0
-axios
-react-infinite-scroll-component
-msw --save-dev
-jwt-decode
--g eslint
-```
+2. All packages were already installed in the CI React Template.
 3. Git add, commit, and push changes to gitpod.
 4. Create the project app on Heroku, and link the GitHub repository by navigating to the 'Deploy' tab.
 
