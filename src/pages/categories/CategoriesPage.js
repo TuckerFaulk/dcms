@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Card, Container } from "react-bootstrap";
-
+import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { NavLink } from "react-router-dom";

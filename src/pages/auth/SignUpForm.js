@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import appStyles from "../../App.module.css";
-
-import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
 import btnStyles from "../../styles/Button.module.css";
 import axios from "axios";
 import { useRedirect } from "../../hooks/useRedirect";

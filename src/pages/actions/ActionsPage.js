@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Container, Form } from "react-bootstrap";
-
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
 import { axiosReq } from "../../api/axiosDefaults";
 import { NavLink } from "react-router-dom";
 import Action from "./Action";

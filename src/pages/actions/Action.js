@@ -1,5 +1,7 @@
 import React from "react";
-import { Col, Image, Row } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import { NavLink } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";

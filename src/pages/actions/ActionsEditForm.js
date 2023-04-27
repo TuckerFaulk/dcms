@@ -5,11 +5,12 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
+import Image from "react-bootstrap/Image";
 
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { Alert, Image } from "react-bootstrap";
 import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/ActionsEditForm.module.css";
 import { useRedirect } from "../../hooks/useRedirect";

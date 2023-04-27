@@ -1,5 +1,7 @@
 import React from "react";
-import { Col, Image, Row } from "react-bootstrap";
+import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import { NavLink } from "react-router-dom";
 import styles from "../../styles/UserTask.module.css";

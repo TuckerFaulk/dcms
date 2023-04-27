@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
 import { axiosReq } from "../../api/axiosDefaults";
-import { Container, Form } from "react-bootstrap";
 import UserTask from "./UserTask";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
