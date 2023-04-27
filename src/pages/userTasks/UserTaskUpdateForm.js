@@ -67,7 +67,7 @@ function UserTaskUpdateForm(props) {
       await axiosReq.put(`/user-tasks/${id}/`, formData);
       history.push("/my-tasks");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

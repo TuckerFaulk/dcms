@@ -33,14 +33,14 @@ function ActionsPage() {
           const { data } = await axiosReq.get(`/actions/?status=${status}&search=${query}`);
           setActions(data);
         } catch (err) {
-          console.log(err);
+          // console.log(err);
         }
       } else {
         try {
           const { data } = await axiosReq.get(`/actions/?assigned_to__profile=${currentUser?.pk}&status=${status}&search=${query}`);
           setActions(data);
         } catch (err) {
-          console.log(err);
+          // console.log(err);
         }
       }
     };

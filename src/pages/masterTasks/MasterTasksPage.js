@@ -25,7 +25,7 @@ function MasterTasksPage() {
         const { data } = await axiosReq.get(`/master-tasks/?search=${query}`);
         setMasterTasks(data);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 

@@ -35,17 +35,16 @@ function UserTasksPage() {
           );
           setUserTasks(data);
         } catch (err) {
-          console.log(err);
+          // console.log(err);
         }
       } else {
         try {
           const { data } = await axiosReq.get(
             `/user-tasks/?assigned_to__assigned_to__profile=${currentUser?.pk}&completed_by=User&status=${status}&search=${query}`
           );
-          console.log(data);
           setUserTasks(data);
         } catch (err) {
-          console.log(err);
+          // console.log(err);
         }
       }
     };

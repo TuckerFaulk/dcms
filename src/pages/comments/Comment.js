@@ -35,7 +35,7 @@ const Comment = (props) => {
           results: prevComments.results.filter((comment) => comment.id !== id),
         }));
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       } 
     } else if (page === "action") {
       try {
@@ -45,7 +45,7 @@ const Comment = (props) => {
           results: prevComments.results.filter((comment) => comment.id !== id),
         }));
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       } 
     }
   };

@@ -61,7 +61,7 @@ function ActionsEditForm() {
         setActionData(action);
         setDueDate(action.due_date);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
@@ -89,8 +89,6 @@ function ActionsEditForm() {
     event.preventDefault();
     const formData = new FormData();
 
-    console.log(image);
-
     formData.append("action_title", action_title);
     formData.append("description", description);
     formData.append("assigned_to", assignedToInput.current.value);
@@ -106,7 +104,7 @@ function ActionsEditForm() {
       await axiosReq.put(`/actions/${id}/`, formData);
       history.push(`/my-actions/${id}/`);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

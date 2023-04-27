@@ -44,7 +44,7 @@ function MasterTasksCreateForm() {
         const { data } = await axiosReq.get("/categories/");
         setCategories(data);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
@@ -61,13 +61,10 @@ function MasterTasksCreateForm() {
     formData.append("frequency", frequencyInput.current.value);
 
     try {
-      for (var pair of formData.entries()) {
-    console.log(pair[0]+ ', ' + pair[1]); 
-}
       await axiosReq.post("/master-tasks/", formData);
       history.push("/master-tasks");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

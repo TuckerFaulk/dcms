@@ -22,7 +22,7 @@ function CategoriesPage() {
         const { data } = await axiosReq.get("/categories/");
         setCategories(data);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
@@ -39,7 +39,7 @@ function CategoriesPage() {
     try {
       axiosRes.delete(`/categories/${id}`);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

@@ -40,7 +40,7 @@ const Action = (props) => {
       axiosRes.delete(`/actions/${id}`);
       history.goBack();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

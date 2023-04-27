@@ -18,7 +18,7 @@ export const CurrentProfileProvider = ({ children }) => {
         const { data } = await axiosRes.get(`/profiles/${currentUser?.pk}`);
         setCurrentProfile(data);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     handleMount();

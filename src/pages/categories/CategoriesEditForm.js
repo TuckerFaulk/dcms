@@ -38,7 +38,7 @@ function CategoriesEditForm() {
         const { data } = await axiosReq.get(`/categories/${id}`);
         setCategoryData(data);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
@@ -55,7 +55,7 @@ function CategoriesEditForm() {
       await axiosReq.put(`/categories/${id}/`, formData);
       history.push("/categories");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

@@ -33,7 +33,7 @@ function CommentCreateForm(props) {
         }));
         setContent("");
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     } else if (page === "action") {
       try {
@@ -47,7 +47,7 @@ function CommentCreateForm(props) {
         }));
         setContent("");
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     }
   };

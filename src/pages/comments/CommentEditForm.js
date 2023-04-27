@@ -38,7 +38,7 @@ function CommentEditForm(props) {
         }));
         setShowEditForm(false);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     } else if (page === "action") {
       try {
@@ -59,7 +59,7 @@ function CommentEditForm(props) {
         }));
         setShowEditForm(false);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     }
   };

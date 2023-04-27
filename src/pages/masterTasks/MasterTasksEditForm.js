@@ -50,7 +50,7 @@ function MasterTasksEditForm() {
         setCategories(categories);
         setMasterTaskData(task);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
@@ -70,7 +70,7 @@ function MasterTasksEditForm() {
       await axiosReq.put(`/master-tasks/${id}/`, formData);
       history.push(`/master-tasks/${id}/`);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

@@ -35,7 +35,7 @@ const MasterTask = (props) => {
       axiosRes.delete(`/master-tasks/${id}`);
       history.goBack();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

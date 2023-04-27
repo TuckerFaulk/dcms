@@ -35,7 +35,7 @@ function AssignedToCreateForm(props) {
         const { data } = await axiosReq.get("/profiles/?owner__is_staff=false");
         setProfiles(data);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
@@ -66,7 +66,7 @@ function AssignedToCreateForm(props) {
       }));
       setOpenForm(false);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

@@ -34,7 +34,7 @@ function MasterTaskPage() {
         setTask({ results: [task] });
         setAssignedTo(assignedTo);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
