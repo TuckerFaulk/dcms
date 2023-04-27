@@ -181,7 +181,7 @@ function ActionsEditForm() {
                     ref={categoryInput}
                   >
                     {categories?.map((category) => (
-                      <option value={category.id}>
+                      <option key={category.id} value={category.id}>
                         {category.category_name}
                       </option>
                     ))}

@@ -7,7 +7,7 @@ import { MoreDropdown } from "../../components/MoreDropdown";
 import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
-import styles from "../../styles/Task.module.css";
+import styles from "../../styles/Action.module.css";
 
 const Action = (props) => {
   const {
@@ -16,8 +16,6 @@ const Action = (props) => {
     category_name,
     description,
     assigned_to_username,
-    // created_at,
-    // updated_at,
     due_date,
     is_overdue,
     risk_rating,
@@ -124,8 +122,8 @@ const Action = (props) => {
                   <li className={`${styles.ListGroup} list-group-item`}>
                     Image
                   </li>
-                  <li className="list-group-item">
-                    <Image src={image} rounded />
+                  <li className="list-group-item text-center">
+                    <Image className={`${styles.ActionImage}`} src={image} rounded />
                   </li>
                 </ul>
               )}

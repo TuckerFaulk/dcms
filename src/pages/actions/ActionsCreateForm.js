@@ -51,9 +51,6 @@ function ActionsCreateForm() {
           axiosReq.get(`/profiles/?owner__is_staff=false`),
           axiosReq.get(`/categories/`),
         ]);
-        console.log(profiles);
-        console.log(categories);
-
         setProfiles(profiles);
         setCategories(categories);
       } catch (err) {
@@ -118,7 +115,6 @@ function ActionsCreateForm() {
         <Col className="py-2 p-0 p-md-2">
           <Container className="d-flex flex-column justify-content-center">
             <div className="text-center">
-              <Form>
                 <Form.Group controlId="formBasicTaskName">
                   <Form.Label>Action Title</Form.Label>
                   <Form.Control
@@ -186,7 +182,7 @@ function ActionsCreateForm() {
                     ref={categoryInput}
                   >
                     {categories?.map((category) => (
-                      <option value={category.id}>
+                      <option key={category.id} value={category.id}>
                         {category.category_name}
                       </option>
                     ))}
@@ -277,7 +273,6 @@ function ActionsCreateForm() {
                     {message}
                   </Alert>
                 ))}
-              </Form>
 
               <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">Create</Button>
               <Button className={`${btnStyles.Button}`} onClick={() => history.goBack()}>Cancel</Button>

@@ -78,7 +78,6 @@ function MasterTasksCreateForm() {
         <Col className="py-2 p-0 p-md-2">
           <Container className="d-flex flex-column justify-content-center">
             <div className="text-center">
-              <Form>
                 <Form.Group controlId="formBasicTaskName">
                   <Form.Label>Task Name</Form.Label>
                   <Form.Control
@@ -120,7 +119,7 @@ function MasterTasksCreateForm() {
                     ref={categoryInput}
                   >
                     {categories?.map((category) => (
-                      <option value={category.id}>{category.category_name}</option>
+                      <option key={category.id} value={category.id}>{category.category_name}</option>
                     ))}
                   </Form.Control>
                 </Form.Group>
@@ -152,7 +151,6 @@ function MasterTasksCreateForm() {
                     {message}
                   </Alert>
                 ))}
-              </Form>
 
               <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">Create</Button>
               <Button className={`${btnStyles.Button}`} onClick={() => history.goBack()}>Cancel</Button>

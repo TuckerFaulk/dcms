@@ -19,7 +19,6 @@ function CategoriesPage() {
       try {
         const { data } = await axiosReq.get("/categories/");
         setCategories(data);
-        console.log(data)
       } catch (err) {
         console.log(err);
       }

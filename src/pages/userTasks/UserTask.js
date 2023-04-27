@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Image, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { NavLink } from "react-router-dom";
-import styles from "../../styles/Task.module.css";
+import styles from "../../styles/UserTask.module.css";
 
 const UserTask = (props) => {
   const {
@@ -104,8 +104,8 @@ const UserTask = (props) => {
                   <li className={`${styles.ListGroup} list-group-item`}>
                     Image
                   </li>
-                  <li className="list-group-item">
-                    <Image src={image} rounded />
+                  <li className="list-group-item text-center">
+                    <Image className={`${styles.UserTaskImage}`} src={image} rounded />
                   </li>
                 </ul>
               )}

@@ -30,7 +30,6 @@ function MasterTaskPage() {
         ]);
         setTask({ results: [task] });
         setAssignedTo(assignedTo);
-        console.log(assignedTo);
       } catch (err) {
         console.log(err);
       }

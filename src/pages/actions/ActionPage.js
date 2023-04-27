@@ -57,7 +57,7 @@ function ActionPage() {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col className="mb-3">
         <CommentCreateForm
             profile_id={currentUser?.profile_id}
             profileImage={profile_image}

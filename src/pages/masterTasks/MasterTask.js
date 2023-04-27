@@ -6,7 +6,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
-import styles from "../../styles/Task.module.css";
+import styles from "../../styles/MasterTask.module.css";
 
 const MasterTask = (props) => {
   const {

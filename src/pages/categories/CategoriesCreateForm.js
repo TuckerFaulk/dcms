@@ -51,7 +51,6 @@ function CategoriesCreateForm() {
         <Col className="py-2 p-0 p-md-2">
           <Container className="d-flex flex-column justify-content-center">
             <div className="text-center">
-              <Form>
                 <Form.Group controlId="formBasicTaskName">
                   <Form.Label>Category Name</Form.Label>
                   <Form.Control
@@ -66,7 +65,6 @@ function CategoriesCreateForm() {
                     {message}
                   </Alert>
                 ))}
-              </Form>
 
               <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">Create</Button>
               <Button className={`${btnStyles.Button}`} onClick={() => history.goBack()}>Cancel</Button>
