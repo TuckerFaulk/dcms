@@ -158,13 +158,15 @@ For detailed explanation of all existing features see [Existing Features](#exist
 
 **Wireframes**
 
+<!-- TBC -->
+
 *Index Page*
 
 <!-- ![Index Page Wireframe](static/readme_images/index_wireframe.jpg) -->
 
 **Database Schema**
 
-<!-- After initially setting out all of the information required for the site, I used data normalisation to structure each relational model to help reduce data redundancy and improve data integrity. -->
+Data normalisation to structure each relational model to help reduce data redundancy and improve data integrity was used after initially setting out all of the information required for the site.
 
 ![Database Schema](src/assets/README_images/data_model.png)
 
@@ -172,11 +174,11 @@ For detailed explanation of all existing features see [Existing Features](#exist
 
 **Visual Design**
 
-<!-- I selected 'Raleway' as the font style used throughout the site to keep it simple.
+I selected 'Raleway' as the font style used throughout the site to keep it simple.
 
-The heading background colour of light blue (rgb(108, 171, 221)) was also selected to keep with the minimalist style. I wanted to keep the main background white but then use the colours of the heading background for table headings to ensure that they were the main central focus of the page. Different colours have been used for the buttons on the site to make these easily distinguishable.
+The navbar background colour of light blue (#6CABDD) was also selected to keep with the minimalist style. I wanted to keep the main background white but then use the colours of the heading background for table headings to ensure that they were the main central focus of the page. Different colours have been used for the buttons on the site to make these easily distinguishable.
 
-Icons were added to buttons throughout the site to aid the understanding of the functionality of that button. -->
+Icons were added to buttons throughout the site to aid the understanding of the functionality of that button.
 
 # Languages Used
 
@@ -189,6 +191,8 @@ Icons were added to buttons throughout the site to aid the understanding of the 
 # Features
 
 ## Existing Features
+
+<!-- TBC -->
 
 ### Home Page
 
@@ -219,29 +223,12 @@ Icons were added to buttons throughout the site to aid the understanding of the 
 <!-- ![Favicon](static/readme_images/android-chrome-192x192.png) -->
 
 
+<!-- TBC -->
 
-
-
-## CRUD
-
-CRUD (Create, Read, Update, and Delete) functionality has been at the centre of the design for this website and these features have been included for both of the typical users:
-
-**Site User:**
-
-<!-- - CREATE: A site user can add equipment to their calculator
-- READ: A site user can view equipment details in their calculator and also in the equipment list
-- UPDATE: A site user can edit details of equipment in their calculator
-- DELETE: A site user can delete equipment from their calculator -->
-
-**Site Admin:**
-
-<!-- - CREATE: A site admin can add equipment/categories to the equipment/categories list through the admin site
-- READ: A site admin can view details of equipment in the equipment list through the admin site
-- UPDATE: A site admin can edit equipment/categories in the equipment/categories list through the admin site
-- DELETE: A site admin can delete equipment/categories from the equipment/categories list through the admin site -->
 
 ## Other Features
 
+<!-- TBC -->
 
 ## Future Features
 
@@ -251,7 +238,9 @@ CRUD (Create, Read, Update, and Delete) functionality has been at the centre of 
 
 ## Manual Test of User Stories
 
-
+| Test   |      Expected     |  Passed |
+|-------|:------------------|:--------:|
+|||☑|
 
 ## Test on Alternative Browsers and Screen Size
 
@@ -262,15 +251,7 @@ CRUD (Create, Read, Update, and Delete) functionality has been at the centre of 
 |Firefox   |      ☑           |         ☑         |         ☑         |            ☑             |
 |Edge      |      ☑           |         ☑         |         ☑         |            ☑             |
 
-## Debugging
-
-
-
 ## Validator Testing
-
-- HTML: All html files were input into the checker and the Jinja code was removed to avoid errors. No errors were returned when passing through the official W3C HTML validator. 
-
-<!-- ![HTML W3C Validator](static/readme_images/html-w3c-validator.jpg) -->
 
 - CSS: No errors were found when passing through the official W3C CSS validator.
 
@@ -279,18 +260,6 @@ CRUD (Create, Read, Update, and Delete) functionality has been at the centre of 
 - JSHint: No errors were found when passing through the JSHint validator.
 
 <!-- ![JSHint](static/readme_images/jshint.jpg) -->
-
-- CI Python Linter: No errors were returned when passing through the Code Institute Python Linter.
-
-<details>
-<summary>Havscalcdb - CI Python Linter Screenshots</summary>
-
-*urls.py*
-
-<!-- ![URLs - CI Python Linter](static/readme_images/urls-havscalcdb-ci-linter.jpg) -->
-
-</details>
-<br/>
 
 - Lighthouse (Accessibility Audit): The page achieved a great accessibility rating.
 
@@ -304,69 +273,76 @@ CRUD (Create, Read, Update, and Delete) functionality has been at the centre of 
 
 ## Libraries and Programs Used
 
-<!-- - Github: Store Repository
+- Github: Store Repository
 - Gitpod: IDE
 - Heroku: Site Deployment
 - Cloudinary: Serving static media files
 - ElephantSQL: PostgreSQL database hosting
+- React.js: Front-end application
+- React-Bootstrap: CSS styling library
+- Django/Django REST Framework: Backend database and API
 - Google Chrome, Microsoft Edge, Mozilla Firefox, Safari: Site testing on alternative browsers
 - Chrome Dev Tools: Debugging and CSS testing of the site
 - Microsoft OneNote: Planning notes for the project
 - Microsoft Whiteboard: Developing wireframes
 - Am I Responsive: Screenshots of the final project for the README file
 - Lucid Charts: Planning the site process with a flow diagram
-- Adobe Photoshop: Photo editing
-- Bootstrap: CSS Styling
-- Google Fonts: for the font families
-- Font Awesome: to add icons to the site
+- Google Fonts: For the font families
+- Font Awesome: To add icons to the site
 - Real Favicon Generator: Creating Favicon
-- ReactJS : To build the components that would collectively form the front-end application.
-- React-Bootstrap : The styling library that has aided to the layout of the site, and which was introduced to us during the course of the program.
-- Django : Used to build the backend database that serves as an API for the front-end project. -->
-
-
-## Components
-
-<!-- axiosDefault.js : for ease of communication with the backend API.
-Asset.js : to supply the loading spinner & user avatar throughout the site.
-DropdownMenu.js : to allow users to edit/delete their Articles, Events & Posts.
-CurrentUserContext.js : confirm users logged-in status to determine what functionality is available to that user.
-ProfileDataContext.js : provide un/follow ability to other users across PopProf & ProfPage components.
-ToggleCollapse.js : whilst this component has only been applied to the NavBarMini, it could in theory be applied to additional dropdown menus installed into the site in the future to allow for the automatic collapse of an element upon mouse click.
-useRedirect.js : redirects a user to another page if they are not authorised to be on the page they are trying to access.
-utils.js : supplies functionality to all of the components that utilise the Infinite Scroll. -->
-
-**Installed Packages**
-
-<!-- - Cloudinary (1.30.0)
-- Dj-database-url (0.5.0)
-- Django (3.2.16)
-- Django-allauth (0.51.0)
-- Django-crispy-forms (1.14.0)
-- Gunicorn (20.1.0)
-- Psycopg2 (2.9.5)
-- Coverage (7.0.5) -->
 
 # Deployment
 
 This project was deployed on Heroku using Code Institute's Videos. After creating a GitHub repository, the steps taken to create the Heroku App were:
 
-<!-- TBC -->
+<!-- 1. Install React.js:
+```
+npx create-react-app . --use-npm
+npm start
+```
+2. Install the following packages using the command `npm install`:
+```
+react-bootstrap@1.6.3 bootstrap@4.6.0
+react-router-dom@5.3.0
+axios
+react-infinite-scroll-component
+msw --save-dev
+jwt-decode
+-g eslint
+```
+3. Git add, commit, and push changes to gitpod.
+4. Create the project app on Heroku, and link the GitHub repository by navigating to the 'Deploy' tab.
+
+### Connecting to the API:
+1. Navigated to the Heroku app of the project DRF-API, and under the Settings tab, added the following configvars:
+- Key: CLIENT_ORIGIN | Value: https://react-app-name.herokuapp.com
+- Key: CLIENT_ORIGIN_DEV | Value: https://gitpod-browser-link.ws-eu54.gitpod.io
+2. Check that the trailing slash `\` at the end of both links has been removed, and save the configvar pairs.
+3. Install the Axios package, and create supporting `axiosDefaults.js` as shown in [Moments Walkthrough](https://github.com/Code-Institute-Solutions/moments/blob/cf955d2f2e6f70f61c92d1f9de85558d8e49f3a8/src/api/axiosDefaults.js). -->
+
+<!-- ### Deploy to Heroku:
+1. In the `scripts` section of `package.json` in gitpod, added the following command:
+```
+"heroku-prebuild": "npm install -g serve",
+```
+2. Add Procfile to project root & populate with the following:
+```
+web: serve -s build
+```
+3. Repeat the steps of git add/commit/push.
+4. Deploy the project via the deploy button on Heroku. -->
+
+### Deploy to ElephantSQL:
+<!-- (ElephantSQL)[https://www.elephantsql.com/] using the following [instructions](https://code-institute-students.github.io/deployment-docs/41-pp5-adv-fe/pp5-adv-fe-drf-01-create-a-database) -->
 
 # Credits
 
-I have again enjoyed learning with the Code Institute and completing my fifth assignment. I would like to thank my mentor Martina for her support, the CI Student Support Team and the CI Slack Community. Finally a big thank you to my girlfriend and little sister for their help with testing and the review of this site.
+I have again enjoyed learning with the Code Institute and completing my fifth assignment. I would like to thank my mentor Martina for her support, the CI Student Support Team and the CI Slack Community. Finally a big thank you to my girlfriend for her help with testing and the review of this site.
 
 ## Content
 
 **Resources Used:**
 
 - Code Institutes Videos
-
-**Images:**
-
-<!-- - [Jackhammer](https://www.istockphoto.com/photo/working-on-a-road-construction-gm164526286-23495173) -->
-
-
 
 [Back to Top](#table-of-contents)
