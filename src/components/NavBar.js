@@ -51,9 +51,6 @@ const NavBar = () => {
       <NavLink to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>Sign Out
       </NavLink>
-      <NavLink to={`/profiles/${currentUser?.profile_id}`}>
-        <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
-      </NavLink>
     </>
   );
 

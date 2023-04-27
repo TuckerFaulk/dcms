@@ -10,8 +10,6 @@ const UserTask = (props) => {
     task_name,
     description,
     category,
-    // created_at,
-    // updated_at,
     due_date,
     is_overdue,
     frequency,
@@ -26,12 +24,10 @@ const UserTask = (props) => {
         <Row>
           <Col className="mt-3">
             {TaskPage ? (
-              <Card.Title>
-                {task_name}
-              </Card.Title>
+              <Card.Title>{task_name}</Card.Title>
             ) : (
               <Card.Title>
-                {task_name} - {frequency} - {due_date}
+                { task_name } - { frequency } - { due_date }
               </Card.Title>
             )}
           </Col>

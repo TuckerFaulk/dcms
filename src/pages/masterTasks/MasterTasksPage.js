@@ -57,7 +57,7 @@ function MasterTasksPage() {
           </NavLink>
         </Col>
       </Row>
-      <Row className="mt-2">
+      <Row className="mt-2 mb-3">
         <Col>
         <InfiniteScroll 
           children={

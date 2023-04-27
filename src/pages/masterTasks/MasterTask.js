@@ -74,7 +74,7 @@ const MasterTask = (props) => {
             <Row>
               <Col>
                 <ul className="list-group list-group-horizontal mt-1">
-                  <li c>
+                  <li className={`${styles.ListGroup} list-group-item`}>
                     Category
                   </li>
                   <li className="list-group-item">{category_name}</li>
