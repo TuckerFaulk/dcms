@@ -20,6 +20,7 @@ import MasterTasksEditForm from "./pages/masterTasks/MasterTasksEditForm";
 import CategoriesEditForm from "./pages/categories/CategoriesEditForm";
 import ActionsEditForm from "./pages/actions/ActionsEditForm";
 import Home from "./pages/home/home";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -44,7 +45,7 @@ function App() {
           <Route exact path="/my-actions/:id/edit" render={() => <ActionsEditForm /> } />
           <Route exact path="/my-tasks/" render={() => <UserTasksPage /> } />
           <Route exact path="/my-tasks/:id" render={() => <UserTaskPage /> } />
-          <Route render={() => <p>Page not found!</p>} />
+          <Route render={() => <NotFound />} />
         </Switch>
       </Container>
     </div>
