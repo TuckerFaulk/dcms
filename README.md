@@ -1,4 +1,4 @@
-# HAVS|CALC|DB - Database for Risk Assessing Vibration
+# DCMS - Digital Compliance Management System
 
 <!-- ![Am I Responsive Image](static/readme_images/am_i_responsive.jpg) -->
 

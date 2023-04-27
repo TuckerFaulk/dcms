@@ -40,7 +40,7 @@ function AssignedToCreateForm(props) {
     };
 
     handleMount();
-  }, []); // Dont know whether I need to add anything in here?
+  }, []);
 
   const handleChange = (event) => {
     setAssignedToData({

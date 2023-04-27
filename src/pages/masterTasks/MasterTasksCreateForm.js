@@ -47,7 +47,7 @@ function MasterTasksCreateForm() {
     };
 
     handleMount();
-  }, []); // Dont know whether I need to add anything in here?
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -104,6 +104,11 @@ function MasterTasksCreateForm() {
                     onChange={handleChange}
                   />
                 </Form.Group>
+                {errors?.description?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group>
                   <Form.Label>Category</Form.Label>
@@ -119,6 +124,11 @@ function MasterTasksCreateForm() {
                     ))}
                   </Form.Control>
                 </Form.Group>
+                {errors?.category?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group>
                   <Form.Label>Frequency</Form.Label>
@@ -137,6 +147,11 @@ function MasterTasksCreateForm() {
                     <option value="Annually">Annually</option>
                   </Form.Control>
                 </Form.Group>
+                {errors?.frequency?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
               </Form>
 
               <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">Create</Button>

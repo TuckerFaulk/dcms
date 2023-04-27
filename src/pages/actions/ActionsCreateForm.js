@@ -62,7 +62,7 @@ function ActionsCreateForm() {
     };
 
     handleMount();
-  }, []); // Dont know whether I need to add anything in here?
+  }, []);
 
   const handleChange = (event) => {
     setActionData({
@@ -128,11 +128,11 @@ function ActionsCreateForm() {
                     onChange={handleChange}
                   />
                 </Form.Group>
-                {/* {errors?.task_name?.map((message, idx) => (
+                {errors?.task_name?.map((message, idx) => (
                   <Alert variant="warning" key={idx}>
                     {message}
                   </Alert>
-                ))} */}
+                ))}
 
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                   <Form.Label>Action Description</Form.Label>
@@ -144,6 +144,11 @@ function ActionsCreateForm() {
                     onChange={handleChange}
                   />
                 </Form.Group>
+                {errors?.description?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
 
                 {currentProfile?.is_staff && (
                   <Form.Group>
@@ -165,6 +170,11 @@ function ActionsCreateForm() {
                     </Col>
                   </Form.Group>
                 )}
+                {errors?.assigned_to?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                      {message}
+                    </Alert>
+                  ))}
 
                 <Form.Group>
                   <Form.Label>Category</Form.Label>
@@ -182,6 +192,11 @@ function ActionsCreateForm() {
                     ))}
                   </Form.Control>
                 </Form.Group>
+                {errors?.category?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                      {message}
+                    </Alert>
+                  ))}
 
                 <Form.Group>
                   <Form.Label>Due Date</Form.Label>
@@ -214,6 +229,11 @@ function ActionsCreateForm() {
                     <option value="High">High</option>
                   </Form.Control>
                 </Form.Group>
+                {errors?.risk_rating?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                      {message}
+                    </Alert>
+                  ))}
 
                 <Form.Group className="text-center">
                   {image ? (

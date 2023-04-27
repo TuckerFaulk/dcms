@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import { Card, Image } from "react-bootstrap";
+import { Alert, Card, Image } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
@@ -93,6 +93,11 @@ function UserTaskUpdateForm(props) {
                     </Form.Control>
                   </Col>
                 </Form.Group>
+                {errors?.action_required?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
 
                 {action_required && (
                   <Form.Group controlId="formBasicEmail">
@@ -109,6 +114,11 @@ function UserTaskUpdateForm(props) {
                     </Form.Text>
                   </Form.Group>
                 )}
+                {errors?.action_description?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group className="text-center">
                   {image ? (
@@ -141,11 +151,11 @@ function UserTaskUpdateForm(props) {
                     ref={imageInput}
                   />
                 </Form.Group>
-                {/* {errors?.image?.map((message, idx) => (
+                {errors?.image?.map((message, idx) => (
                   <Alert variant="warning" key={idx}>
                     {message}
                   </Alert>
-                ))} */}
+                ))}
 
                 <Row className="d-flex justify-content-center">
                   <Button

@@ -9,7 +9,7 @@ import Container from "react-bootstrap/Container";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { Image } from "react-bootstrap";
+import { Alert, Image } from "react-bootstrap";
 import btnStyles from "../../styles/Button.module.css";
 
 function ActionsEditForm() {
@@ -62,7 +62,7 @@ function ActionsEditForm() {
     };
 
     handleMount();
-  }, []); // Dont know whether I need to add anything in here?
+  }, []);
 
   const handleChange = (event) => {
     setActionData({
@@ -85,7 +85,7 @@ function ActionsEditForm() {
     event.preventDefault();
     const formData = new FormData();
 
-    console.log(image)
+    console.log(image);
 
     formData.append("action_title", action_title);
     formData.append("description", description);
@@ -125,11 +125,11 @@ function ActionsEditForm() {
                     onChange={handleChange}
                   />
                 </Form.Group>
-                {/* {errors?.task_name?.map((message, idx) => (
+                {errors?.action_title?.map((message, idx) => (
                   <Alert variant="warning" key={idx}>
                     {message}
                   </Alert>
-                ))} */}
+                ))}
 
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                   <Form.Label>Action Description</Form.Label>
@@ -141,6 +141,11 @@ function ActionsEditForm() {
                     onChange={handleChange}
                   />
                 </Form.Group>
+                {errors?.description?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group>
                   <Form.Label>Assign To</Form.Label>
@@ -160,6 +165,11 @@ function ActionsEditForm() {
                     </Form.Control>
                   </Col>
                 </Form.Group>
+                {errors?.assigned_to?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group>
                   <Form.Label>Category</Form.Label>
@@ -177,6 +187,11 @@ function ActionsEditForm() {
                     ))}
                   </Form.Control>
                 </Form.Group>
+                {errors?.category?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group>
                   <Form.Label>Due Date</Form.Label>
@@ -189,6 +204,11 @@ function ActionsEditForm() {
                     />
                   </Col>
                 </Form.Group>
+                {errors?.due_date?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group>
                   <Form.Label>Risk Rating</Form.Label>
@@ -204,22 +224,20 @@ function ActionsEditForm() {
                     <option value="High">High</option>
                   </Form.Control>
                 </Form.Group>
-              </Form>
+                {errors?.risk_rating?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
 
-              <Form.Group className="text-center">
+                <Form.Group className="text-center">
                   {image ? (
                     <>
                       <figure>
-                        <Image
-                          src={image}
-                          rounded
-                        />
+                        <Image src={image} rounded />
                       </figure>
                       <div>
-                        <Form.Label
-                          className="btn"
-                          htmlFor="image-upload"
-                        >
+                        <Form.Label className="btn" htmlFor="image-upload">
                           Change the image
                         </Form.Label>
                       </div>
@@ -243,14 +261,25 @@ function ActionsEditForm() {
                     ref={imageInput}
                   />
                 </Form.Group>
-                {/* {errors?.image?.map((message, idx) => (
+                {errors?.image?.map((message, idx) => (
                   <Alert variant="warning" key={idx}>
                     {message}
                   </Alert>
-                ))} */}
+                ))}
+              </Form>
 
-              <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">Update</Button>
-              <Button className={`${btnStyles.Button}`} onClick={() => history.goBack()}>Cancel</Button>
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                type="submit"
+              >
+                Update
+              </Button>
+              <Button
+                className={`${btnStyles.Button}`}
+                onClick={() => history.goBack()}
+              >
+                Cancel
+              </Button>
             </div>
           </Container>
         </Col>

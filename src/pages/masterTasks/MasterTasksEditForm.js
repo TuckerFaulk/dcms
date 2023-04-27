@@ -47,15 +47,13 @@ function MasterTasksEditForm() {
           ]);
         setCategories(categories);
         setMasterTaskData(task);
-
-        // Need to add is_owner? 4:57 https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+RA101+2021_T3/courseware/70a8c55db0504bbdb5bcc3bfcf580080/29cd81fee7474552942d4f53a23e6df7/?child=last
       } catch (err) {
         console.log(err);
       }
     };
 
     handleMount();
-  }, [id]); // Dont know whether I need to add anything in here?
+  }, [id]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -109,6 +107,11 @@ function MasterTasksEditForm() {
                     onChange={handleChange}
                   />
                 </Form.Group>
+                {errors?.description?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group>
                   <Form.Label>Category</Form.Label>
@@ -124,6 +127,11 @@ function MasterTasksEditForm() {
                     ))}
                   </Form.Control>
                 </Form.Group>
+                {errors?.category?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group>
                   <Form.Label>Frequency</Form.Label>
@@ -142,6 +150,11 @@ function MasterTasksEditForm() {
                     <option value="Annually">Annually</option>
                   </Form.Control>
                 </Form.Group>
+                {errors?.frequency?.map((message, idx) => (
+                  <Alert variant="warning" key={idx}>
+                    {message}
+                  </Alert>
+                ))}
               </Form>
 
               <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">Update</Button>
