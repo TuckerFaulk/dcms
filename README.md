@@ -122,7 +122,7 @@ As seen above, there will only be two different types of user of this site (Site
 
 *Actions: Comments*
 
-- View Action Comments: As a **site user/site admin I can **view action comments** so that **I can read the log of detailed information recorded about an action**.
+- View Action Comments: As a **site user/site admin** I can **view action comments** so that **I can read the log of detailed information recorded about an action**.
 - Add Action Comment: As a **site user/site admin** I can **add a comment to an action** so that **I can log the progress of the completion of an action**.
 - Edit Action Comment: As a **site user/site admin** I can **edit an action comment** so that **I can update an error made in a comment**.
 - Delete Action Comment: As a **site user/site admin** I can **delete an action comment** so that **I can delete a comment which has been incorrectly submitted**.
@@ -192,8 +192,6 @@ Icons were added to buttons throughout the site to aid the understanding of the 
 
 ## Existing Features
 
-<!-- TBC -->
-
 ### Home Page
 
 - The home page provides context of what the site does and how it can provide benefit to the user.
@@ -232,15 +230,62 @@ Icons were added to buttons throughout the site to aid the understanding of the 
 
 ## Future Features
 
-<!-- TBC -->
+- As a **site user** I can **detail profile requirements** so that **tasks are not allocated to me which are not relevant (gas safety inspection is not allocated if there is no gas onsite)**.
+- As a **site user** I can **view my user profile** so that **I can ensure that I have the most up to date information displayed about me**.
+- As a **site admin** I can **view all users profile statistics** so that **I can monitor the performance of a site user**.
+- As a **site admin** I can **allocate a master task to all users** so that **it is easy to allocate all tasks to multiple users**.
+- As a **site user** I can **see my profile stats: number of open tasks and actions** so that **I can easily see how many tasks or actions I have allocated to me to complete**.
 
 # Testing
 
 ## Manual Test of User Stories
 
-| Test   |      Expected     |  Passed |
-|-------|:------------------|:--------:|
-|||☑|
+| User Story Tested |  Passed |
+|-------|:--------:|
+|Navigation: As a **site user** I can **view a navbar from every page** so that **I can navigate easily between pages**.|☑|
+|Routing: As a **site user** I can **navigate through pages quickly** so that **I can view content seamlessly without page refresh**.|☑|
+|Authentication - Sign up: As a **site user** I can ** create a new account** so that **I can access all the features for signed up users**.|☑|
+|Authentication - Sign in: As a **site user** I can **sign in to the app** so that **I can access functionality for logged in users**.|☑|
+|Authentication - Logged in Status: As a **site user** I can **tell if I am logged in or not** so that **I can log in if I need to**.|☑|
+|Authentication - Refreshing access tokens: As a **site user** I can **maintain my logged-in status until I choose to log out** so that **my user experience is not compromised**.|☑|
+|Navigation - Conditional rendering: As a **logged out user** I can **I can see sign in and sign up options** so that **I can sign in/sign up**.|☑|
+|Infinite Scroll: As a **site user** I can **keep scrolling through tasks and actions** so that **I don't have to click on "next page" etc**.|☑|
+|View Categories List: As a **site admin** I can **view the categories list** so that **I can ensure that all appropriate categories are available to be allocated to a task or action**.|☑|
+|Add Categories: As a **site admin** I can **create a category** so that **it can be allocated to a task or action**.|☑|
+|Edit Categories: As a **site admin** I can **edit a category** so that **the correct category can be allocated to a task or action**.|☑|
+|Delete Categories: As a **site admin** I can **delete a category** so that **it is no longer available to be allocated to a task or action**.|☑|
+|View Master Task List: As a **site admin** I can **view the master task list** so that **to ensure all users have been allocated the appropriate tasks**.|☑|
+|View Master Task Details: As a **site admin** I can **view the master task details** so that **to ensure that the correct information has been set on a master task**.|☑|
+|Add Master Task: As a **site admin** I can **add a master task** so that **I am able to allocate a master task to a user**.|☑|
+|Edit Master Task: As a **site admin** I can **edit a master task** so that **I am able to update a master task if any of the requirements change**.|☑|
+|Delete Master Task: As a **site admin** I can **delete a master task** so that **it is no longer available to be allocated to a user**.|☑|
+|Search for Master Tasks	As a **site admin** I can **search for master tasks** so that **so it is easy to find the master task which I am looking for**.|☑|
+|Allocate Master Task to User: As a **site admin** I can **allocate a master task to a user** so that **so a user task can be allocated to them to ensure that an activity is being completed**.|☑|
+|Set Completed By: As a **site admin** I can **set who the task is to be completed by** so that **either the admin or the user is aware that a task requires completing by them**.|☑|
+|Add User Task: As a **site admin** I can **automatically create a user task once a master task has been allocated** so that **I know a user task has been created which requires completion**.|☑|
+|View User Task List: As a **site user/site admin** I can **view the user tasks which are to be completed by me** so that **I am aware what tasks I need to completed**.|☑|
+|View Overdue User Task List: As a **site user/site admin** I can **view the overdue user tasks which are to be completed by me** so that **I can prioritise completing tasks which are overdue**.|☑|
+|Filter User Tasks: As a **site user/site admin** I can **filter user tasks** so that **so it is eay to find the user task which I am looking for**.|☑|
+|Search for User Tasks: As a **site user/site admin** I can **search for user tasks** so that **so it is eay to find the user task which I am looking for**.|☑|
+|View User Task Details: As a **site user/site admin** I can **view a user tasks details** so that **I am aware what tasks I need to completed**.|☑|
+|Update User Task Status: As a **site user/site admin** I can **update a user tasks status** so that **I can record whether a task has been completed or is in progress**.|☑|
+|Add Image to User Task: As a **site user/site admin** I can **add an image to a user task** so that **I can provide additional evidence that a task has been completed or that an issue was identified**.|☑|
+|View Task Comments: As a **site user/site admin** I can **view task comments** so that **I can read the log of detailed information recorded about a task**.|☑|
+|Add Task Comment: As a **site user/site admin** I can **add a comment to a task** so that **I can record whether an issue has been raised or detail information about the completion of a task**.|☑|
+|Edit Task Comment: As a **site user/site admin** I can **edit a task comment** so that **I can update an error made in a comment**.|☑|
+|Delete Task Comment: As a **site user/site admin** I can **delete a task comment** so that **I can delete a comment which has been incorrectly submitted**.|☑|
+|Task Status Update Comment: As a **site user/site admin** I can **automatically add a comment to detail a change in an tasks status** so that **the comments have a log of any changes to the status of the task**.|☑|
+|View Action List: As a **site user/site admin** I can **view the actions which are to be completed by me** so that **I am aware what actions I need to completed**.|☑|
+|View Action Details: As a **site user/site admin** I can **view an actions details** so that **I am aware of the details of the action which I need to completed**.|☑|
+|Add Action: As a **site user/site admin** I can **add an action** so that **I can record any issues identified so they can be addressed at a later date**.|☑|
+|Add Action related to a Task: As a **site user/site admin** I can **raise an action if an issue was raise when completing a task** so that **I can record any issues identified when completing a task so they can be addressed at a later date**.|☑|
+|Edit Action: As a **site user/site admin** I can **edit an action** so that **I am able to update an action if any of the requirements change**.|☑|
+|Delete Action: As a **site user/site admin** I can **delete an action** so that **I can delete an action which has been incorrectly submitted**.|☑|
+|View Action Comments: As a **site user/site admin** I can **view action comments** so that **I can read the log of detailed information recorded about an action**.|☑|
+|Add Action Comment: As a **site user/site admin** I can **add a comment to an action** so that **I can log the progress of the completion of an action**.|☑|
+|Edit Action Comment: As a **site user/site admin** I can **edit an action comment** so that **I can update an error made in a comment**.|☑|
+|Delete Action Comment: As a **site user/site admin** I can **delete an action comment** so that **I can delete a comment which has been incorrectly submitted**.|☑|
+|Action Status Update Comment: As a **site user/site admin** I can **automatically add a comment to detail a change in an actions status** so that **the comments have a log of any changes to the status of the action**.|☑|
 
 ## Test on Alternative Browsers and Screen Size
 
@@ -270,9 +315,10 @@ Icons were added to buttons throughout the site to aid the understanding of the 
 
 ## Unfixed Bugs
 
-- CurrentProfileContext
+<!-- - CurrentProfileContext
 - Warning: validateDOMNesting(...): <ul> cannot appear as a descendant of <p>.
 - Warning: validateDOMNesting(...): <div> cannot appear as a descendant of <p>.
+- Date Warning -->
 
 ## Libraries and Programs Used
 
@@ -337,6 +383,8 @@ I have again enjoyed learning with the Code Institute and completing my fifth as
 
 **Resources Used:**
 
-- Code Institutes Videos
+- Code Institutes Walkthrough Videos
+- React Bootstrap documentation was relied upon for assistance with page layouts and components.
+- W3C Schools and Stack Overflow for general enquiries relating to React.js.
 
 [Back to Top](#table-of-contents)
