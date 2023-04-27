@@ -32,7 +32,7 @@ The live link for the site can be found here - https://project5-dcms-react.herok
 
 # Overview
 
-This site was developed to address a problem which occurred during my previous employment as a Senior Account Manager for a Health and Safety Consultancy. 
+This site was developed to address a problem which occurred during my previous employment as a Senior Account Manager for a Health and Safety Consultancy. I worked with clients with a large estate of sites throughout the UK. The central health and safety team did not know whether any of the compliance checks were being completed unless they attended site and reviewed the paper checklists used to record the completion of tasks or actions. I have created this site as a way of solving this issue.
 
 # UX
 
@@ -42,62 +42,111 @@ This site was created respecting the Five Planes Of Website Design:
 
 **Typical User**
 
-<!-- *Site User*
+*Site User*
 
-A typical Site User would be a line manager responsible for the health and safety of their colleagues who are exposed to vibration as part of their duties. They will be required to assess the vibration risk exposed to their colleagues and will do this by completing a risk assessment. 
+A typical Site User would be a site manager responsible for the health and safety compliance checks. 
 
 *Site Admin*
 
-A typical Site Admin may be a Health and Safety Manager or a Director within a medium to large organisation whose employees are exposed to vibration as part of their duties. This company may have 100s of employees required to complete a vibration risk assessment on their behalf and/or have 100s of type of vibration equipment which their employees may use as part of their daily tasks. -->
+A typical Site Admin may be a Health and Safety Manager wanting to ensure that each of their site managers are completing their statutory compliance checks.
 
-<!-- The objectives of this site are to:
+The objectives of this site are to:
 
-- Make it quicker and easier for the user to assess a vibration task as all of the information is in a central accessible place
-- Improve the users selection of equipment as they are able to decide to use a tool with a lower magnitude now that this information is available to them
-- Reduce mistakes from potentially transferring incorrect information from testing reports or manufacturer's instructions
-- Improve the uptake of employees assessing their vibration tasks given all of the information will be available to them and it easy to use
-- Create a place for the management of company equipment. The database provides a central database of tools so the company is aware of what is being used within the business.  -->
+- Make it quicker and easier for the user to record the completion of safety compliance checks
+- Improve the uptake of site managers completing checks
+- Improve the ease of safety auditing as records of all checks are detailed in a central location
 
 **User Stories** 
 
 As seen above, there will only be two different types of user of this site (Site User and Site Admin). I have broken down my user stories into these two categories:
 
-<!-- *As a Site User:*
+*Navigation & Authentication*
 
-| Epic   |   ID   |      User Story     |  Story Points |
-|--------|:------:|:--------------------|:-------------:|
-|Calculator|1A|**View Calculator**: I can View the Calculator so that I can start to assess the vibration exposure of a new task.|4|
-||1B|**Add Equipment to Calculator**: I can Add Equipment to a new Project so that I can include the equipment being used during a task to then assess the vibration exposure.|2|
-||1C|**View Calculator Equipment Details**: I can View Calculator Equipment Details so that I can view the partial exposure limits of the item.|3|
-||1D|**Edit Equipment Details in Calculator**: I can Edit Equipment Details in an Existing Project so that I can update equipment details where the duration of use has changed.|2|
-||1E|**Delete Equipment in Calculator**: I can Delete Equipment in an Existing Project so that I can remove equipment which my no longer be used in a task.|2|
-||1F|**Reset Calculator**: I can Reset Calculator so that I can assess a new task.|1|
-||1G|**Calculate Exposure Details**: I can Calculate Exposure Details so that I can assess the overall exposure to vibration of a task.|3|
-|Equipment (Site User)|2A|**View Equipment List**: I can View the Equipment List so that I can ensure the equipment needed for their calculation us available.|4|
-||2B|**View Equipment Details**: I can View Equipment Details so that I can view the exposure limits of various items and decide which equipment is the safest to use.|3|
-|Supplementary Site Features|3A|**Account Registration**: I can Register an Account so that I can access the system to assess a task with the calculator.|4|
-||3B|**Equipment Pagination**: I can View a Paginated List of Equipment so that I can easily find equipment and view it's details.|1|
+- Navigation: As a **site user** I can **view a navbar from every page** so that **I can navigate easily between pages**.
+- Routing: As a **site user** I can **navigate through pages quickly** so that **I can view content seamlessly without page refresh**.
+- Authentication - Sign up: As a **site user** I can ** create a new account** so that **I can access all the features for signed up users**.
+- Authentication - Sign in: As a **site user** I can **sign in to the app** so that **I can access functionality for logged in users**.
+- Authentication - Logged in Status: As a **site user** I can **tell if I am logged in or not** so that **I can log in if I need to**.
+- Authentication - Refreshing access tokens: As a **site user** I can **maintain my logged-in status until I choose to log out** so that **my user experience is not compromised**.
+- Navigation - Conditional rendering: As a **logged out user** I can **I can see sign in and sign up options** so that **I can sign in/sign up**.
+- Infinite Scroll: As a **site user** I can **keep scrolling through tasks and actions** so that **I don't have to click on "next page" etc**.
 
-*As a Site Admin:*
+*Categories*
 
-| Epic   |   ID   |      User Story     |  Story Points |
-|--------|:------:|:--------------------|:-------------:|
-|Equipment (Site Admin)|4A|**Add equipment**: I can Add Equipment so that It is available for a user to included it within a calculator.|3|
-||4B|**Edit Equipment Details**: I can Edit Equipment Details so that The most up to date information is available to the user.|1|
-||4C|**Delete Equipment**: I can Delete Equipment so that It is no longer available to be used in a calculator.|1|
-||4D|**Add Categories**: I can Add a Category so that It is available to be allocated to equipment.|3|
-||4E|**Edit Categories**: I can Edit a Category so that The correct category can be allocated to equipment.|1|
-||4F|**Delete Categories**: I can Delete a Category so that It is no longer available to be allocated to equipment.|1| -->
+- View Categories List: As a **site admin** I can **view the categories list** so that **I can ensure that all appropriate categories are available to be allocated to a task or action**.
+- Add Categories: As a **site admin** I can **create a category** so that **it can be allocated to a task or action**.
+- Edit Categories: As a **site admin** I can **edit a category** so that **the correct category can be allocated to a task or action**.
+- Delete Categories: As a **site admin** I can **delete a category** so that **it is no longer available to be allocated to a task or action**.
+
+*Master Tasks*
+
+- View Master Task List: As a **site admin** I can **view the master task list** so that **to ensure all users have been allocated the appropriate tasks**.
+- View Master Task Details: As a **site admin** I can **view the master task details** so that **to ensure that the correct information has been set on a master task**.
+- Add Master Task: As a **site admin** I can **add a master task** so that **I am able to allocate a master task to a user**.
+- Edit Master Task: As a **site admin** I can **edit a master task** so that **I am able to update a master task if any of the requirements change**.
+- Delete Master Task: As a **site admin** I can **delete a master task** so that **it is no longer available to be allocated to a user**.
+- Search for Master Tasks	As a **site admin** I can **search for master tasks** so that **so it is easy to find the master task which I am looking for**.
+
+*Assign Tasks*
+
+- Allocate Master Task to User: As a **site admin** I can **allocate a master task to a user** so that **so a user task can be allocated to them to ensure that an activity is being completed**.
+- Set Completed By: As a **site admin** I can **set who the task is to be completed by** so that **either the admin or the user is aware that a task requires completing by them**.
+
+*User Tasks*
+
+- Add User Task: As a **site admin** I can **automatically create a user task once a master task has been allocated** so that **I know a user task has been created which requires completion**.
+- View User Task List: As a **site user/site admin** I can **view the user tasks which are to be completed by me** so that **I am aware what tasks I need to completed**.
+- View Overdue User Task List: As a **site user/site admin** I can **view the overdue user tasks which are to be completed by me** so that **I can prioritise completing tasks which are overdue**.
+- Filter User Tasks: As a **site user/site admin** I can **filter user tasks** so that **so it is eay to find the user task which I am looking for**.
+- Search for User Tasks: As a **site user/site admin** I can **search for user tasks** so that **so it is eay to find the user task which I am looking for**.
+- View User Task Details: As a **site user/site admin** I can **view a user tasks details** so that **I am aware what tasks I need to completed**.
+- Update User Task Status: As a **site user/site admin** I can **update a user tasks status** so that **I can record whether a task has been completed or is in progress**.
+- Add Image to User Task: As a **site user/site admin** I can **add an image to a user task** so that **I can provide additional evidence that a task has been completed or that an issue was identified**.
+
+*User Tasks: Comments*
+
+- View Task Comments: As a **site user/site admin** I can **view task comments** so that **I can read the log of detailed information recorded about a task**.
+- Add Task Comment: As a **site user/site admin** I can **add a comment to a task** so that **I can record whether an issue has been raised or detail information about the completion of a task**.
+- Edit Task Comment: As a **site user/site admin** I can **edit a task comment** so that **I can update an error made in a comment**.
+- Delete Task Comment: As a **site user/site admin** I can **delete a task comment** so that **I can delete a comment which has been incorrectly submitted**.
+- Task Status Update Comment: As a **site user/site admin** I can **automatically add a comment to detail a change in an tasks status** so that **the comments have a log of any changes to the status of the task**.
+
+*Actions*
+
+- View Action List: As a **site user/site admin** I can **view the actions which are to be completed by me** so that **I am aware what actions I need to completed**.
+- View Action Details: As a **site user/site admin** I can **view an actions details** so that **I am aware of the details of the action which I need to completed**.
+- Add Action: As a **site user/site admin** I can **add an action** so that **I can record any issues identified so they can be addressed at a later date**.
+- Add Action related to a Task: As a **site user/site admin** I can **raise an action if an issue was raise when completing a task** so that **I can record any issues identified when completing a task so they can be addressed at a later date**.
+- Edit Action: As a **site user/site admin** I can **edit an action** so that **I am able to update an action if any of the requirements change**.
+- Delete Action: As a **site user/site admin** I can **delete an action** so that **I can delete an action which has been incorrectly submitted**.
+
+*Actions: Comments*
+
+- View Action Comments: As a **site user/site admin I can **view action comments** so that **I can read the log of detailed information recorded about an action**.
+- Add Action Comment: As a **site user/site admin** I can **add a comment to an action** so that **I can log the progress of the completion of an action**.
+- Edit Action Comment: As a **site user/site admin** I can **edit an action comment** so that **I can update an error made in a comment**.
+- Delete Action Comment: As a **site user/site admin** I can **delete an action comment** so that **I can delete a comment which has been incorrectly submitted**.
+- Action Status Update Comment: As a **site user/site admin** I can **automatically add a comment to detail a change in an actions status** so that **the comments have a log of any changes to the status of the action**.
+
+The user stories where then managed in a Kanban board which was created in [GitHub Projects](https://github.com/users/TuckerFaulk/projects/5/views/1?visibleFields=%5B%22Title%22%2C%22Assignees%22%2C%22Status%22%2C%22Labels%22%2C%22Milestone%22%5D). User stories were then prioritized with the MoSCoW approach and labels where used to manage this. The kanban board was split into five columns to manage the various stages of development:
+
+1. To do: This item hasn't been started
+2. In Progress - DRF API: This item is actively being worked on in the DRF API
+3. To do - React: This item has tasks related to the React App which have not been started
+4. In Progress - React: This item is actively being worked on in the React App
+5. Done: All tasks related to the DRF API and the React App have been completed
 
 ## Scope
 
-<!-- An MVP (Minimum Viable Product) approach was taken to the development of this site. The main features deemed as basic requirements for this site where:
+An MVP (Minimum Viable Product) approach was taken to the development of this site.
+
+The main features deemed as basic requirements for this site were:
 
 - Account Registration
 - CRUD Functionality (Both Site User and Site Admin)
 - Device Responsiveness
 
-For detailed explanation of all existing features see [Existing Features](#existing-features). While [Future Features](#future-features) where still within the possible scope of this project, they were deemed unnecessary at this point in time. -->
+For detailed explanation of all existing features see [Existing Features](#existing-features). While [Future Features](#future-features) were still within the possible scope of this project, they were deemed unnecessary at this point in time.
 
 ## Structure
 
@@ -128,14 +177,6 @@ For detailed explanation of all existing features see [Existing Features](#exist
 The heading background colour of light blue (rgb(108, 171, 221)) was also selected to keep with the minimalist style. I wanted to keep the main background white but then use the colours of the heading background for table headings to ensure that they were the main central focus of the page. Different colours have been used for the buttons on the site to make these easily distinguishable.
 
 Icons were added to buttons throughout the site to aid the understanding of the functionality of that button. -->
-
-# Agile Methodology
-
-An Agile approach was taken for the management of this project. 
-
-<!-- - User stories were written for each of the sites features. These included details of both acceptance criteria and the a list of tasks required to complete them.
-- The user stories where then managed in a Kanban board which was created in [GitHub Projects](https://github.com/users/TuckerFaulk/projects/4/views/1?visibleFields=%5B%22Title%22%2C%22Assignees%22%2C%22Status%22%2C%22Labels%22%2C%22Milestone%22%5D). The kanban board was split into three columns: To do, In Progress, and Done.
-- User stories were then prioritized with the MoSCoW approach and labels where used to manage this. -->
 
 # Languages Used
 
@@ -204,7 +245,7 @@ CRUD (Create, Read, Update, and Delete) functionality has been at the centre of 
 
 ## Future Features
 
-<!-- - **Add Projects:** As a Site User I can Add a Project so that instead of resetting my calculator for a new task, I can create a new project and add to a new calculator (saving ones previously created to go back to). -->
+<!-- TBC -->
 
 # Testing
 
@@ -242,35 +283,6 @@ CRUD (Create, Read, Update, and Delete) functionality has been at the centre of 
 - CI Python Linter: No errors were returned when passing through the Code Institute Python Linter.
 
 <details>
-<summary>Calculator - CI Python Linter Screenshots</summary>
-
-<!-- *admin.py*
-
-![Admin - CI Python Linter](static/readme_images/admin-ci-linter.jpg)
-
-*apps.py*
-
-![Apps - CI Python Linter](static/readme_images/apps-ci-linter.jpg)
-
-*forms.py*
-
-![Forms - CI Python Linter](static/readme_images/forms-ci-linter.jpg)
-
-*models.py*
-
-![Models - CI Python Linter](static/readme_images/models-ci-linter.jpg)
-
-*urls.py*
-
-![URLs - CI Python Linter](static/readme_images/urls-ci-linter.jpg)
-
-*views.py*
-
-![Views - CI Python Linter](static/readme_images/views-ci-linter.jpg) -->
-
-</details>
-<br/>
-<details>
 <summary>Havscalcdb - CI Python Linter Screenshots</summary>
 
 *urls.py*
@@ -280,7 +292,7 @@ CRUD (Create, Read, Update, and Delete) functionality has been at the centre of 
 </details>
 <br/>
 
-- Lighthouse (Accessibility Audit): The page achieved a great accessibility performance.
+- Lighthouse (Accessibility Audit): The page achieved a great accessibility rating.
 
 <!-- ![Lighthouse Accessibility Audit](static/readme_images/lighthouse.jpg) -->
 
