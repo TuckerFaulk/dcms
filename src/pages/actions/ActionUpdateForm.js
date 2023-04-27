@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import btnStyles from "../../styles/Button.module.css";
 import { Card } from "react-bootstrap";
 
 import { axiosReq } from "../../api/axiosDefaults";
@@ -57,7 +58,7 @@ function ActionUpdateForm(props) {
           <Row>
             <Col>
               <Form onSubmit={handleSubmit}>
-                <Button variant="primary" type="submit">
+                <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
                   Close Action
                 </Button>
               </Form>

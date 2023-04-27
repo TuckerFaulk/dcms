@@ -18,8 +18,6 @@ function CommentCreateForm(props) {
     setContent(event.target.value);
   };
 
-//   handle submit if UserTaskComment or ActionComment
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 

@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import btnStyles from "../../styles/Button.module.css";
 
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
@@ -258,8 +259,8 @@ function ActionsCreateForm() {
                 ))}
               </Form>
 
-              <Button type="submit">Create</Button>
-              <Button onClick={() => history.goBack()}>Cancel</Button>
+              <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">Create</Button>
+              <Button className={`${btnStyles.Button}`} onClick={() => history.goBack()}>Cancel</Button>
             </div>
           </Container>
         </Col>

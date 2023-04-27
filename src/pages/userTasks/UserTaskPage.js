@@ -11,6 +11,7 @@ import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Comment from "../comments/Comment";
 import { useHistory } from "react-router-dom";
+import btnStyles from "../../styles/Button.module.css";
 
 function UserTaskPage() {
   const { id } = useParams();
@@ -42,7 +43,7 @@ function UserTaskPage() {
   return (
     <Container>
       <Row className="d-flex justify-content-end pb-3">
-        <Button onClick={() => history.goBack()}>Back</Button>
+        <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} onClick={() => history.goBack()}>Back</Button>
       </Row>
     
       <Row>

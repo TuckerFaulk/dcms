@@ -9,6 +9,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import btnStyles from "../../styles/Button.module.css";
 
 function MasterTasksEditForm() {
   const [errors, setErrors] = useState({});
@@ -143,8 +144,8 @@ function MasterTasksEditForm() {
                 </Form.Group>
               </Form>
 
-              <Button type="submit">Update</Button>
-              <Button onClick={() => history.goBack()}>Cancel</Button>
+              <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">Update</Button>
+              <Button className={`${btnStyles.Button}`} onClick={() => history.goBack()}>Cancel</Button>
             </div>
           </Container>
         </Col>

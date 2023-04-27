@@ -8,6 +8,7 @@ import Container from "react-bootstrap/Container";
 import { Card, Image } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
+import btnStyles from "../../styles/Button.module.css";
 
 function UserTaskUpdateForm(props) {
   const { id, status } = props;
@@ -146,7 +147,7 @@ function UserTaskUpdateForm(props) {
                   </Alert>
                 ))} */}
 
-                <Button variant="primary" type="submit">
+                <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
                   Close Task
                 </Button>
               </Form>

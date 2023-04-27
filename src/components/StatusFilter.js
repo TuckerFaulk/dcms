@@ -1,6 +1,7 @@
 import React from "react";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import btnStyles from "../styles/Button.module.css";
 
 const StatusFilter = (props) => {
   const { status, setStatus } = props;
@@ -9,22 +10,22 @@ const StatusFilter = (props) => {
     <Row className="d-flex justify-content-center">
       {status === "Open" && (
         <>
-          <Button onClick={() => setStatus("Open")} className="btn btn-primary">
+          <Button onClick={() => setStatus("Open")} className={`${btnStyles.Button} ${btnStyles.Blue}`}>
             Open
           </Button>
-          <Button onClick={() => setStatus("Closed")} className="btn btn-light">
+          <Button onClick={() => setStatus("Closed")} className={`${btnStyles.Button}`}>
             Closed
           </Button>
         </>
       )}
       {status === "Closed" && (
         <>
-          <Button onClick={() => setStatus("Open")} className="btn btn-light">
+          <Button onClick={() => setStatus("Open")} className={`${btnStyles.Button}`}>
             Open
           </Button>
           <Button
             onClick={() => setStatus("Closed")}
-            className="btn btn-primary"
+            className={`${btnStyles.Button} ${btnStyles.Blue}`}
           >
             Closed
           </Button>

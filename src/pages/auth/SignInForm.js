@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import btnStyles from "../../styles/Button.module.css";
 
 import { Link, useHistory } from "react-router-dom";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
@@ -82,7 +83,7 @@ function SignInForm() {
               </Alert>
             ))}
 
-            <Button type="submit">Sign in</Button>
+            <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">Sign in</Button>
             {errors.non_field_errors?.map((message, idx) => (
               <Alert variant="warning" key={idx} className="mt-3">
                 {message}

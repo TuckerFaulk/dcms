@@ -8,6 +8,7 @@ import Container from "react-bootstrap/Container";
 import { Alert, Card } from "react-bootstrap";
 
 import styles from "../../styles/AssignedToCreateForm.module.css";
+import btnStyles from "../../styles/Button.module.css";
 
 import { axiosReq } from "../../api/axiosDefaults";
 
@@ -166,10 +167,10 @@ function AssignedToCreateForm(props) {
                     className="d-flex align-items-center justify-content-end"
                     sm={1}
                   >
-                    <Button variant="primary" type="submit">
+                    <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
                       Create
                     </Button>
-                    <Button onClick={() => setOpenForm(false)} className="ml-1" variant="secondary" type="submit">
+                    <Button onClick={() => setOpenForm(false)} className={`${btnStyles.Button} ml-1`} type="submit">
                       Cancel
                     </Button>
                   </Col>

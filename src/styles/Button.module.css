@@ -1,0 +1,30 @@
+.Button {
+    font-size: 1rem;
+    align-self: center;
+    border-radius: 100px;
+    border-color: transparent;
+    padding: 5px 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+    min-width: 75px;
+    background-color: lightgray;
+    color: black;
+  }
+  
+  .Button:hover {
+    opacity: 0.8;
+    border-color: transparent;
+    cursor: pointer;
+    background-color: darkgray;
+    color: black;
+  }
+  
+  .Blue {
+    background-color: #6CABDD;
+    color: #ffffff;
+  }
+  
+  .Blue:hover {
+    background-color: #1C2C5B;
+    color: #ffffff;
+  }

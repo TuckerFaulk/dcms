@@ -12,6 +12,7 @@ import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import { useHistory } from "react-router-dom";
+import btnStyles from "../../styles/Button.module.css";
 
 function MasterTaskPage() {
   const { id } = useParams();
@@ -41,7 +42,7 @@ function MasterTaskPage() {
   return (
     <Container>
       <Row className="d-flex justify-content-end pb-3">
-        <Button onClick={() => history.goBack()}>Back</Button>
+        <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} onClick={() => history.goBack()}>Back</Button>
       </Row>
 
       <Row>

@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import appStyles from "../../App.module.css";
 
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
+import btnStyles from "../../styles/Button.module.css";
 import axios from "axios";
 
 // Source: CI's Moments Video's
@@ -86,7 +87,7 @@ const SignUpForm = () => {
                 <Alert variant="warning" key={idx}>{message}</Alert>
             )}
 
-            <Button variant="primary" type="submit">
+            <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
               Sign Up
             </Button>
             {errors.non_field_errors?.map((message, idx) => 

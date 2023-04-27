@@ -8,6 +8,7 @@ import Container from "react-bootstrap/Container";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { Alert } from "react-bootstrap";
+import btnStyles from "../../styles/Button.module.css";
 
 function CategoriesCreateForm() {
   const [errors, setErrors] = useState({});
@@ -67,8 +68,8 @@ function CategoriesCreateForm() {
                 ))}
               </Form>
 
-              <Button type="submit">Create</Button>
-              <Button onClick={() => history.goBack()}>Cancel</Button>
+              <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">Create</Button>
+              <Button className={`${btnStyles.Button}`} onClick={() => history.goBack()}>Cancel</Button>
             </div>
           </Container>
         </Col>

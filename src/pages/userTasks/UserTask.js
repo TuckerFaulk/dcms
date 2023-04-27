@@ -2,7 +2,6 @@ import React from "react";
 import { Col, Image, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { NavLink } from "react-router-dom";
-// import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const UserTask = (props) => {
   const {
@@ -10,7 +9,6 @@ const UserTask = (props) => {
     task_name,
     description,
     category,
-    // assigned_to,
     // created_at,
     // updated_at,
     due_date,
