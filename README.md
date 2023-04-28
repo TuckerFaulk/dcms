@@ -161,23 +161,23 @@ For detailed explanation of all existing features see [Existing Features](#exist
 
 *Master Tasks, My Tasks and My Actions List*
 
-<!-- ![Index Page Wireframe](src/assets/README_images) -->
+![Lists Wireframe](src/assets/README_images/lists-wireframe.png)
 
-*Master Task Detail (including assigned to add and list)*
+*Master Task Detail (including assigned to list)*
 
-<!-- ![Index Page Wireframe](src/assets/README_images) -->
+![Master Task Detail Wireframe](src/assets/README_images/master-task-detail-wireframe.png)
 
 *Categories List*
 
-<!-- ![Index Page Wireframe](src/assets/README_images) -->
+![Categories List Wireframe](src/assets/README_images/category-list-wireframe.png)
 
 *My Task Detail (including update form and comments)*
 
-<!-- ![Index Page Wireframe](src/assets/README_images) -->
+![My Task Detail Wireframe](src/assets/README_images/my-task-detail-wireframe.png)
 
 *My Action Detail (including update form and comments)*
 
-<!-- ![Index Page Wireframe](src/assets/README_images) -->
+![My Action Detail Wireframe](src/assets/README_images/action-detail-wireframe.png)
 
 **Database Schema**
 
