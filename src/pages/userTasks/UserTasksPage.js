@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -10,12 +9,14 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
 import StatusFilter from "../../components/StatusFilter";
 import Asset from "../../components/Asset";
-
 import styles from "../../styles/SearchBar.module.css";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+ * Display all user tasks.
+ */
 function UserTasksPage() {
   useRedirect('loggedOut');
   const [userTasks, setUserTasks] = useState({ results: [] });
@@ -26,6 +27,10 @@ function UserTasksPage() {
 
   const currentProfile = useCurrentProfile();
 
+  /**
+   * Fetch user tasks from API.
+   * Return search results.
+   */
   useEffect(() => {
     const handleMount = async () => {
       if (currentProfile?.is_staff) {

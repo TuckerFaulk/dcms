@@ -10,12 +10,18 @@ import { MoreDropdown } from "../../components/MoreDropdown";
 import { useHistory } from "react-router-dom";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+ * Display all Categories.
+ */
 function CategoriesPage() {
   useRedirect("loggedOut");
   const [categories, setCategories] = useState();
 
   const history = useHistory();
 
+  /**
+   * Fetch Categories from API.
+   */
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -27,12 +33,18 @@ function CategoriesPage() {
     };
 
     handleMount();
-  }, []); // BUG: Add params so useEffects refreshes when category deleted
+  }, []); 
 
+  /**
+   * Route user to Edit page.
+   */
   const handleEdit = (id) => {
     history.push(`/categories/${id}/edit`);
   };
 
+  /**
+   * Delete selected action from API
+   */
   const handleDelete = async (id) => {
     try {
       axiosRes.delete(`/categories/${id}`);

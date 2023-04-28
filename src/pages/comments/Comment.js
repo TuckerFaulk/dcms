@@ -8,6 +8,10 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
 import CommentEditForm from "./CommentEditForm";
 
+/**
+ * Comment display.
+ * Source: CI walkthrough Videos.
+ */
 const Comment = (props) => {
   const {
     profile_id,
@@ -25,8 +29,11 @@ const Comment = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
 
+  /**
+   * Deletes task comments and action comments
+   * from the relevent API.
+   */
   const handleDelete = async () => {
-
     if (page === "task") {
       try {
         await axiosRes.delete(`/task-comments/${id}/`);

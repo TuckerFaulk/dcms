@@ -11,12 +11,19 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+ * Render ActionUpdateForm.
+ * Supply user with input fields to close an action.
+ */
 function ActionUpdateForm(props) {
   useRedirect("loggedOut");
   const { id, status, action_title, assigned_to, category, setAction } = props;
 
   const history = useHistory();
 
+  /**
+   * Push data to API.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();

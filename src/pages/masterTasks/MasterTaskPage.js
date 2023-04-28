@@ -16,6 +16,9 @@ import { useHistory } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+ * Display single master task details
+ */
 function MasterTaskPage() {
   useRedirect("loggedOut");
   const { id } = useParams();
@@ -24,6 +27,10 @@ function MasterTaskPage() {
 
   const history = useHistory();
 
+  /**
+   * Retrieve singular master task data.
+   * Retrieve assigned to data associated to master task.
+   */
   useEffect(() => {
     const handleMount = async () => {
       try {

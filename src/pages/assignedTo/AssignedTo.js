@@ -6,6 +6,9 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { axiosRes } from "../../api/axiosDefaults";
 
+/**
+ * Display single assigned to content.
+ */
 const AssignedTo = (props) => {
   const {
     id,
@@ -19,6 +22,9 @@ const AssignedTo = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
 
+  /**
+   * Delete assigned to from API
+   */
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/assigned-to/${id}/`);

@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -8,19 +7,22 @@ import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
 import btnStyles from "../../styles/Button.module.css";
-
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
 import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
 import styles from "../../styles/ActionsCreateForm.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+ * Render ActionsCreateForm.
+ * Supply user with input fields to create an action.
+ */
 function ActionsCreateForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
   const [profiles, setProfiles] = useState();
   const [categories, setCategories] = useState();
-  const [dueDate, setDueDate] = useState(new Date()); // BUG: Raises an incorrect error message
+  const [dueDate, setDueDate] = useState(new Date());
   const [actionData, setActionData] = useState({
     action_title: "",
     category: "",
@@ -47,6 +49,10 @@ function ActionsCreateForm() {
   const history = useHistory();
   const currentProfile = useCurrentProfile();
 
+  /**
+   * Retrieve profiles and categories data
+   * to display in form.
+   */
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -64,6 +70,9 @@ function ActionsCreateForm() {
     handleMount();
   }, []);
 
+  /**
+   * Populate ActionData strings.
+   */
   const handleChange = (event) => {
     setActionData({
       ...actionData,
@@ -71,6 +80,10 @@ function ActionsCreateForm() {
     });
   };
 
+  /**
+   * Change uploaded image.
+   * clear previously uploaded image.
+   */
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
@@ -81,6 +94,9 @@ function ActionsCreateForm() {
     }
   };
 
+  /**
+   * Push data to API.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();

@@ -14,6 +14,11 @@ import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
 import { setTokenTimestamp } from "../../utils/utils";
 
+
+/**
+ * Render the SignIn form.
+ * Source: CI's Moments Video's.
+ */
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
   useRedirect('loggedIn')
@@ -28,9 +33,13 @@ function SignInForm() {
 
   const history = useHistory();
 
+  /**
+   * Push data to the API.
+   * Reroute user to the login page.
+   * Display error message for invalid data.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
@@ -41,6 +50,9 @@ function SignInForm() {
     }
   };
 
+  /**
+   * Convert inputed data into Key+Value pairs
+   */
   const handleChange = (event) => {
     setSignInData({
       ...signInData,

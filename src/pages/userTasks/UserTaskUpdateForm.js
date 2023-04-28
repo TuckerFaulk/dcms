@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -14,6 +13,11 @@ import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/UserTaskUpdateForm.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+ * Render UserTaskUpdateForm.
+ * Supply user with input fields to close a User Task
+ * and raise an action.
+ */
 function UserTaskUpdateForm(props) {
   useRedirect('loggedOut');
   const { id, status } = props;
@@ -34,6 +38,9 @@ function UserTaskUpdateForm(props) {
 
   const { action_required, action_description, image } = userTaskData;
 
+  /**
+   * Populate UserTaskData strings.
+   */
   const handleChange = (event) => {
     setUserTaskData({
       ...userTaskData,
@@ -41,6 +48,10 @@ function UserTaskUpdateForm(props) {
     });
   };
 
+  /**
+   * Change uploaded image.
+   * clear previously uploaded image.
+   */
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
@@ -51,6 +62,9 @@ function UserTaskUpdateForm(props) {
     }
   };
 
+  /**
+   * Push data to API.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();

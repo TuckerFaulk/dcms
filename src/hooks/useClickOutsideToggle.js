@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
+/**
+ * Collapse toggle (burger menu) on mouseClick.
+ * Source: CI Walkthrough Videos
+ */
 const useClickOutsideToggle = () => {
   const [expanded, setExpended] = useState(false);
   const ref = useRef(null);

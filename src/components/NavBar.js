@@ -12,6 +12,9 @@ import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import { useCurrentProfile } from "../contexts/CurrentProfileContext";
 import { removeTokenTimestamp } from "../utils/utils";
 
+/**
+ * Navigation bar.
+ */
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
@@ -20,6 +23,9 @@ const NavBar = () => {
 
   const { expanded, setExpended, ref } = useClickOutsideToggle();
 
+  /**
+   * Log user out from API.
+   */
   const handleSignOut = async () => {
     try {
       await axios.post("dj-rest-auth/logout/");
@@ -78,7 +84,10 @@ const NavBar = () => {
     >
       <Container>
         <NavLink to="/">
-          <Navbar.Brand><i id={styles.LogoIcon} className="fa-regular fa-square-check"></i>DCMS</Navbar.Brand>
+          <Navbar.Brand>
+            <i id={styles.LogoIcon} className="fa-regular fa-square-check"></i>
+            DCMS
+          </Navbar.Brand>
         </NavLink>
         <Navbar.Toggle
           onClick={() => setExpended(!expanded)}

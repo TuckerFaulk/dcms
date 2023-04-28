@@ -11,6 +11,10 @@ import { useHistory } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+ * Render CategoriesCreateForm.
+ * Supply user with input fields to create a category.
+ */
 function CategoriesCreateForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
@@ -23,6 +27,9 @@ function CategoriesCreateForm() {
 
   const { category_name } = categoryData;
 
+  /**
+   * Populate CategoryData strings.
+   */
   const handleChange = (event) => {
     setCategoryData({
       ...categoryData,
@@ -30,6 +37,9 @@ function CategoriesCreateForm() {
     });
   };
 
+  /**
+   * Push data to API.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();

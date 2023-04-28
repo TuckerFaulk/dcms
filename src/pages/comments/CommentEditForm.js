@@ -1,21 +1,30 @@
 import React, { useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import { axiosRes } from "../../api/axiosDefaults";
-
 import styles from "../../styles/CommentCreateEditForm.module.css";
 
-// Source: CI Walkthrough Videos
-
+/**
+ * Render CommentEditForm.
+ * Supply user with input fields to edit an comment.
+ * Source: CI Walkthrough Videos
+ */
 function CommentEditForm(props) {
   const { id, content, setShowEditForm, setComments, page } = props;
 
   const [formContent, setFormContent] = useState(content);
 
+  /**
+   * Populate FormContent strings.
+   */
   const handleChange = (event) => {
     setFormContent(event.target.value);
   };
 
+  /**
+   * Push data to API dependant whether
+   * a task comment or action comment
+   * has been edited.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
 

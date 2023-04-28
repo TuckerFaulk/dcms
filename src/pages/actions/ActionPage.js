@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
@@ -15,6 +14,9 @@ import { useHistory } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+ * Display single action details & comments.
+ */
 function ActionPage() {
   useRedirect("loggedOut");
   const { id } = useParams();
@@ -26,6 +28,10 @@ function ActionPage() {
   const profile_image = currentUser?.profile_image;
   const [comments, setComments] = useState({ results: [] });
 
+  /**
+   * Retrieve singular action data.
+   * Retrieve comments associated to action.
+   */
   useEffect(() => {
     const handleMount = async () => {
       try {

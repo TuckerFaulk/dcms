@@ -1,23 +1,33 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-
 import styles from "../../styles/CommentCreateEditForm.module.css";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 
-// Review Page as copied from CI
 
+/**
+ * Render CommentCreateForm.
+ * Supply user with input fields to create a comment.
+ * Source: CI Walkthrough Videos
+ */
 function CommentCreateForm(props) {
   const { task_name, action_title, setComments, profileImage, profile_id, page } = props;
   const [content, setContent] = useState("");
 
+  /**
+   * Populate Content strings.
+   */
   const handleChange = (event) => {
     setContent(event.target.value);
   };
 
+  /**
+   * Push data to API dependant whether
+   * a task comment or action comment
+   * has been created.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
 

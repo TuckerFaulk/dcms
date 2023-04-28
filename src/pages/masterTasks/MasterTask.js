@@ -9,6 +9,9 @@ import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import styles from "../../styles/MasterTask.module.css";
 
+/**
+ * Display single MasterTask content.
+ */
 const MasterTask = (props) => {
   const {
     id,
@@ -26,10 +29,16 @@ const MasterTask = (props) => {
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
 
+  /**
+   * Route user to Edit page.
+   */
   const handleEdit = () => {
     history.push(`/master-tasks/${id}/edit`);
   };
 
+  /**
+   * Delete selected master task from API
+   */
   const handleDelete = async () => {
     try {
       axiosRes.delete(`/master-tasks/${id}`);

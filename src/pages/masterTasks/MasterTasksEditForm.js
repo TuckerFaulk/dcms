@@ -12,6 +12,10 @@ import { useParams } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+ * Render MasterTasksEditForm.
+ * Supply user with input fields to edit an action.
+ */
 function MasterTasksEditForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
@@ -33,6 +37,9 @@ function MasterTasksEditForm() {
   const categoryInput = useRef(null);
   const frequencyInput = useRef(null);
 
+  /**
+   * Populate ActionData strings.
+   */
   const handleChange = (event) => {
     setMasterTaskData({
       ...masterTaskData,
@@ -40,6 +47,11 @@ function MasterTasksEditForm() {
     });
   };
 
+  /**
+   * Retrieve categories data
+   * to display in form.
+   * Populate form fields with master task data.
+   */
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -57,6 +69,9 @@ function MasterTasksEditForm() {
     handleMount();
   }, [id]);
 
+  /**
+   * Push data to API.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();

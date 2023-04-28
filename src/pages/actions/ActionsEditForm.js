@@ -15,6 +15,10 @@ import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/ActionsEditForm.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+ * Render ActionsEditForm.
+ * Supply user with input fields to edit an action.
+ */
 function ActionsEditForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
@@ -47,6 +51,11 @@ function ActionsEditForm() {
   const history = useHistory();
   const { id } = useParams();
 
+  /**
+   * Retrieve profiles and categories data
+   * to display in form.
+   * Populate form fields with action data.
+   */
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -68,6 +77,9 @@ function ActionsEditForm() {
     handleMount();
   }, [id]);
 
+  /**
+   * Populate ActionData strings.
+   */
   const handleChange = (event) => {
     setActionData({
       ...actionData,
@@ -75,6 +87,10 @@ function ActionsEditForm() {
     });
   };
 
+  /**
+   * Change uploaded image.
+   * clear previously uploaded image.
+   */
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
@@ -85,6 +101,9 @@ function ActionsEditForm() {
     }
   };
 
+  /**
+   * Push data to API.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();

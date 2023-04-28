@@ -6,6 +6,9 @@ import Card from "react-bootstrap/Card";
 import { NavLink } from "react-router-dom";
 import styles from "../../styles/UserTask.module.css";
 
+/**
+ * Display single user task content.
+ */
 const UserTask = (props) => {
   const {
     id,

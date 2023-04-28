@@ -4,12 +4,21 @@ import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useHistory } from "react-router";
 import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
 
+/**
+ * Determin logged-in status.
+ * Variables & function code provided in Moments walkthrough.
+ */
+
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
 
 export const useCurrentUser = () => useContext(CurrentUserContext);
 export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
 
+/**
+ * Retrieve user data from API upon component mount.
+ * Provide user data to child components.
+ */
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const history = useHistory();
@@ -27,6 +36,10 @@ export const CurrentUserProvider = ({ children }) => {
     handleMount();
   }, []);
 
+  /**
+   * Axios interceptor.
+   * If 401 error, refresh token to maintain loggedin status.
+   */
   useMemo(() => {
     axiosReq.interceptors.request.use(
       async (config) => {

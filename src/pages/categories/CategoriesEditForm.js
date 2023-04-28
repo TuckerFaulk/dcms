@@ -12,6 +12,10 @@ import { useParams } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+ * Render CategoriesEditForm.
+ * Supply user with input fields to edit an action.
+ */
 function CategoriesEditForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
@@ -25,6 +29,9 @@ function CategoriesEditForm() {
 
   const { category_name } = categoryData;
 
+  /**
+   * Populate CategoryData strings.
+   */
   const handleChange = (event) => {
     setCategoryData({
       ...categoryData,
@@ -32,6 +39,10 @@ function CategoriesEditForm() {
     });
   };
 
+  /**
+   * Retrieve categories data to display in form.
+   * Populate form fields with categories data.
+   */
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -45,6 +56,9 @@ function CategoriesEditForm() {
     handleMount();
   }, [id]);
 
+  /**
+   * Push data to API.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();

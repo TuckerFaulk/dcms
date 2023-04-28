@@ -6,11 +6,15 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Card from "react-bootstrap/Card";
-// import styles from "../../styles/AssignedToCreateForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+ * Render AssignedToCreateForm.
+ * Supply user with input fields to assign
+ * a Master Task.
+ */
 function AssignedToCreateForm(props) {
   useRedirect("loggedOut");
   const { id, setAssignedTo } = props;
@@ -29,6 +33,10 @@ function AssignedToCreateForm(props) {
 
   const { assigned_to, completed_by } = assignedToData;
 
+  /**
+   * Retrieve profiles data to display in form.
+   * Non-admin usernames retrieved only.
+   */
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -42,6 +50,9 @@ function AssignedToCreateForm(props) {
     handleMount();
   }, []);
 
+  /**
+   * Populate AssignedToData strings.
+   */
   const handleChange = (event) => {
     setAssignedToData({
       ...assignedToData,
@@ -49,6 +60,9 @@ function AssignedToCreateForm(props) {
     });
   };
 
+  /**
+   * Push data to API.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();

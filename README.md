@@ -317,11 +317,11 @@ Icons were added to buttons throughout the site to aid the understanding of the 
 
 ## Unfixed Bugs
 
-<!-- - CurrentProfileContext
+- CurrentProfileContext
 - Warning: validateDOMNesting(...): <ul> cannot appear as a descendant of <p>.
 - Warning: validateDOMNesting(...): <div> cannot appear as a descendant of <p>.
-- Date Warning
-- Categories Page does not refresh after a category has been deleted -->
+- Date Warning and incorrect error message
+- Categories Page does not refresh after a category has been deleted
 
 ## Libraries and Programs Used
 

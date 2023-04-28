@@ -3,6 +3,10 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import btnStyles from "../styles/Button.module.css";
 
+
+/**
+ * Component to filter UserTasks or Actions by Status
+ */
 const StatusFilter = (props) => {
   const { status, setStatus } = props;
 

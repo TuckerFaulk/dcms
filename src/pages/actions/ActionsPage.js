@@ -12,10 +12,12 @@ import StatusFilter from "../../components/StatusFilter";
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
-
 import styles from "../../styles/SearchBar.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+ * Display all actions.
+ */
 function ActionsPage() {
   useRedirect("loggedOut");
   const [actions, setActions] = useState({ results: [] });
@@ -25,6 +27,12 @@ function ActionsPage() {
   const currentUser = useCurrentUser();
   const currentProfile = useCurrentProfile();
 
+  /**
+   * Fetch actions from API.
+   * Different actions are retrieved if 
+   * logged in user is Admin.
+   * Return search results.
+   */
   useEffect(() => {
     const handleMount = async () => {
       if (currentProfile?.is_staff) {
@@ -55,7 +63,7 @@ function ActionsPage() {
     return () => {
       clearTimeout(timer);
     };
-  }, [currentUser, currentProfile, status, query]); // Try to stop it refreshing
+  }, [currentUser, currentProfile, status, query]);
 
   return (
     <Container>

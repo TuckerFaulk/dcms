@@ -11,6 +11,9 @@ import { axiosRes } from "../../api/axiosDefaults";
 import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
 import styles from "../../styles/Action.module.css";
 
+/**
+ * Display single action content.
+ */
 const Action = (props) => {
   const {
     id,
@@ -31,10 +34,16 @@ const Action = (props) => {
   const is_owner = currentUser?.username === assigned_to_username;
   const history = useHistory();
 
+  /**
+   * Route user to Edit page.
+   */
   const handleEdit = () => {
     history.push(`/my-actions/${id}/edit`);
   };
 
+  /**
+   * Delete selected action from API
+   */
   const handleDelete = async () => {
     try {
       axiosRes.delete(`/actions/${id}`);

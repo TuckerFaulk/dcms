@@ -8,6 +8,10 @@ export const SetCurrentProfileContext = createContext();
 export const useCurrentProfile = () => useContext(CurrentProfileContext);
 export const useSetCurrentProfile = () => useContext(SetCurrentProfileContext);
 
+/**
+ * Retrieve profile data from API upon component mount.
+ * Provide profile data to child components.
+ */
 export const CurrentProfileProvider = ({ children }) => {
   const currentUser = useCurrentUser();
   const [currentProfile, setCurrentProfile] = useState(null);

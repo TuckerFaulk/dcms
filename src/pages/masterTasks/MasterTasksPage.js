@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -10,15 +9,21 @@ import MasterTask from "./MasterTask";
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
-
 import styles from "../../styles/SearchBar.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+ * Display all master tasks.
+ */
 function MasterTasksPage() {
   useRedirect("loggedOut");
   const [masterTasks, setMasterTasks] = useState({ results: [] });
   const [query, setQuery] = useState("");
 
+  /**
+   * Fetch master tasks from API.
+   * Return search results.
+   */
   useEffect(() => {
     const handleMount = async () => {
       try {

@@ -11,6 +11,10 @@ import { useHistory } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 
+/**
+ * Render MasterTasksCreateForm.
+ * Supply user with input fields to create a master task.
+ */
 function MasterTasksCreateForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
@@ -31,6 +35,9 @@ function MasterTasksCreateForm() {
   const categoryInput = useRef(null);
   const frequencyInput = useRef(null);
 
+  /**
+   * Populate MasterTaskData strings.
+   */
   const handleChange = (event) => {
     setMasterTaskData({
       ...masterTaskData,
@@ -38,6 +45,10 @@ function MasterTasksCreateForm() {
     });
   };
 
+  /**
+   * Retrieve categories data
+   * to display in form.
+   */
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -51,6 +62,9 @@ function MasterTasksCreateForm() {
     handleMount();
   }, []);
 
+  /**
+   * Push data to API.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
