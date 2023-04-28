@@ -198,37 +198,116 @@ Icons were added to buttons throughout the site to aid the understanding of the 
 
 - The home page provides context of what the site does and how it can provide benefit to the user.
 
-<!-- ![Home Page](static/readme_images/home-page.jpg) -->
+![Home Page](src/assets/README_images/home.png)
 
 ### Logo
 
-<!-- ![Logo](static/readme_images/logo.jpg) -->
+![Logo](src/assets/README_images/logo.png)
 
 ### Navigation
 
-*User - Logged Out*
+*Logged Out*
 
-<!-- ![Navigation](static/readme_images/navbar_logged_out.jpg) -->
+![Navigation](src/assets/README_images/logged-out-nav.png)
 
 *User - Logged In*
 
-<!-- ![Navigation - User Logged In](static/readme_images/navbar_logged_in.jpg) -->
+![Navigation - User Logged In](src/assets/README_images/logged-in-user.png)
+
+*Admin - Logged In*
+
+![Navigation - Admin Logged In](src/assets/README_images/logged-in-admin.png)
 
 *Mobile*
 
-<!-- ![Navigation - Mobile](static/readme_images/navbar_mobile.jpg) -->
+![Navigation - Mobile](src/assets/README_images/nav-mobile.png)
 
 ### Favicon
 
-<!-- ![Favicon](static/readme_images/android-chrome-192x192.png) -->
+![Favicon](src/assets/README_images/favicon.png)
 
+### Master Tasks
 
-<!-- TBC -->
+*Master Task List*
 
+![Master Task List](src/assets/README_images/master-tasks-list.png)
+
+*Master Task Detail*
+
+![Master Task Detail](src/assets/README_images/master-tasks-detail.png)
+
+*Add Master Task*
+
+![Add Master Task](src/assets/README_images/add-master-task.png)
+
+*Edit Master Task*
+
+![Edit Master Task](src/assets/README_images/edit-master-task.png)
+
+### Assign Master Task
+
+*Assign Master Task List*
+
+![Assign Master Task List](src/assets/README_images/assign-master-task-list.png)
+
+*Add - Assign Master Task*
+
+![Add - Assign Master Task](src/assets/README_images/add-assign-master-task.png)
+
+### Categories
+
+*Categories List*
+
+![Categories List](src/assets/README_images/categories-list.png)
+
+*Add Category*
+
+![Add Category](src/assets/README_images/add-category.png)
+
+*Edit Category*
+
+![Edit Category](src/assets/README_images/edit-category.png)
+
+### My Tasks
+
+*My Task List*
+
+![My Task List](src/assets/README_images/my-task-list.png)
+
+*My Task Detail (including Update My Task and Comments)*
+
+![My Task Detail](src/assets/README_images/my-task-detail.png)
+
+### Actions
+
+*Action List*
+
+![Action List](src/assets/README_images/action-list.png)
+
+*Action Detail (including Update Action and Comments)*
+
+![Action Detail](src/assets/README_images/action-detail.png)
+
+*Add Action - Admin*
+
+![Add Action - Admin](src/assets/README_images/add-action.png)
+
+*Add Action - User*
+
+![Add Action - User](src/assets/README_images/add-action-user.png)
+
+- A seperate add action page is displayed for users as they can only allocate actions to themselves
+
+*Edit Action*
+
+![Edit Action](src/assets/README_images/edit-action.png)
 
 ## Other Features
 
-<!-- TBC -->
+- Infinite Scroll
+- Tasks/Actions Overdue Icon
+
+<!-- ![Navigation - Mobile](static/readme_images/navbar_mobile.jpg) -->
 
 ## Future Features
 
@@ -342,6 +421,8 @@ Icons were added to buttons throughout the site to aid the understanding of the 
 - Google Fonts: For the font families
 - Font Awesome: To add icons to the site
 - Real Favicon Generator: Creating Favicon
+- Jwt-decode: Used to decode and extract information from a JWT token.
+- Axios: Promise based HTTP client for the browser and node.js. Used to make HTTP requests from throughout the application.
 
 # Deployment
 
