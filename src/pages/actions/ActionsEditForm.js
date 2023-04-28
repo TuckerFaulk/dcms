@@ -14,6 +14,7 @@ import { useParams } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/ActionsEditForm.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
+import { useCurrentProfile } from "../../contexts/CurrentProfileContext";
 
 /**
  * Render ActionsEditForm.
@@ -49,6 +50,7 @@ function ActionsEditForm() {
   const imageInput = useRef(null);
 
   const history = useHistory();
+  const currentProfile = useCurrentProfile();
   const { id } = useParams();
 
   /**
@@ -110,7 +112,6 @@ function ActionsEditForm() {
 
     formData.append("action_title", action_title);
     formData.append("description", description);
-    formData.append("assigned_to", assignedToInput.current.value);
     formData.append("category", categoryInput.current.value);
     formData.append("due_date", dueDate);
     formData.append("risk_rating", riskRatingInput.current.value);
@@ -119,11 +120,17 @@ function ActionsEditForm() {
       formData.append("image", imageInput.current.files[0]);
     }
 
+    if (currentProfile?.is_staff) {
+      formData.append("assigned_to", assignedToInput.current.value);
+    } else {
+      formData.append("assigned_to", currentProfile?.id);
+    }
+
     try {
       await axiosReq.put(`/actions/${id}/`, formData);
       history.push(`/my-actions/${id}/`);
     } catch (err) {
-      // console.log(err);
+      console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
@@ -136,7 +143,6 @@ function ActionsEditForm() {
         <Col className="py-2 p-0 p-md-2">
           <Container className="d-flex flex-column justify-content-center">
             <div className="text-center">
-              <Form>
                 <Form.Group controlId="formBasicTaskName">
                   <Form.Label>Action Title</Form.Label>
                   <Form.Control
@@ -168,24 +174,26 @@ function ActionsEditForm() {
                   </Alert>
                 ))}
 
-                <Form.Group>
-                  <Form.Label>Assign To</Form.Label>
-                  <Col>
-                    <Form.Control
-                      as="select"
-                      name="assigned_to"
-                      value={assigned_to}
-                      onChange={handleChange}
-                      ref={assignedToInput}
-                    >
-                      {profiles?.results.map((profile) => (
-                        <option value={profile.id} key={profile.id}>
-                          {profile.owner}
-                        </option>
-                      ))}
-                    </Form.Control>
-                  </Col>
-                </Form.Group>
+                {currentProfile?.is_staff && (
+                  <Form.Group>
+                    <Form.Label>Assign To</Form.Label>
+                    <Col>
+                      <Form.Control
+                        as="select"
+                        name="assigned_to"
+                        value={assigned_to}
+                        onChange={handleChange}
+                        ref={assignedToInput}
+                      >
+                        {profiles?.results.map((profile) => (
+                          <option value={profile.id} key={profile.id}>
+                            {profile.owner}
+                          </option>
+                        ))}
+                      </Form.Control>
+                    </Col>
+                  </Form.Group>
+                )}
                 {errors?.assigned_to?.map((message, idx) => (
                   <Alert variant="warning" key={idx}>
                     {message}
@@ -276,7 +284,6 @@ function ActionsEditForm() {
                     {message}
                   </Alert>
                 ))}
-              </Form>
 
               <Button
                 className={`${btnStyles.Button} ${btnStyles.Blue}`}
