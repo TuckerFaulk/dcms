@@ -98,8 +98,8 @@ As seen above, there will only be two different types of user of this site (Site
 - Add User Task: As a **site admin** I can **automatically create a user task once a master task has been allocated** so that **I know a user task has been created which requires completion**.
 - View User Task List: As a **site user/site admin** I can **view the user tasks which are to be completed by me** so that **I am aware what tasks I need to completed**.
 - View Overdue User Task List: As a **site user/site admin** I can **view the overdue user tasks which are to be completed by me** so that **I can prioritise completing tasks which are overdue**.
-- Filter User Tasks: As a **site user/site admin** I can **filter user tasks** so that **so it is eay to find the user task which I am looking for**.
-- Search for User Tasks: As a **site user/site admin** I can **search for user tasks** so that **so it is eay to find the user task which I am looking for**.
+- Filter User Tasks: As a **site user/site admin** I can **filter user tasks** so that **so it is easy to find the user task which I am looking for**.
+- Search for User Tasks: As a **site user/site admin** I can **search for user tasks** so that **so it is easy to find the user task which I am looking for**.
 - View User Task Details: As a **site user/site admin** I can **view a user tasks details** so that **I am aware what tasks I need to completed**.
 - Update User Task Status: As a **site user/site admin** I can **update a user tasks status** so that **I can record whether a task has been completed or is in progress**.
 - Add Image to User Task: As a **site user/site admin** I can **add an image to a user task** so that **I can provide additional evidence that a task has been completed or that an issue was identified**.
@@ -308,7 +308,7 @@ Icons were added to buttons throughout the site to aid the understanding of the 
 
 ![Add Action - User](src/assets/README_images/add-action-user.png)
 
-- A seperate add action page is displayed for users as they can only allocate actions to themselves
+- A separate add action page is displayed for users as they can only allocate actions to themselves
 
 *Edit Action*
 
@@ -358,8 +358,8 @@ Icons were added to buttons throughout the site to aid the understanding of the 
 |Add User Task: As a **site admin** I can **automatically create a user task once a master task has been allocated** so that **I know a user task has been created which requires completion**.|☑|
 |View User Task List: As a **site user/site admin** I can **view the user tasks which are to be completed by me** so that **I am aware what tasks I need to completed**.|☑|
 |View Overdue User Task List: As a **site user/site admin** I can **view the overdue user tasks which are to be completed by me** so that **I can prioritise completing tasks which are overdue**.|☑|
-|Filter User Tasks: As a **site user/site admin** I can **filter user tasks** so that **so it is eay to find the user task which I am looking for**.|☑|
-|Search for User Tasks: As a **site user/site admin** I can **search for user tasks** so that **so it is eay to find the user task which I am looking for**.|☑|
+|Filter User Tasks: As a **site user/site admin** I can **filter user tasks** so that **so it is easy to find the user task which I am looking for**.|☑|
+|Search for User Tasks: As a **site user/site admin** I can **search for user tasks** so that **so it is easy to find the user task which I am looking for**.|☑|
 |View User Task Details: As a **site user/site admin** I can **view a user tasks details** so that **I am aware what tasks I need to completed**.|☑|
 |Update User Task Status: As a **site user/site admin** I can **update a user tasks status** so that **I can record whether a task has been completed or is in progress**.|☑|
 |Add Image to User Task: As a **site user/site admin** I can **add an image to a user task** so that **I can provide additional evidence that a task has been completed or that an issue was identified**.|☑|
@@ -457,7 +457,7 @@ This project was deployed on Heroku using Code Institute's Videos. After creatin
 
 8. Click on the 'Deploy' tab and click on GitHub in the 'Deployment Method'.
 
-9. Go to 'App connected to GitHub'. Search and select the relevent repository and click 'Connect'.
+9. Go to 'App connected to GitHub'. Search and select the relevant repository and click 'Connect'.
 
 10. Go to 'Manual Deploy' section and click 'Deploy Branch'. 
 
@@ -467,11 +467,11 @@ This project was deployed on Heroku using Code Institute's Videos. After creatin
 
 1. Add a Procfile at the root of the project.
 
-2. Commited all finalised code and pushed to Github. 
+2. Committed all finalised code and pushed to Github. 
 
 3. Open up the dashboard for your react app in Heroku.
 
-4. Maunally Deploy Branch.
+4. Manually Deploy Branch.
 
 5. Click the "Open App" button.
 
