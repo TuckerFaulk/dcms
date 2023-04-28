@@ -47,7 +47,9 @@ function CategoriesPage() {
    */
   const handleDelete = async (id) => {
     try {
-      axiosRes.delete(`/categories/${id}`);
+      await axiosRes.delete(`/categories/${id}`);
+      // Source: CI Tutor Ed
+      setCategories(categories.filter(category => category.id !== id));
     } catch (err) {
       // console.log(err);
     }
