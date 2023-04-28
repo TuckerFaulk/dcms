@@ -4,8 +4,10 @@
 
 The live link for the site can be found here - https://project5-dcms-react.herokuapp.com/
 
+The live link for the API can be found here - https://project5-dcms-drf-api.herokuapp.com/
+
 # Table of Contents
-<!-- - [Overview](#overview)
+- [Overview](#overview)
 - [UX](#ux)
   - [Strategy](#strategy)
   - [Scope](#scope)
@@ -15,20 +17,17 @@ The live link for the site can be found here - https://project5-dcms-react.herok
 - [Languages Used](#languages-used)
 - [Features](#features)
   - [Existing Features](#existing-features)
-  - [CRUD](#crud)
   - [Other Features](#other-features)
   - [Future Features](#future-features)
 - [Testing](#testing)
-  - [Automated Testing](#automated-testing)
   - [Manual Test of User Stories](#manual-test-of-user-stories)
   - [Test on Alternative Browsers and Screen Size](#test-on-alternative-browsers-and-screen-size)
-  - [Debugging](#debugging)
   - [Validator Testing](#validator-testing)
   - [Unfixed Bugs](#unfixed-bugs)
 - [Libraries and Programs Used](#libraries-and-programs-used)
 - [Deployment](#deployment)
 - [Credits](#credits)
-  - [Content](#content) -->
+  - [Content](#content)
 
 # Overview
 
@@ -87,7 +86,7 @@ As seen above, there will only be two different types of user of this site (Site
 - Add Master Task: As a **site admin** I can **add a master task** so that **I am able to allocate a master task to a user**.
 - Edit Master Task: As a **site admin** I can **edit a master task** so that **I am able to update a master task if any of the requirements change**.
 - Delete Master Task: As a **site admin** I can **delete a master task** so that **it is no longer available to be allocated to a user**.
-- Search for Master Tasks	As a **site admin** I can **search for master tasks** so that **so it is easy to find the master task which I am looking for**.
+- Search for Master Tasks:	As a **site admin** I can **search for master tasks** so that **so it is easy to find the master task which I am looking for**.
 
 *Assign Tasks*
 
@@ -160,11 +159,25 @@ For detailed explanation of all existing features see [Existing Features](#exist
 
 **Wireframes**
 
-<!-- TBC -->
+*Master Tasks, My Tasks and My Actions List*
 
-*Index Page*
+<!-- ![Index Page Wireframe](src/assets/README_images) -->
 
-<!-- ![Index Page Wireframe](static/readme_images/index_wireframe.jpg) -->
+*Master Task Detail (including assigned to add and list)*
+
+<!-- ![Index Page Wireframe](src/assets/README_images) -->
+
+*Categories List*
+
+<!-- ![Index Page Wireframe](src/assets/README_images) -->
+
+*My Task Detail (including update form and comments)*
+
+<!-- ![Index Page Wireframe](src/assets/README_images) -->
+
+*My Action Detail (including update form and comments)*
+
+<!-- ![Index Page Wireframe](src/assets/README_images) -->
 
 **Database Schema**
 
@@ -187,7 +200,6 @@ Icons were added to buttons throughout the site to aid the understanding of the 
 - HTML
 - CSS
 - JavaScript
-- Python
 - SQL (Postgres)
 
 # Features
@@ -307,7 +319,7 @@ Icons were added to buttons throughout the site to aid the understanding of the 
 - Infinite Scroll
 - Tasks/Actions Overdue Icon
 
-<!-- ![Navigation - Mobile](static/readme_images/navbar_mobile.jpg) -->
+![Navigation - Mobile](src/assets/README_images/overdue-icon.png)
 
 ## Future Features
 
@@ -397,12 +409,14 @@ Icons were added to buttons throughout the site to aid the understanding of the 
 ## Unfixed Bugs
 
 - CurrentProfileContext
-- Warning: validateDOMNesting(...): <ul> cannot appear as a descendant of <p>.
-- Warning: validateDOMNesting(...): <div> cannot appear as a descendant of <p>.
-- Date Warning and incorrect error message
-- Categories Page does not refresh after a category has been deleted
 
-## Libraries and Programs Used
+The CurrentProfileContext was created to retrieve profile data from the API and provide profile data to child components. The appropriate information is requested from the API based on the information retrieved from the CurrentUserProvider. Something when refreshing the page, a 404 error is raised. It is thought that the CurrentUserProvider has not yet retrieved its information before the CurrentProfileContext is initially run. It is noted that the CurrentProfileContext does work as the information is then retrieved from the API on the second request after the CurrentUserProvider has completed its. I have spoken to the CI tutor and they have stated for me to ignore this.
+
+- Warning: validateDOMNesting(...): <ul> cannot appear as a descendant of <p> and Warning: validateDOMNesting(...): <div> cannot appear as a descendant of <p>
+
+The above error messages display when console.logs are turned on on the following pages: MasterTaskPage, UserTaskPage and ActionPage. Discussed this with CI Tutors and we could not work out why it is throwing this error are there are no <div>'s as a descendant of a <p>, or <ul>'s as a descendant of a <p>.
+
+# Libraries and Programs Used
 
 - Github: Store Repository
 - Gitpod: IDE
@@ -411,7 +425,6 @@ Icons were added to buttons throughout the site to aid the understanding of the 
 - ElephantSQL: PostgreSQL database hosting
 - React.js: Front-end application
 - React-Bootstrap: CSS styling library
-- Django/Django REST Framework: Backend database and API
 - Google Chrome, Microsoft Edge, Mozilla Firefox, Safari: Site testing on alternative browsers
 - Chrome Dev Tools: Debugging and CSS testing of the site
 - Microsoft OneNote: Planning notes for the project
@@ -428,36 +441,45 @@ Icons were added to buttons throughout the site to aid the understanding of the 
 
 This project was deployed on Heroku using Code Institute's Videos. After creating a GitHub repository, the steps taken to create the Heroku App were:
 
-<!-- 1. Install React.js:
-```
-npx create-react-app . --use-npm
-npm start
-```
-2. All packages were already installed in the CI React Template.
-3. Git add, commit, and push changes to gitpod.
-4. Create the project app on Heroku, and link the GitHub repository by navigating to the 'Deploy' tab.
+1. Create a new GitHub repository with a blank template (do not use CI Template).
 
-### Connecting to the API:
-1. Navigated to the Heroku app of the project DRF-API, and under the Settings tab, added the following configvars:
-- Key: CLIENT_ORIGIN | Value: https://react-app-name.herokuapp.com
-- Key: CLIENT_ORIGIN_DEV | Value: https://gitpod-browser-link.ws-eu54.gitpod.io
-2. Check that the trailing slash `\` at the end of both links has been removed, and save the configvar pairs.
-3. Install the Axios package, and create supporting `axiosDefaults.js` as shown in [Moments Walkthrough](https://github.com/Code-Institute-Solutions/moments/blob/cf955d2f2e6f70f61c92d1f9de85558d8e49f3a8/src/api/axiosDefaults.js). -->
+2. Open a new workspace by clicking 'Gitpod' button. 
 
-<!-- ### Deploy to Heroku:
-1. In the `scripts` section of `package.json` in gitpod, added the following command:
-```
-"heroku-prebuild": "npm install -g serve",
-```
-2. Add Procfile to project root & populate with the following:
-```
-web: serve -s build
-```
-3. Repeat the steps of git add/commit/push.
-4. Deploy the project via the deploy button on Heroku. -->
+3. Run terminal command **npx create-react-app . --use-npm** to create React app, once the workspace has loaded. 
 
-### Deploy to ElephantSQL:
-<!-- (ElephantSQL)[https://www.elephantsql.com/] using the following [instructions](https://code-institute-students.github.io/deployment-docs/41-pp5-adv-fe/pp5-adv-fe-drf-01-create-a-database) -->
+4. Run terminal command **npm start** to check app is working, once the app is installed.
+
+5. Run terminal command **npm install react-bootstrap@1.6.3 bootstrap@4.6.0** to install Bootstrap.
+
+6. In App.js, replace the standard React Header element with some text and remove the logo import. 
+
+7. Confirm the added test renders in the browser preview then add, commit and push changes. 
+
+8. Create a new Heroku app. 
+
+9. Go to 'Settings' and confirm that the "heroku/nodejs" buildpack is present.
+
+10. Click on the 'Deploy' tab and click on GitHub in the 'Deployment Method'.
+
+11. Go to 'App connected to GitHub'. Search and select the relevent repository and click 'Connect'.
+
+12. Go to 'Manual Deploy' section and click 'Deploy Branch'. 
+
+13. Click 'Open App' button to view newly deployed app. 
+
+# Final Deployment
+
+1. Add a Procfile at the root of the project.
+
+2. Commited all finalised code and pushed to Github. 
+
+3. Open up the dashboard for your react app in Heroku.
+
+4. Maunally Deploy Branch.
+
+5. Click the "Open App" button.
+
+6. To ensure it matches the development version, test the final deployed version of the app. 
 
 # Credits
 
