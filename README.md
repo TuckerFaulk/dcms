@@ -441,31 +441,27 @@ The above error messages display when console.logs are turned on on the followin
 
 This project was deployed on Heroku using Code Institute's Videos. After creating a GitHub repository, the steps taken to create the Heroku App were:
 
-1. Create a new GitHub repository with a blank template (do not use CI Template).
+1. Run terminal command **npx create-react-app . --use-npm** to create React app, once the workspace has loaded. 
 
-2. Open a new workspace by clicking 'Gitpod' button. 
+2. Run terminal command **npm start** to check app is working, once the app is installed.
 
-3. Run terminal command **npx create-react-app . --use-npm** to create React app, once the workspace has loaded. 
+3. Run terminal command **npm install react-bootstrap@1.6.3 bootstrap@4.6.0** to install Bootstrap.
 
-4. Run terminal command **npm start** to check app is working, once the app is installed.
+4. In App.js, replace the standard React Header element with some text and remove the logo import. 
 
-5. Run terminal command **npm install react-bootstrap@1.6.3 bootstrap@4.6.0** to install Bootstrap.
+5. Confirm the added test renders in the browser preview then add, commit and push changes. 
 
-6. In App.js, replace the standard React Header element with some text and remove the logo import. 
+6. Create a new Heroku app. 
 
-7. Confirm the added test renders in the browser preview then add, commit and push changes. 
+7. Go to 'Settings' and confirm that the "heroku/nodejs" buildpack is present.
 
-8. Create a new Heroku app. 
+8. Click on the 'Deploy' tab and click on GitHub in the 'Deployment Method'.
 
-9. Go to 'Settings' and confirm that the "heroku/nodejs" buildpack is present.
+9. Go to 'App connected to GitHub'. Search and select the relevent repository and click 'Connect'.
 
-10. Click on the 'Deploy' tab and click on GitHub in the 'Deployment Method'.
+10. Go to 'Manual Deploy' section and click 'Deploy Branch'. 
 
-11. Go to 'App connected to GitHub'. Search and select the relevent repository and click 'Connect'.
-
-12. Go to 'Manual Deploy' section and click 'Deploy Branch'. 
-
-13. Click 'Open App' button to view newly deployed app. 
+11. Click 'Open App' button to view newly deployed app. 
 
 # Final Deployment
 
