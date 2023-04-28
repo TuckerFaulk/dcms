@@ -35,6 +35,13 @@ This site was developed to address a problem which occurred during my previous e
 
 # UX
 
+I have found that using the React library and it implemented feature has contributed to improve the user experience by:
+
+- Helping the user to avoid refreshing the page
+- The website responding quickly to the users interactions
+- The web pages loading faster
+- Improving the performance of the site by removing the need to implement the same functionality twice
+
 This site was created respecting the Five Planes Of Website Design:
 
 ## Strategy
@@ -436,6 +443,19 @@ The above error messages display when console.logs are turned on on the followin
 - Real Favicon Generator: Creating Favicon
 - Jwt-decode: Used to decode and extract information from a JWT token.
 - Axios: Promise based HTTP client for the browser and node.js. Used to make HTTP requests from throughout the application.
+
+# Components
+
+Several components have been reused throughout this project:
+
+1. axiosDefault.js: For ease of communication with the backend API
+2. Asset.js: To supply the loading spinner throughout the site
+3. DropdownMenu.js: To allow users to edit/delete their Master Tasks, Categories, Actions and Comments
+4. CurrentUserContext.js: To confirm that a user is logged-in and to determine what functionality is available to that user
+5. CurrentProfileContext.js: To see whether a user is an admin and then display the appropiate additional functionality
+6. useRedirect.js: Redirects the user to another page if they are not authorised to be on the page they are trying to access
+7. utils.js: Supplies functionality to all of the components that utilise the Infinite Scroll
+8. StatusFilter.js: Adds filter functionality to the list pages
 
 # Deployment
 
