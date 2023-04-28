@@ -66,8 +66,6 @@ The project goals of this site are to:
 
 **User Stories** 
 
-As seen above, there will only be two different types of user of this site (Site User and Site Admin). I have broken down my user stories into these two categories:
-
 *Navigation & Authentication*
 
 - Navigation: As a **site user** I can **view a navbar from every page** so that **I can navigate easily between pages**.
@@ -136,7 +134,7 @@ As seen above, there will only be two different types of user of this site (Site
 - Delete Action Comment: As a **site user/site admin** I can **delete an action comment** so that **I can delete a comment which has been incorrectly submitted**.
 - Action Status Update Comment: As a **site user/site admin** I can **automatically add a comment to detail a change in an actions status** so that **the comments have a log of any changes to the status of the action**.
 
-The user stories where then managed in a Kanban board which was created in [GitHub Projects](https://github.com/users/TuckerFaulk/projects/5/views/1?visibleFields=%5B%22Title%22%2C%22Assignees%22%2C%22Status%22%2C%22Labels%22%2C%22Milestone%22%5D). User stories were then prioritized with the MoSCoW approach and labels where used to manage this. The kanban board was split into five columns to manage the various stages of development:
+The user stories where managed in a Kanban board which was created in [GitHub Projects](https://github.com/users/TuckerFaulk/projects/5/views/1?visibleFields=%5B%22Title%22%2C%22Assignees%22%2C%22Status%22%2C%22Labels%22%2C%22Milestone%22%5D). User stories were then prioritized with the MoSCoW approach and labels where used to manage this. The kanban board was split into five columns to manage the various stages of development:
 
 1. To do: This item hasn't been started
 2. In Progress - DRF API: This item is actively being worked on in the DRF API
@@ -419,9 +417,9 @@ Icons were added to buttons throughout the site to aid the understanding of the 
 
 The CurrentProfileContext was created to retrieve profile data from the API and provide profile data to child components. The appropriate information is requested from the API based on the information retrieved from the CurrentUserProvider. Something when refreshing the page, a 404 error is raised. It is thought that the CurrentUserProvider has not yet retrieved its information before the CurrentProfileContext is initially run. It is noted that the CurrentProfileContext does work as the information is then retrieved from the API on the second request after the CurrentUserProvider has completed its. I have spoken to the CI tutor and they have stated for me to ignore this.
 
-- Warning: validateDOMNesting(...): <ul> cannot appear as a descendant of <p> and Warning: validateDOMNesting(...): <div> cannot appear as a descendant of <p>
+- Warning: validateDOMNesting(...): ul cannot appear as a descendant of p and Warning: validateDOMNesting(...): div cannot appear as a descendant of p
 
-The above error messages display when console.logs are turned on on the following pages: MasterTaskPage, UserTaskPage and ActionPage. Discussed this with CI Tutors and we could not work out why it is throwing this error are there are no <div>'s as a descendant of a <p>, or <ul>'s as a descendant of a <p>.
+The above error messages display when console.logs are turned on on the following pages: MasterTaskPage, UserTaskPage and ActionPage. Discussed this with CI Tutors and we could not work out why it is throwing this error are there are no div's as a descendant of a p, or ul's as a descendant of a p.
 
 # Libraries and Programs Used
 
@@ -462,39 +460,24 @@ Several components have been reused throughout this project:
 This project was deployed on Heroku using Code Institute's Videos. After creating a GitHub repository, the steps taken to create the Heroku App were:
 
 1. Run terminal command **npx create-react-app . --use-npm** to create React app, once the workspace has loaded. 
-
 2. Run terminal command **npm start** to check app is working, once the app is installed.
-
 3. Run terminal command **npm install react-bootstrap@1.6.3 bootstrap@4.6.0** to install Bootstrap.
-
 4. In App.js, replace the standard React Header element with some text and remove the logo import. 
-
 5. Confirm the added test renders in the browser preview then add, commit and push changes. 
-
 6. Create a new Heroku app. 
-
 7. Go to 'Settings' and confirm that the "heroku/nodejs" buildpack is present.
-
 8. Click on the 'Deploy' tab and click on GitHub in the 'Deployment Method'.
-
 9. Go to 'App connected to GitHub'. Search and select the relevant repository and click 'Connect'.
-
 10. Go to 'Manual Deploy' section and click 'Deploy Branch'. 
-
 11. Click 'Open App' button to view newly deployed app. 
 
 # Final Deployment
 
 1. Add a Procfile at the root of the project.
-
 2. Committed all finalised code and pushed to Github. 
-
 3. Open up the dashboard for your react app in Heroku.
-
 4. Manually Deploy Branch.
-
 5. Click the "Open App" button.
-
 6. To ensure it matches the development version, test the final deployed version of the app. 
 
 # Credits
