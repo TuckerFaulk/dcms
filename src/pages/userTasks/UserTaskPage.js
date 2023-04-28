@@ -48,7 +48,7 @@ function UserTaskPage() {
       <Row className="d-flex justify-content-end pb-3">
         <Button
           className={`${btnStyles.Button} ${btnStyles.Blue}`}
-          onClick={() => history.goBack()}
+          onClick={() => history.push("/my-tasks")}
         >
           Back
         </Button>

@@ -47,7 +47,7 @@ function ActionPage() {
     <Container>
       <Row className="d-flex justify-content-end pb-3">
         <Button
-          onClick={() => history.goBack()}
+          onClick={() => history.push("/my-actions")}
           className={`${btnStyles.Button} ${btnStyles.Blue}`}
         >
           Back
